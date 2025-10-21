@@ -6,7 +6,7 @@ title "nginx test tests"
 control 'nginx-01' do
   impact 1.0
   title 'NGINX debe estar instalado'
-  desc 'Verificar que el paquete nginx esté instalado'
+  desc 'Verficar que el paquete nginx este instalado'
   describe package('nginx') do
     it { should be_installed }
   end
@@ -14,7 +14,7 @@ end
 
 control 'nginx-02' do
   impact 1.0
-  title 'Servicio nginx activo y habilitado'
+  title 'servicio nginx instalado, activo y habilitado'
   desc 'El servicio nginx debe estar corriendo y habilitado'
   describe service('nginx') do
     it { should be_installed }
@@ -44,7 +44,7 @@ end
 control 'nginx-05' do
   impact 0.8
   title 'Archivo index.html contiene texto esperado'
-  desc 'Comprobar que la página de prueba contiene "Welcome"'
+  desc 'Comprobar que la pagina de prueba contiene "Welcome"'
   describe file('/usr/share/nginx/html/index.html') do
     it { should exist }
     its('content') { should match /Welcome/i }
