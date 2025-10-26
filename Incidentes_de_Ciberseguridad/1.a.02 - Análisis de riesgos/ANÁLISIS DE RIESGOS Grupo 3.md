@@ -1,4 +1,4 @@
-![][image1]
+![ANÁLISIS DE RIESGOS Grupo 3][Logo1.png]
 
 [**1\. Introducción	1**](#1.-introducción)
 
