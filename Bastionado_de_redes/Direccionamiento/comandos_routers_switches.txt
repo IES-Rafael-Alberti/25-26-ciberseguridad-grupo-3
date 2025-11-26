@@ -1,0 +1,36 @@
+enable
+configure terminal
+hostname R_Sede1
+interface g0/0/0
+ip address 192.172.0.1 255.255.255.0
+no shutdown
+description GATEWAY_SEDE1_SUBRED1
+end
+
+enable
+configure terminal
+hostname R_Sede2_1
+interface g0/0/0
+ip address 192.172.1.0 255.255.255.128
+no shutdown
+description GATEWAY_SEDE2_SUBRED1
+end
+
+enable
+configure terminal
+hostname R_Sede2_2
+interface g0/0/0
+ip address 192.172.1.128  255.255.255.192
+no shutdown
+description GATEWAY_SEDE2_SUBRED2
+end
+
+
+enable
+configure terminal
+hostname R_Sede2_3
+interface g0/0/0
+ip address 192.172.1.192  255.255.255.192
+no shutdown
+description GATEWAY_SEDE2_SUBRED3
+end
