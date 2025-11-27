@@ -1,0 +1,18 @@
+CRM/ERP -  Gestión de Relaciones con los Clientes / Planificación de Recursos Empresariales
+RGPD - Reglamento general de proteccion de datos
+ENS -  Esquema nacional de seguridad
+LOPDGDD - Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales
+cross-site scripting - taque informático que permite a un atacante inyectar código malicioso
+(generalmente JavaScript) en sitios web de confianza
+MDM - Gestión de dispositivos móviles.
+O-ISM3 - Open Group Information Security Management Maturity Model: estándar abieto para
+ clasificación de madurez en seguridad.
+
+EDR - Endpoint Detection and Response, una solución de ciberseguridad para detectar y responder a
+ amenazas en dispositivos finales
+PCN/ DRP - Plan de continuidad de negocio, y plan de recuperación ante desastres
+IDS/IPS - IDS (Sistema de Detección de Intrusiones) y IPS (Sistema de Prevención de Intrusiones)
+ son soluciones de ciberseguridad para detectar y bloquear actividades maliciosas en redes
+SLA - Service Level Agreement
+CISO - chief information security officer
+KPI - Key Performance Indicator 

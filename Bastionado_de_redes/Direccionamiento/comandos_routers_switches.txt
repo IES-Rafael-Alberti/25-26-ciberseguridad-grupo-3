@@ -34,3 +34,6 @@ ip address 192.172.1.192  255.255.255.192
 no shutdown
 description GATEWAY_SEDE2_SUBRED3
 end
+
+
+ip route 
