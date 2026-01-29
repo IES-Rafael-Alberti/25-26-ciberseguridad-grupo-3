@@ -2,13 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
-const OAuth2Server = require('node-oauth2-server');
+const OAuth2Server = require('@node-oauth/oauth2-server');
 const { Request, Response } = OAuth2Server;
 const crypto = require('crypto');
+
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 const dataPath = './datos.json';
 const oauthModel = require('./oauth-model');
@@ -18,14 +20,17 @@ const oauth = new OAuth2Server({
   allowBearerTokensInQueryString: true
 });
 
+
 const users = [
   { id: 1, username: 'user', password: 'password' },
   { id: 2, username: 'admin', password: 'admin123' }
 ];
 
+
 // ========================================
 // 🔥 OWASP ASVS V4.1 NIVEL 3
 // ========================================
+
 
 // V4.1.1 - Content-Type JSON UTF-8
 app.use((req, res, next) => {
@@ -35,8 +40,10 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // V4.1.3 - Trust Proxy (ignora headers fake)
 app.set('trust proxy', false);
+
 
 // V4.1.4 - Solo métodos permitidos (NIVEL 3)
 app.use((req, res, next) => {
@@ -60,6 +67,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // V4.1.5 - HMAC firmas per-message (NIVEL 3)
 app.use('/nombres', (req, res, next) => {
   if (!['POST', 'PUT'].includes(req.method)) return next();
@@ -82,19 +90,22 @@ app.use('/nombres', (req, res, next) => {
   next();
 });
 
+
 // ========================================
-// TUS FUNCIONES (sin cambios)
+// FUNCIONES
 // ========================================
 function readData() {
   const data = fs.readFileSync(dataPath, 'utf-8');
   return JSON.parse(data);
 }
 
+
 function writeData(data) {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 }
 
-// JWT Auth (sin cambios)
+
+// JWT Auth
 function authenticateJWT(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ error: 'No se proporcionó token' });
@@ -108,7 +119,8 @@ function authenticateJWT(req, res, next) {
   }
 }
 
-// OAuth Auth (sin cambios)
+
+// OAuth Auth
 async function authenticateOAuth(req, res, next) {
   const request = new Request(req);
   const response = new Response(res);
@@ -120,12 +132,14 @@ async function authenticateOAuth(req, res, next) {
   }
 }
 
+
 // ========================================
-// TUS RUTAS + V4.1 TESTS
+// RUTAS
 // ========================================
 app.get('/saludo', (req, res) => {
   res.json({ mensaje: 'Node.js OWASP ASVS V4.1 Nivel 3 ✅' });
 });
+
 
 // V4.1.3 TEST - Proxy headers
 app.get('/ip', (req, res) => {
@@ -136,6 +150,7 @@ app.get('/ip', (req, res) => {
       '✅ V4.1.3 PASS: Ignora fake proxy' : '❌ V4.1.3 FAIL'
   });
 });
+
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
@@ -154,6 +169,8 @@ app.post('/login', (req, res) => {
   });
 });
 
+
+// OAuth token endpoint - THIS IS YOUR CALLBACK
 app.post('/oauth/token', async (req, res) => {
   const request = new Request(req);
   const response = new Response(res);
@@ -170,9 +187,11 @@ app.post('/oauth/token', async (req, res) => {
   }
 });
 
+
 app.get('/nombres', authenticateOAuth, (req, res) => {
   res.json(readData());
 });
+
 
 app.get('/nombres/:nombre', authenticateOAuth, (req, res) => {
   const nombre = req.params.nombre;
@@ -187,6 +206,7 @@ app.get('/nombres/:nombre', authenticateOAuth, (req, res) => {
   res.json(resultado);
 });
 
+
 app.post('/nombres', authenticateOAuth, (req, res) => {
   const nombres = readData();
   const nuevo = { id: Date.now(), nombre: req.body.nombre || 'Sin nombre' };
@@ -194,6 +214,7 @@ app.post('/nombres', authenticateOAuth, (req, res) => {
   writeData(nombres);
   res.status(201).json({ mensaje: 'Creado V4.1.5 HMAC OK', data: nuevo });
 });
+
 
 app.put('/nombres/:id', authenticateOAuth, (req, res) => {
   const nombres = readData();
@@ -205,6 +226,7 @@ app.put('/nombres/:id', authenticateOAuth, (req, res) => {
   res.json({ mensaje: 'Actualizado V4.1.5 HMAC OK', data: nombres[index] });
 });
 
+
 app.delete('/nombres/:id', authenticateOAuth, (req, res) => {
   const nombres = readData();
   const id = parseInt(req.params.id);
@@ -213,16 +235,19 @@ app.delete('/nombres/:id', authenticateOAuth, (req, res) => {
   res.status(204).send();
 });
 
+
 // 404
 app.use((req, res) => {
   res.status(404).json({ error: 'No encontrado [V4.1 compliant]' });
 });
 
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Node.js API V4.1 Nivel 3: http://localhost:${PORT}`);
-  console.log('🧪 Tests V4.1:');
-  console.log('  curl -i http://localhost:3000/saludo');
-  console.log('  curl -X TRACE http://localhost:3000/nombres');
-  console.log('  curl http://localhost:3000/ip -H "X-Forwarded-For: fake"');
+  console.log('\n🔐 OAuth2 Test:');
+  console.log('  curl -X POST http://localhost:3000/oauth/token \\');
+  console.log('    -H "Content-Type: application/x-www-form-urlencoded" \\');
+  console.log('    -u "test-client:YOUR_OAUTH_SECRET" \\');
+  console.log('    -d "grant_type=client_credentials"');
 });
