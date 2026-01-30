@@ -1,22 +1,28 @@
+const crypto = require('crypto');
+
+
 const clients = [
   {
     clientId: 'test-client',
-    clientSecret: process.env.OAUTH_SECRET,
+    clientSecret: process.env.OAUTH_SECRET || 'change-this-secret',
     grants: ['client_credentials']
   }
 ];
 
+
 const tokens = [];
+
 
 function getClient(clientId, clientSecret) {
   const client = clients.find(c => c.clientId === clientId);
-  
   if (!client) return false;
-  
-  if (clientSecret && client.clientSecret !== clientSecret) {
-    return false;
+  if (clientSecret) {
+    const a = Buffer.from(client.clientSecret);
+    const b = Buffer.from(clientSecret);
+    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
+      return false;
+    }
   }
-  
   return {
     id: client.clientId,
     clientId: client.clientId,
@@ -25,17 +31,18 @@ function getClient(clientId, clientSecret) {
   };
 }
 
+
 function saveToken(token, client, user) {
   const savedToken = {
     accessToken: token.accessToken,
     accessTokenExpiresAt: token.accessTokenExpiresAt,
-    client: client,
+    client: { id: client.id || client.clientId },
     user: user
   };
-  
   tokens.push(savedToken);
   return savedToken;
 }
+
 
 function getAccessToken(accessToken) {
   const token = tokens.find(t => t.accessToken === accessToken);
@@ -50,9 +57,11 @@ function getAccessToken(accessToken) {
   };
 }
 
+
 function getUserFromClient(client) {
   return { id: 'system' };
 }
+
 
 module.exports = {
   getClient,
