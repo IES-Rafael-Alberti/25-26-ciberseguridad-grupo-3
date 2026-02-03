@@ -21,9 +21,13 @@ Se ha procedido a la verificación de la integridad de la evidencia digital comp
 * **SHA-1:** f476a81089a10f9d5393aa8c2f8bbccdb87f7d3c  
 * **SHA-256:** 66d6ee7a61ea7a986e8f6bb54b9986f79d95b5a0278bef86678ed42ace320d96  
   **Hashes Calculados (Evidencia Analizada):**  
-* **MD5:** DFDFBA2231E3FA409676B1B737474288   
-* **SHA-1:** F476A81089A10F9D5393AA8C2F8BBCCDB87F7D3C   
-* **SHA-256:** 66D6EE7A61EA7A986E8F6BB54B9986F79D95B5A0278BEF86678ED42ACE320D9B  
+* **MD5:** DFDFBA2231E3FA409676B1B737474288
+  <img width="1449" height="145" alt="Captura de pantalla 2026-02-03 131224" src="https://github.com/user-attachments/assets/6f5b7c2a-12af-42a0-8f8e-6190fe61774f" />
+* **SHA-1:** F476A81089A10F9D5393AA8C2F8BBCCDB87F7D3C
+  <img width="1348" height="151" alt="Captura de pantalla 2026-02-03 131536" src="https://github.com/user-attachments/assets/abeccffa-f09d-40a6-880e-d420bdde861a" />
+* **SHA-256:** 66D6EE7A61EA7A986E8F6BB54B9986F79D95B5A0278BEF86678ED42ACE320D9B
+<img width="1364" height="163" alt="Captura de pantalla 2026-02-03 131758" src="https://github.com/user-attachments/assets/5888a41d-40eb-45f2-80cc-6887c4c4eb1b" />
+
   **Conclusión:** Existen discrepancias en los valores MD5 y SHA-256. Aunque el SHA-1 coincide, la integridad de la imagen podría estar comprometida o haber errores en la documentación inicial de los hashes. Se procede con el análisis, documentando esta anomalía.
 
   ## **1.2 Identificación de Usuario y Última Conexión**
