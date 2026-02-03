@@ -15,12 +15,12 @@ A continuación, se presentan las respuestas a las cuestiones planteadas en la f
 
 Se ha procedido a la verificación de la integridad de la evidencia digital comparando los hashes de la imagen adquirida con los proporcionados originalmente por el departamento de sistemas (Alan).
 
-  ### **Hashes Proporcionados (Cadena de Custodia):
+### **Hashes Proporcionados (Cadena de Custodia):**
 
 * **MD5:** dfdfba2231e3fa409676b1b737474208  
 * **SHA-1:** f476a81089a10f9d5393aa8c2f8bbccdb87f7d3c  
-* **SHA-256:** 66d6ee7a61ea7a986e8f6bb54b9986f79d95b5a0278bef86678ed42ace320d96  
-  ### **Hashes Calculados (Evidencia Analizada):**  
+* **SHA-256:** 66d6ee7a61ea7a986e8f6bb54b9986f79d95b5a0278bef86678ed42ace320d96
+### **Hashes Calculados (Evidencia Analizada):**  
 * **MD5:** DFDFBA2231E3FA409676B1B737474288
   <img width="1449" height="145" alt="Captura de pantalla 2026-02-03 131224" src="https://github.com/user-attachments/assets/6f5b7c2a-12af-42a0-8f8e-6190fe61774f" />
 * **SHA-1:** F476A81089A10F9D5393AA8C2F8BBCCDB87F7D3C
