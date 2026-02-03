@@ -15,7 +15,7 @@ A continuación, se presentan las respuestas a las cuestiones planteadas en la f
 
 Se ha procedido a la verificación de la integridad de la evidencia digital comparando los hashes de la imagen adquirida con los proporcionados originalmente por el departamento de sistemas (Alan).
 
-  ### **Hashes Proporcionados (Cadena de Custodia):**
+  ### **Hashes Proporcionados (Cadena de Custodia):
 
 * **MD5:** dfdfba2231e3fa409676b1b737474208  
 * **SHA-1:** f476a81089a10f9d5393aa8c2f8bbccdb87f7d3c  
