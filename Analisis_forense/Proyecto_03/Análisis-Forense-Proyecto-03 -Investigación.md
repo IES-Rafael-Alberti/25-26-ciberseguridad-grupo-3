@@ -86,6 +86,7 @@ Se ha procedido a la verificación de la integridad de la evidencia digital comp
 
   ## **1.7 Software no Autorizado al Inicio**
 
+ <img width="1919" height="494" alt="image" src="https://github.com/user-attachments/assets/e6f57c9c-2bcb-4581-97d1-491deewb9216" />
   Se ha verificado la persistencia de aplicaciones en el inicio del sistema mediante el análisis del fichero NTUSER.DAT del usuario Richard (\\Software\\Microsoft\\Windows\\CurrentVersion\\Run).  
 * **Hallazgo:** El navegador **Opera** está configurado para ejecutarse automáticamente al iniciar sesión.  
 * **Otros navegadores:** Se detectó la instalación de Mozilla Firefox (ruta ROOT\\Mozilla\\Mozilla Firefox en registro SOFTWARE), pero no está configurado en el inicio automático.
