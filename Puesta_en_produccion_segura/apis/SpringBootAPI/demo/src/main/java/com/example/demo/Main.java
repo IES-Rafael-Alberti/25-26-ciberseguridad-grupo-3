@@ -14,11 +14,34 @@ import io.github.cdimascio.dotenv.Dotenv;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @SpringBootApplication
 @RestController
 @RequestMapping("/nombres")
 public class Main {
+
+    // V4.1 Security Headers
+    @Component
+    public static class SecurityHeadersFilter implements Filter {
+        @Override
+        public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+                throws IOException, ServletException {
+            HttpServletResponse httpResponse = (HttpServletResponse) response;
+            httpResponse.setHeader("X-Content-Type-Options", "nosniff");
+            httpResponse.setHeader("X-Frame-Options", "DENY");
+            httpResponse.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+            httpResponse.setHeader("Cache-Control", "no-store");
+            chain.doFilter(request, response);
+        }
+    }
 
 	private final Map<Long, Persona> personas = new HashMap<>();
 	private final AtomicLong contador = new AtomicLong();
@@ -26,10 +49,10 @@ public class Main {
 	private final String ARCHIVO_JSON = "personas.json";
 
 	// === CARGAR VARIABLES DESDE .env ===
-	private final Dotenv dotenv = Dotenv.load();
+	private final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
 
 	// Ahora las claves vienen del archivo .env
-	private final String SECRET_KEY = dotenv.get("JWT_SECRET");
+	private final String SECRET_KEY = dotenv.get("JWT_SECRET") != null ? dotenv.get("JWT_SECRET") : "default_secret_key_for_dev_12345678901234567890";
 	private final String GITHUB_CLIENT_ID = dotenv.get("GITHUB_CLIENT_ID");
 	private final String GITHUB_CLIENT_SECRET = dotenv.get("GITHUB_CLIENT_SECRET");
 
@@ -148,6 +171,34 @@ public class Main {
 	}
 
 	// ===============================
+	//      V6.2 PASSWORD SECURITY
+	// ===============================
+	public static class RegistroRequest {
+		public String usuario;
+		public String password;
+	}
+
+	@PostMapping("/register")
+	public ResponseEntity<?> registrar(@RequestBody RegistroRequest request) {
+		if (!validarPassword(request.password)) {
+			return ResponseEntity.badRequest().body(Map.of(
+					"error", "La contraseña no cumple los requisitos de seguridad (min 8 chars, mayus, minus, numero, especial)"
+			));
+		}
+		// Simular registro
+		return ResponseEntity.ok(Map.of("mensaje", "Usuario registrado (simulado)"));
+	}
+
+	private boolean validarPassword(String password) {
+		if (password == null || password.length() < 8) return false;
+		boolean hasUpper = !password.equals(password.toLowerCase());
+		boolean hasLower = !password.equals(password.toUpperCase());
+		boolean hasDigit = password.chars().anyMatch(Character::isDigit);
+		boolean hasSpecial = password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*");
+		return hasUpper && hasLower && hasDigit && hasSpecial;
+	}
+
+	// ===============================
 	//            CRUD
 	// ===============================
 	@PostMapping("/{nombre}")
@@ -183,7 +234,7 @@ public class Main {
 	@PutMapping("/{id}")
 	public Object actualizar(@RequestHeader(value = "Authorization", required = false) String auth,
 							 @PathVariable Long id,
-							 @RequestBody Persona personaActualizada) {
+							 @Valid @RequestBody Persona personaActualizada) {
 
 		if (!authValida(auth)) return Map.of("error", "Token inválido o faltante");
 
@@ -241,11 +292,25 @@ public class Main {
 		}
 	}
 
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return ResponseEntity.badRequest().body(errors);
+	}
+
 	// ===============================
 	//           CLASE PERSONA
 	// ===============================
 	public static class Persona {
 		private Long id;
+		
+		@NotBlank(message = "El nombre no puede estar vacío")
+		@Size(min = 2, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres")
 		private String nombre;
 
 		public Persona() {}
