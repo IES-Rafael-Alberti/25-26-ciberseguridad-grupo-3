@@ -1,1 +1,0 @@
-# Comparativa entre herramientas usadas

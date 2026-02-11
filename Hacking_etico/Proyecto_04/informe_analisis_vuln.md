@@ -1,1 +1,0 @@
-# Informe del análisis de vulnerabilidades
