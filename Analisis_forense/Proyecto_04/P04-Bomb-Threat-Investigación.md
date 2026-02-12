@@ -4,7 +4,7 @@
 
 # 
 
-# **Integrantes (en orden de longitud de su miembro viril)**
+# **Integrantes**
 
 [Abel García Domínguez](mailto:agardom573@g.educaand.es)  
 [David Jiménez Ruiz](mailto:djimrui878@g.educaand.es)  
