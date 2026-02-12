@@ -47,27 +47,38 @@ El nombre del equipo mostrado coincide con el dispositivo del alumno.
 
 2. # **Identificación del proceso de visualización PDF**
 
-Durante el análisis de procesos activos encontré AcroCEF.exe, un componente de Adobe Acrobat que maneja funcionalidades como conversión web-to-PDF y sincronización con servicios en la nube. Aunque no es directamente el lector de PDF, su presencia confirma que Adobe Acrobat o Reader estaba instalado y probablemente activo en el momento de la captura.
+Durante el análisis de procesos activos con volatility pstree, encontramos AcroCEF.exe, un componente de Adobe Acrobat que maneja funcionalidades como conversión web-to-PDF y sincronización con servicios en la nube. Aunque no es directamente el lector de PDF, su presencia confirma que Adobe Acrobat o Reader estaba instalado y probablemente activo en el momento de la captura.
+
+<img width="951" height="108" alt="image" src="https://github.com/user-attachments/assets/9047392f-9fcc-4b97-9a03-0fbcba07c3eb" />
+
 
 3. # **Documento en edición durante la intervención policial**
 
-El análisis de la MFT reveló que el PDF localizado provenía de un archivo .odt original. Encontré evidencia de descarga y uso de una herramienta de conversión, lo que indica que el usuario transformó el documento original a formato PDF.
+El análisis con handles nos reveló que el PDF localizado provenía de un archivo .odt original. Encontré evidencia de descarga y uso de una herramienta de conversión, lo que indica que el usuario transformó el documento original a formato PDF.
 
-Mediante el plugin handles de Volatility identifiqué que el documento "Trabajo historia Pacopepe.odt" estaba abierto y posiblemente en edición. Este plugin lista los manejadores de objetos del sistema utilizados por procesos específicos, confirmando que el archivo estaba siendo accedido en el momento de la captura de memoria.
+<img width="951" height="108" alt="image" src="https://github.com/user-attachments/assets/9047392f-9fcc-4b97-9a08-0fbcbr17c5av" />
+
+Mediante el plugin handles de Volatility identificamos que el documento "Trabajo historia Pacopepe.odt" estaba abierto y posiblemente en edición. Este plugin lista los manejadores de objetos del sistema utilizados por procesos específicos, confirmando que el archivo estaba siendo accedido en el momento de la captura de memoria.
 
 4. # **Evidencia de la amenaza de bomba**
 
-Para buscar pruebas que vinculen al usuario con la falsa amenaza, primero convertí el volcado de memoria a formato raw, ya que el plugin strings de Volatility requiere un espacio de direcciones raw:
+Para buscar pruebas que vinculen a Pacopepe con la falsa amenaza, primero cambiamos a volatolity2 para convertir el volcado de memoria a formato raw, ya que el plugin strings de Volatility2 requiere un espacio de direcciones raw:
 
-[vol.py](http://vol.py) \-f DESKTOP-01S7HH9-20220408-171552.dmp \--profile=Win10x64\_19041 imagecopy \-O raw\_memory.dd
+```
+vol.py -f C:\Users\jefft\Desktop\CIBERSEGURIDAD\GRUPO_3\Analisis_forense\Proyecto_04\DESKTOP-01S7HH9-20220408-171552.dmp --profile=Win10x64_19041 imagecopy -O pacopepe_dd_dump.dd
+```
 
-Después generé un archivo de strings desde el volcado raw:
+Después generamos un archivo de strings desde el volcado .dd:
+```
+strings pacopepe_dd_dump.dd > strings.txt
+```
+Con esto ya sólo teníamos que buscar la palabra "bomba" entre los strings:
 
-strings raw\_memory.dd \> strings.txt
+```
+findstr -i bomba strings.txt
+```
+<img width="710" height="95" alt="captura_strings" src="https://github.com/user-attachments/assets/6ba75fd4-d9c7-4400-abaa-dbe0c0a84bce" />
 
-Busqué la palabra clave "bomba" en el archivo de strings:
 
-grep bomba strings.txt
-
-El análisis reveló una conversación en Discord entre pakopepe88 y marcosheredia666. En esta conversación pakopepe88 admite ser el autor de la amenaza de bomba falsa. Esta evidencia directa vincula al usuario del equipo con el incidente investigado.
+El análisis reveló una conversación en Discord entre pakopepe88 y otro usuario hablando sobre la amenaza de bomba. En esta conversación pakopepe88 admite ser el autor de la amenaza de bomba falsa. Esta evidencia directa vincula al usuario del equipo con el incidente investigado.
 
