@@ -1,0 +1,49 @@
+[*] Nmap: Starting Nmap 7.95 ( https://nmap.org ) at 2026-03-18 11:10 EDT
+[*] Nmap: Nmap scan report for 10.0.2.7
+[*] Nmap: Host is up (0.0012s latency).
+[*] Nmap: Not shown: 988 filtered tcp ports (no-response)
+[*] Nmap: PORT     STATE SERVICE      VERSION
+[*] Nmap: 53/tcp   open  domain       Simple DNS Plus
+[*] Nmap: 88/tcp   open  kerberos-sec Microsoft Windows Kerberos (server time: 2026-03-18 15:10:59Z)
+[*] Nmap: 135/tcp  open  msrpc        Microsoft Windows RPC
+[*] Nmap: 139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+[*] Nmap: 389/tcp  open  ldap         Microsoft Windows Active Directory LDAP (Domain: DescuidadaCorp.local, Site: Default-First-Site-Name)
+[*] Nmap: 445/tcp  open  microsoft-ds Microsoft Windows Server 2008 R2 - 2012 microsoft-ds (workgroup: DescuidadaCorp)
+[*] Nmap: 464/tcp  open  kpasswd5?
+[*] Nmap: 593/tcp  open  ncacn_http   Microsoft Windows RPC over HTTP 1.0
+[*] Nmap: 636/tcp  open  tcpwrapped
+[*] Nmap: 3268/tcp open  ldap         Microsoft Windows Active Directory LDAP (Domain: DescuidadaCorp.local, Site: Default-First-Site-Name)
+[*] Nmap: 3269/tcp open  tcpwrapped
+[*] Nmap: 5985/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-csrf: Couldn't find any CSRF vulnerabilities.
+[*] Nmap: |_http-dombased-xss: Couldn't find any DOM based XSS.
+[*] Nmap: |_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: MAC Address: 08:00:27:D8:6D:B3 (PCS Systemtechnik/Oracle VirtualBox virtual NIC)
+[*] Nmap: Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+[*] Nmap: Device type: general purpose|phone
+[*] Nmap: Running (JUST GUESSING): Microsoft Windows 2016|2012|2022|10|Phone (97%)
+[*] Nmap: OS CPE: cpe:/o:microsoft:windows_server_2016 cpe:/o:microsoft:windows_server_2012:r2 cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows
+[*] Nmap: Aggressive OS guesses: Microsoft Windows Server 2016 (97%), Microsoft Windows Server 2012 or Windows Server 2012 R2 (91%), Microsoft Windows Server 2012 R2 (91%), Microsoft Windows Server 2022 (91%), Microsoft Windows 10 1607 (90%), Microsoft Windows Phone 7.5 or 8.0 (87%)
+[*] Nmap: No exact OS matches for host (test conditions non-ideal).
+[*] Nmap: Network Distance: 1 hop
+[*] Nmap: Service Info: Host: DC-COMPANY; OS: Windows; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Host script results:
+[*] Nmap: | smb-vuln-ms17-010:
+[*] Nmap: |   VULNERABLE:
+[*] Nmap: |   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+[*] Nmap: |     State: VULNERABLE
+[*] Nmap: |     IDs:  CVE:CVE-2017-0143
+[*] Nmap: |     Risk factor: HIGH
+[*] Nmap: |       A critical remote code execution vulnerability exists in Microsoft SMBv1
+[*] Nmap: |        servers (ms17-010).
+[*] Nmap: |
+[*] Nmap: |     Disclosure date: 2017-03-14
+[*] Nmap: |     References:
+[*] Nmap: |       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+[*] Nmap: |       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+[*] Nmap: |_      https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+[*] Nmap: |_smb-vuln-ms10-054: false
+[*] Nmap: |_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+[*] Nmap: OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+[*] Nmap: Nmap done: 1 IP address (1 host up) scanned in 168.14 seconds
