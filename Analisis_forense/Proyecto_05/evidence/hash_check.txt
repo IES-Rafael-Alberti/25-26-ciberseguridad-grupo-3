@@ -1,0 +1,36 @@
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5> Get-FileHash -Path .\imagen_disco.dd\imagen_disco.dd -Algorithm sha256
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          9F2B2DACE6CFEBEC1B6F956FC231E199C00F39E05D50286B8F284043537D65D9       C:\Users\mid_ex882\Desktop\Ci...
+
+
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5> Get-FileHash -Path .\imagen_disco.dd.zip -Algorithm sha256
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          B0189203FA682FD086ED3C52A3723AC46AB896A2FB8E4DAF49ED6228BC7D3B76       C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5\imagen_disco.dd.zip
+
+
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5> Get-FileHash -Path .\captura_ram.lime -Algorithm sha256
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          0F5D751208B08450E298B8D27F22451DD2AE158DFC1CB80B974F360E9A88FF05       C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5\captura_ram.lime
+
+
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5> Get-FileHash -Path .\captura_ram.lime.zip -Algorithm sha256
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          632D3D95260753029D7C9ADE15E0DCAB69B8FE7EB08D7001D9F923B22DDF003F       C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5\captura_ram.lime.zip
+
+
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5> Get-FileHash -Path .\perfil_memoria.zip -Algorithm sha256
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          18B30B973223B8AB233AA1581BCCD35BEF6C678B29E671B3FE3A7EE5EA24B076       C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5\perfil_memoria.zip
+
+
+PS C:\Users\mid_ex882\Desktop\Ciberseguridad\GRUPO_3\25-26-ciberseguridad-grupo-3\Analisis_forense\UD5\Proyecto 5>
