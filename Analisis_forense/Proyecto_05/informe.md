@@ -99,3 +99,51 @@ El análisis forense realizado permite establecer con un alto grado de certeza q
 3. El atacante aprovechó la ausencia de validación de entradas en dicho archivo para ejecutar comandos arbitrarios en el servidor con los privilegios del proceso web.
 
 4. Como consecuencia de la explotación, se generó el archivo passwd.txt con el volcado de las credenciales del sistema, cuya fecha de modificación coincide con los eventos registrados en el registro de Apache. El archivo original /etc/passwd no muestra actividad porque fue únicamente leído, operación que no deja huella en sus metadatos de modificación.
+
+## 10. Anexos
+
+### Anexo 1. Sobre el Perito
+El presente informe ha sido elaborado por los integrantes del Grupo 3 del módulo de Análisis Forense Informático, en el marco de la asignatura correspondiente al ciclo formativo de grado superior. Los autores actúan en calidad de peritos designados a efectos académicos y no ostentan ningún interés particular en el resultado del análisis.
+
+### Anexo 2. Sumas de Verificación
+La integridad de las evidencias analizadas fue verificada correctamente. Los valores obtenidos coincidieron con los registrados en el archivo hashes_sha256.txt proporcionado por el cliente, confirmando que las evidencias no fueron modificadas tras su adquisición.
+
+
+| Evidencia                    | Estado de integridad          |
+| ---------------------------- | ----------------------------- |
+| Imagen de disco del servidor | Verificada — hash coincidente |
+| Volcado de memoria RAM       | Verificada — hash coincidente |
+| Perfil de memoria            | Verificada — hash coincidente |
+
+[enlace al archivo de comprobación](./hallazgos/)
+
+### Anexo 3. Índice de Hallazgos
+#### Hallazgo 1: ping.php
+
+- **Ruta**: /var/www/html/ping.php
+- **Descripción**: Archivo PHP con vulnerabilidad de inyección de comandos del sistema operativo (CWE-78). La entrada del usuario se concatena directamente en una llamada a system() sin saneamiento.
+- **Relevancia**: Vector de ataque principal utilizado por el intruso.
+
+#### Hallazgo 2: passwd.txt
+
+- **Ruta**: /var/www/html/passwd.txt
+- **Descripción**: Archivo de texto generado por el atacante que contiene el volcado de credenciales del sistema obtenido a través de la vulnerabilidad.
+- **Relevancia**: Evidencia directa de los datos exfiltrados.
+
+#### Hallazgo 3: access.log
+
+- **Ruta**: /var/registro/apache2/access.registro
+- **Descripción**: Registro de accesos del servidor web Apache. Contiene las peticiones realizadas por el atacante, incluyendo su dirección IP, agente de usuario y marcas temporales.
+- **Relevancia**: Fuente principal para la atribución del ataque. 
+
+#### Hallazgo 4: registro de Samba
+
+- **Ruta**: /var/registro/samba/ (archivo correspondiente a la IP 192.168.1.6)
+- **Descripción**: Registro de actividad del servicio Samba que recoge el intento de conexión desde la IP del atacante. El archivo se encontraba vacío.
+- **Relevancia**: Indica un posible intento de exfiltración a través de SMB, aunque no se puede confirmar su consumación.
+
+#### Hallazgo 5: Cadenas en memoria RAM
+
+- **Fuente**: Volcado de memoria RAM analizado con Volatility.
+- **Descripción**: Cadenas de texto recuperadas de la memoria que corresponden con los parámetros probablemente utilizados por el atacante para crear passwd.txt y recuperarlo del servidor.
+- **Relevancia**: Corrobora el método de explotación y la intención de exfiltración.
