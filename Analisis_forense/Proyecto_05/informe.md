@@ -26,3 +26,15 @@ Los peritos firmantes declaran bajo juramento que el presente informe ha sido el
 - **Servidor Linux**: Ordenador que utiliza el sistema operativo Linux para ofrecer servicios en red, muy común en entornos empresariales y centros de datos.
 
 - **Cadena de custodia**: Proceso de documentación que garantiza que las evidencias digitales no han sido manipuladas desde su recogida hasta su análisis.
+
+## 3. Índice de Figuras
+- Figura 1. Comprobación de integridad de hashes en PowerShell.
+- Figura 2. Extracto del archivo access.registro con peticiones a ping.php.
+- Figura 3. Localización de ping.php en FTK Imager.
+- Figura 4. Contenido del archivo ping.php visualizado en Visual Studio Code.
+- Figura 5. Localización de passwd.txt en FTK Imager.
+- Figura 6. Contenido del archivo passwd.txt.
+- Figura 7. Propiedades y fecha de modificación de passwd.txt.
+- Figura 8. Análisis de cadenas en la captura de memoria RAM.
+- Figura 9. registro de Samba con la IP del atacante en FTK Imager.
+- Figura 10. Extracto del access.registro con información del cliente del atacante.
