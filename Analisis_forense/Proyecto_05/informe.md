@@ -75,3 +75,27 @@ Antes de iniciar cualquier análisis, se procedió a verificar la integridad de 
 
 ![figura 1](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
 (Figura 1) Comprobación de sumas de integridad mediante herramienta Get-FileHash de windows Powershell
+
+
+----- PARTE DE DAVID
+
+
+## 8. Limitaciones
+Durante el análisis se identificaron las siguientes limitaciones que podrían condicionar parcialmente las conclusiones:
+
+1. La dirección IP del atacante (192.168.1.6) pertenece al espacio de red privado RFC 1918, lo que impide atribuir el ataque a una ubicación geográfica o entidad externa de forma directa. No es posible descartar que dicha IP corresponda a una máquina comprometida usada como punto de salto.
+
+2. El registro de Samba estaba vacío y no se ha encontrado más actividad relcionada en volcado de memoria, por lo que no se puede confirmar con certeza si la exfiltración se completó a través de ese protocolo o si se empleó otro vector de transferencia no registrado en los artefactos disponibles.
+
+3. El análisis de la memoria RAM proporciona indicios del método empleado, pero las cadenas recuperadas no constituyen por sí solas prueba definitiva sin un análisis de proceso más profundo mediante Volatility.
+
+## 9. Conclusiones
+El análisis forense realizado permite establecer con un alto grado de certeza que:
+
+1. El servidor fue comprometido a través de una vulnerabilidad de inyección de comandos del sistema operativo presente en el archivo ping.php.
+   
+2. El atacante operó desde la dirección IP 192.168.1.6 utilizando Firefox 78.0 sobre un sistema Linux x86_64. 
+   
+3. El atacante aprovechó la ausencia de validación de entradas en dicho archivo para ejecutar comandos arbitrarios en el servidor con los privilegios del proceso web.
+
+4. Como consecuencia de la explotación, se generó el archivo passwd.txt con el volcado de las credenciales del sistema, cuya fecha de modificación coincide con los eventos registrados en el registro de Apache. El archivo original /etc/passwd no muestra actividad porque fue únicamente leído, operación que no deja huella en sus metadatos de modificación.
