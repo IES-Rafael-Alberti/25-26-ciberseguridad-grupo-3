@@ -121,3 +121,29 @@ El análisis del archivo access.registro permitió identificar de forma inequív
 | Sistema operativo         | Linux x86_64 (probablemente Kali Linux) |
 
 La dirección IP pertenece al rango de red local, lo que sugiere que el atacante operó desde dentro de la misma red o a través de un sistema comprometido en la misma subred.
+
+#### 7.2.3 Análisis de los datos exfiltrados
+En el mismo directorio que ping.php se localizó un archivo denominado passwd.txt cuya presencia no corresponde a ningún componente legítimo de la aplicación web. 
+
+![alt text](<img/2026-04-13 19_16_21-Exterro FTK Imager 8.2.0.26.png>)
+(Figura 5) Archivo passwd.txt en la carpeta junto a ping.php
+
+El contenido del archivo corresponde a un volcado de credenciales del sistema, presumiblemente generado mediante un comando del tipo cat /etc/passwd o similar inyectado a través de la vulnerabilidad descrita.
+
+![alt text](<img/2026-04-13 19_16_58-passwd.txt_ Bloc de notas.png>)
+(Figura 6) Contenido del archivo passwd.txt
+
+La fecha de modificación del archivo, visible en sus propiedades, coincide con la franja temporal de las peticiones maliciosas registradas en el access.registro, lo que refuerza la relación causal entre ambos artefactos. 
+
+![alt text](<img/2026-04-13 19_38_25-Propiedades_ passwd.txt.png>)
+(Figura 7) Se muestra le fecha de modificación como el día del ataque, con una hora muy cercana a los registros de seguridad.
+
+El análisis de cadenas sobre el volcado de memoria RAM reveló lo que probablemente son los parámetros empleados por el atacante para generar el archivo y, con posterioridad, recuperarlo del servidor. 
+
+![alt text](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
+(Figura 8)
+
+Adicionalmente, se identificó la presencia de un registro de actividad del servicio Samba que contiene la dirección IP del atacante. Sin embargo, el registro se encontraba vacío, lo que parece indicar que la conexión al servicio fue intentada pero no consumada, o que no se registró actividad de transferencia efectiva a través de ese protocolo. 
+
+![alt text](<img/2026-04-13 19_35_45-Exterro FTK Imager 8.2.0.26.png>)
+(Figura 9) posición y nombre del registro de samba
