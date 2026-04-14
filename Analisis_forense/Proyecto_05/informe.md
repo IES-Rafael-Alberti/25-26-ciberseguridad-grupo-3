@@ -110,3 +110,14 @@ El valor recibido a través del parámetro ping del formulario se concatena dire
 (Figura 4) Código completo del archivo ping.php
 
 En lugar de ejecutar únicamente el comando ping, el servidor ejecutaría cualquier instrucción adicional con los mismos privilegios que el proceso web, permitiendo desde la lectura de archivos sensibles hasta el establecimiento de un acceso remoto completo. La vulnerabilidad guarda similitud con CVE-2012-1823, que afecta a PHP en modo CGI, aunque su explotación en este caso no se basa necesariamente en dicho vector, sino en una mala práctica de programación del propio desarrollador de la aplicación.
+
+#### 7.2.2 Análisis de la identidad del atacante
+El análisis del archivo access.registro permitió identificar de forma inequívoca los datos del agente que interactuó con la vulnerabilidad. (Figura 10)
+
+| Campo                     | Valor                                   |
+| ------------------------- | --------------------------------------- |
+| Dirección IP del atacante | 192.168.1.6                             |
+| Navegador utilizado       | Firefox 78.0 ESR                        |
+| Sistema operativo         | Linux x86_64 (probablemente Kali Linux) |
+
+La dirección IP pertenece al rango de red local, lo que sugiere que el atacante operó desde dentro de la misma red o a través de un sistema comprometido en la misma subred.
