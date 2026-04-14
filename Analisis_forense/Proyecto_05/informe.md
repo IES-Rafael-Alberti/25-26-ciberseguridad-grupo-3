@@ -58,3 +58,20 @@ El encargo pericial persigue los siguientes objetivos:
 4. Analizar por qué el archivo original de contraseñas no muestra actividad durante el incidente.
 
 5. Proponer medidas de remediación para corregir la vulnerabilidad explotada.
+
+## 6. Fuentes de Información
+Las evidencias digitales proporcionadas por el cliente para el análisis son las siguientes:
+
+| Evidencia                        | Descripción                                                              |
+| -------------------------------- | ------------------------------------------------------------------------ |
+| Imagen de disco                  | Imagen forense del servidor Linux comprometido                           |
+| Volcado de memoria RAM           | Captura de la memoria volátil del sistema en el momento del incidente    |
+| Perfil de memoria                | Perfil necesario para el análisis del volcado con Volatility             |
+| Archivo de sumas de verificación | Archivo hashes_sha256.txt con los valores hash SHA-256 de las evidencias |
+
+### 6.1 Adquisición de Evidencias
+Antes de iniciar cualquier análisis, se procedió a verificar la integridad de las evidencias comparando los valores hash SHA-256 proporcionados por el cliente con los calculados sobre los archivos recibidos. Esta verificación se realizó mediante PowerShell y los resultados confirmaron que las evidencias no habían sido alteradas desde su adquisición, garantizando así la cadena de custodia. 
+
+
+![figura 1](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
+(Figura 1) Comprobación de sumas de integridad mediante herramienta Get-FileHash de windows Powershell
