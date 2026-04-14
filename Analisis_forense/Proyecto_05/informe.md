@@ -72,7 +72,6 @@ Las evidencias digitales proporcionadas por el cliente para el análisis son las
 ### 6.1 Adquisición de Evidencias
 Antes de iniciar cualquier análisis, se procedió a verificar la integridad de las evidencias comparando los valores hash SHA-256 proporcionados por el cliente con los calculados sobre los archivos recibidos. Esta verificación se realizó mediante PowerShell y los resultados confirmaron que las evidencias no habían sido alteradas desde su adquisición, garantizando así la cadena de custodia. 
 
-
 ![figura 1](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
 (Figura 1) Comprobación de sumas de integridad mediante herramienta Get-FileHash de windows Powershell
 
@@ -92,7 +91,6 @@ Antes de iniciar cualquier análisis, se procedió a verificar la integridad de 
 #### 7.2.1 Análisis de la vulnerabilidad web
 La investigación comenzó con el análisis del archivo de registro de accesos de Apache, localizado en /var/registro/apache2/access.registro. En dicho archivo se observaron múltiples peticiones dirigidas al recurso ping.php, lo que motivó una inspección directa del archivo. 
 
-
 ![alt text](<img/2026-04-13 19_12_08-access.registro_ Bloc de notas.png>)
 (Figura 2) Registro de peticiones a ese archivo
 
@@ -100,7 +98,6 @@ La investigación comenzó con el análisis del archivo de registro de accesos d
 (Figura 3) Localización del archivo
 
 El archivo ping.php, localizado en el directorio raíz del servidor web, con ruta /root/var/www/ping.php , contiene el siguiente fragmento de código en su línea 19:
-
 
 ```echo(system('ping -c 1 ' . $_POST['ping']));```
 
@@ -147,3 +144,71 @@ Adicionalmente, se identificó la presencia de un registro de actividad del serv
 
 ![alt text](<img/2026-04-13 19_35_45-Exterro FTK Imager 8.2.0.26.png>)
 (Figura 9) posición y nombre del registro de samba
+
+## 8. Limitaciones
+Durante el análisis se identificaron las siguientes limitaciones que podrían condicionar parcialmente las conclusiones:
+
+1. La dirección IP del atacante (192.168.1.6) pertenece al espacio de red privado RFC 1918, lo que impide atribuir el ataque a una ubicación geográfica o entidad externa de forma directa. No es posible descartar que dicha IP corresponda a una máquina comprometida usada como punto de salto.
+
+2. El registro de Samba estaba vacío y no se ha encontrado más actividad relcionada en volcado de memoria, por lo que no se puede confirmar con certeza si la exfiltración se completó a través de ese protocolo o si se empleó otro vector de transferencia no registrado en los artefactos disponibles.
+
+3. El análisis de la memoria RAM proporciona indicios del método empleado, pero las cadenas recuperadas no constituyen por sí solas prueba definitiva sin un análisis de proceso más profundo mediante Volatility.
+
+## 9. Conclusiones
+El análisis forense realizado permite establecer con un alto grado de certeza que:
+
+1. El servidor fue comprometido a través de una vulnerabilidad de inyección de comandos del sistema operativo presente en el archivo ping.php.
+   
+2. El atacante operó desde la dirección IP 192.168.1.6 utilizando Firefox 78.0 sobre un sistema Linux x86_64. 
+   
+3. El atacante aprovechó la ausencia de validación de entradas en dicho archivo para ejecutar comandos arbitrarios en el servidor con los privilegios del proceso web.
+
+4. Como consecuencia de la explotación, se generó el archivo passwd.txt con el volcado de las credenciales del sistema, cuya fecha de modificación coincide con los eventos registrados en el registro de Apache. El archivo original /etc/passwd no muestra actividad porque fue únicamente leído, operación que no deja huella en sus metadatos de modificación.
+
+## 10. Anexos
+
+### Anexo 1. Sobre el Perito
+El presente informe ha sido elaborado por los integrantes del Grupo 3 del módulo de Análisis Forense Informático, en el marco de la asignatura correspondiente al ciclo formativo de grado superior. Los autores actúan en calidad de peritos designados a efectos académicos y no ostentan ningún interés particular en el resultado del análisis.
+
+### Anexo 2. Sumas de Verificación
+La integridad de las evidencias analizadas fue verificada correctamente. Los valores obtenidos coincidieron con los registrados en el archivo hashes_sha256.txt proporcionado por el cliente, confirmando que las evidencias no fueron modificadas tras su adquisición.
+
+
+| Evidencia                    | Estado de integridad          |
+| ---------------------------- | ----------------------------- |
+| Imagen de disco del servidor | Verificada — hash coincidente |
+| Volcado de memoria RAM       | Verificada — hash coincidente |
+| Perfil de memoria            | Verificada — hash coincidente |
+
+[enlace al archivo de comprobación](./hallazgos/Tablas de Integridad Forense.pdf)
+
+### Anexo 3. Índice de Hallazgos
+#### Hallazgo 1: ping.php
+
+- **Ruta**: /var/www/html/ping.php
+- **Descripción**: Archivo PHP con vulnerabilidad de inyección de comandos del sistema operativo (CWE-78). La entrada del usuario se concatena directamente en una llamada a system() sin saneamiento.
+- **Relevancia**: Vector de ataque principal utilizado por el intruso.
+
+#### Hallazgo 2: passwd.txt
+
+- **Ruta**: /var/www/html/passwd.txt
+- **Descripción**: Archivo de texto generado por el atacante que contiene el volcado de credenciales del sistema obtenido a través de la vulnerabilidad.
+- **Relevancia**: Evidencia directa de los datos exfiltrados.
+
+#### Hallazgo 3: access.log
+
+- **Ruta**: /var/registro/apache2/access.registro
+- **Descripción**: Registro de accesos del servidor web Apache. Contiene las peticiones realizadas por el atacante, incluyendo su dirección IP, agente de usuario y marcas temporales.
+- **Relevancia**: Fuente principal para la atribución del ataque. 
+
+#### Hallazgo 4: registro de Samba
+
+- **Ruta**: /var/registro/samba/ (archivo correspondiente a la IP 192.168.1.6)
+- **Descripción**: Registro de actividad del servicio Samba que recoge el intento de conexión desde la IP del atacante. El archivo se encontraba vacío.
+- **Relevancia**: Indica un posible intento de exfiltración a través de SMB, aunque no se puede confirmar su consumación.
+
+#### Hallazgo 5: Cadenas en memoria RAM
+
+- **Fuente**: Volcado de memoria RAM analizado con Volatility.
+- **Descripción**: Cadenas de texto recuperadas de la memoria que corresponden con los parámetros probablemente utilizados por el atacante para crear passwd.txt y recuperarlo del servidor.
+- **Relevancia**: Corrobora el método de explotación y la intención de exfiltración.
