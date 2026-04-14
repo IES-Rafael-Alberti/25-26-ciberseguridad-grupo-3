@@ -38,3 +38,6 @@ Los peritos firmantes declaran bajo juramento que el presente informe ha sido el
 - Figura 8. Análisis de cadenas en la captura de memoria RAM.
 - Figura 9. registro de Samba con la IP del atacante en FTK Imager.
 - Figura 10. Extracto del access.registro con información del cliente del atacante.
+
+## 4. Resumen Ejecutivo
+El presente informe documenta el análisis forense realizado sobre un servidor Linux comprometido mediante la explotación de una vulnerabilidad crítica de inyección de comandos del sistema operativo (CWE-78) presente en una aplicación web desarrollada en PHP. El atacante, cuya dirección IP es 192.168.1.6, utilizó esta vulnerabilidad para generar un volcado de credenciales del sistema y, presumiblemente, exfiltrarlo. El análisis de la imagen de disco y la captura de memoria RAM ha permitido reconstruir el vector de ataque, identificar los artefactos creados por el intruso y proponer medidas correctivas.
