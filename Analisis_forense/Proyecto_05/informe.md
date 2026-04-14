@@ -91,7 +91,11 @@ Antes de iniciar cualquier análisis, se procedió a verificar la integridad de 
 #### 7.2.1 Análisis de la vulnerabilidad web
 La investigación comenzó con el análisis del archivo de registro de accesos de Apache, localizado en /var/registro/apache2/access.registro. En dicho archivo se observaron múltiples peticiones dirigidas al recurso ping.php, lo que motivó una inspección directa del archivo. 
 
+<<<<<<< HEAD
 ![alt text](<img/2026-04-13 19_12_08-access.log_ Bloc de notas.png>)
+=======
+![alt text](img/2026-04-13%2019_12_08-access.log_%20Bloc%20de%20notas.png)
+>>>>>>> 378b136d9f7465b675a1425f941e786d3fa1446c
 (Figura 2) Registro de peticiones a ese archivo
 
 ![alt text](<img/2026-04-13 19_13_44-Exterro FTK Imager 8.2.0.26.png>)
@@ -118,6 +122,35 @@ El análisis del archivo access.registro permitió identificar de forma inequív
 | Sistema operativo         | Linux x86_64 (probablemente Kali Linux) |
 
 La dirección IP pertenece al rango de red local, lo que sugiere que el atacante operó desde dentro de la misma red o a través de un sistema comprometido en la misma subred.
+
+#### 7.2.3 Análisis de los datos exfiltrados
+En el mismo directorio que ping.php se localizó un archivo denominado passwd.txt cuya presencia no corresponde a ningún componente legítimo de la aplicación web. 
+
+![alt text](<img/2026-04-13 19_16_21-Exterro FTK Imager 8.2.0.26.png>)
+(Figura 5) Archivo passwd.txt en la carpeta junto a ping.php
+
+El contenido del archivo corresponde a un volcado de credenciales del sistema, presumiblemente generado mediante un comando del tipo cat /etc/passwd o similar inyectado a través de la vulnerabilidad descrita.
+
+![alt text](<img/2026-04-13 19_16_58-passwd.txt_ Bloc de notas.png>)
+(Figura 6) Contenido del archivo passwd.txt
+
+La fecha de modificación del archivo, visible en sus propiedades, coincide con la franja temporal de las peticiones maliciosas registradas en el access.registro, lo que refuerza la relación causal entre ambos artefactos. 
+
+![alt text](<img/2026-04-13 19_38_25-Propiedades_ passwd.txt.png>)
+(Figura 7) Se muestra le fecha de modificación como el día del ataque, con una hora muy cercana a los registros de seguridad.
+
+El análisis de cadenas sobre el volcado de memoria RAM reveló lo que probablemente son los parámetros empleados por el atacante para generar el archivo y, con posterioridad, recuperarlo del servidor. 
+
+![alt text](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
+(Figura 8)
+
+Adicionalmente, se identificó la presencia de un registro de actividad del servicio Samba que contiene la dirección IP del atacante. Sin embargo, el registro se encontraba vacío, lo que parece indicar que la conexión al servicio fue intentada pero no consumada, o que no se registró actividad de transferencia efectiva a través de ese protocolo. 
+
+![alt text](<img/2026-04-13 19_35_45-Exterro FTK Imager 8.2.0.26.png>)
+(Figura 9) posición y nombre del registro de samba
+
+### 7.2.4 Análisis de la ausencia de actividad en el archivo original
+El archivo /etc/passwd original del sistema no presenta modificaciones durante el periodo del incidente porque el atacante no alteró su contenido en ningún momento: únicamente lo leyó. El comando cat, utilizado para volcar su contenido, es una operación de solo lectura que no modifica el archivo ni actualiza su marca de tiempo de modificación. Por tanto, el único registro de la actividad es la creación del archivo passwd.txt en el directorio web, que sí quedó documentada en los metadatos de dicho archivo.
 
 ## 8. Limitaciones
 Durante el análisis se identificaron las siguientes limitaciones que podrían condicionar parcialmente las conclusiones:
