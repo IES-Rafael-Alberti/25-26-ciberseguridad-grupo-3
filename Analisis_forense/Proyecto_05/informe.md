@@ -91,7 +91,7 @@ Antes de iniciar cualquier análisis, se procedió a verificar la integridad de 
 #### 7.2.1 Análisis de la vulnerabilidad web
 La investigación comenzó con el análisis del archivo de registro de accesos de Apache, localizado en /var/registro/apache2/access.registro. En dicho archivo se observaron múltiples peticiones dirigidas al recurso ping.php, lo que motivó una inspección directa del archivo. 
 
-![alt text](<img/2026-04-13 19_12_08-access.registro_ Bloc de notas.png>)
+![alt text](<img/2026-04-13 19_12_08-access.log_ Bloc de notas.png>)
 (Figura 2) Registro de peticiones a ese archivo
 
 ![alt text](<img/2026-04-13 19_13_44-Exterro FTK Imager 8.2.0.26.png>)
@@ -153,8 +153,6 @@ La integridad de las evidencias analizadas fue verificada correctamente. Los val
 | Imagen de disco del servidor | Verificada — hash coincidente |
 | Volcado de memoria RAM       | Verificada — hash coincidente |
 | Perfil de memoria            | Verificada — hash coincidente |
-
-[enlace al archivo de comprobación](./hallazgos/Tablas de Integridad Forense .pdf)
 
 [enlace al archivo de comprobación](https://github.com/IES-Rafael-Alberti/25-26-ciberseguridad-grupo-3/blob/main/Analisis_forense/Proyecto_05/hallazgos/Tablas%20de%20Integridad%20Forense.pdf)
 
