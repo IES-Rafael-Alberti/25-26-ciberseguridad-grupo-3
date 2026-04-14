@@ -72,13 +72,52 @@ Las evidencias digitales proporcionadas por el cliente para el análisis son las
 ### 6.1 Adquisición de Evidencias
 Antes de iniciar cualquier análisis, se procedió a verificar la integridad de las evidencias comparando los valores hash SHA-256 proporcionados por el cliente con los calculados sobre los archivos recibidos. Esta verificación se realizó mediante PowerShell y los resultados confirmaron que las evidencias no habían sido alteradas desde su adquisición, garantizando así la cadena de custodia. 
 
-
 ![figura 1](<img/2026-04-13 19_48_18-Windows PowerShell.png>)
 (Figura 1) Comprobación de sumas de integridad mediante herramienta Get-FileHash de windows Powershell
 
+## 7. Análisis
 
------ PARTE DE DAVID
+### 7.1 Herramientas Utilizadas
 
+| Herramienta             | Versión              | Uso                                          |
+| ----------------------- | -------------------- | -------------------------------------------- |
+| Exterro FTK Imager      | 8.2.0.26             | Análisis de la imagen de disco               |
+| Volatility              | 2.x                  | Análisis del volcado de memoria RAM          |
+| PowerShell              | Integrado en Windows | Verificación de hashes SHA-256               |
+| Visual Studio Code      | Actual               | Revisión del contenido de archivos extraídos |
+| Bloc de notas (Windows) | Integrado            | Revisión de registros de texto plano              |
+
+### 7.2 Procesos
+#### 7.2.1 Análisis de la vulnerabilidad web
+La investigación comenzó con el análisis del archivo de registro de accesos de Apache, localizado en /var/registro/apache2/access.registro. En dicho archivo se observaron múltiples peticiones dirigidas al recurso ping.php, lo que motivó una inspección directa del archivo. 
+
+![alt text](<img/2026-04-13 19_12_08-access.registro_ Bloc de notas.png>)
+(Figura 2) Registro de peticiones a ese archivo
+
+![alt text](<img/2026-04-13 19_13_44-Exterro FTK Imager 8.2.0.26.png>)
+(Figura 3) Localización del archivo
+
+El archivo ping.php, localizado en el directorio raíz del servidor web, con ruta /root/var/www/ping.php , contiene el siguiente fragmento de código en su línea 19:
+
+```echo(system('ping -c 1 ' . $_POST['ping']));```
+
+El valor recibido a través del parámetro ping del formulario se concatena directamente en una llamada a la función system() de PHP sin ningún tipo de validación ni saneamiento previo. Esto constituye una vulnerabilidad de inyección de comandos del sistema operativo, clasificada bajo el identificador CWE-78 (Improper Neutralization of Special Elements used in an OS Command). 
+
+![alt text](<img/2026-04-13 19_15_01-ping.php - Proyecto 5 - Incident on Linux Server I - Visual Studio Code.png>)
+(Figura 4) Código completo del archivo ping.php
+
+En lugar de ejecutar únicamente el comando ping, el servidor ejecutaría cualquier instrucción adicional con los mismos privilegios que el proceso web, permitiendo desde la lectura de archivos sensibles hasta el establecimiento de un acceso remoto completo. La vulnerabilidad guarda similitud con CVE-2012-1823, que afecta a PHP en modo CGI, aunque su explotación en este caso no se basa necesariamente en dicho vector, sino en una mala práctica de programación del propio desarrollador de la aplicación.
+
+#### 7.2.2 Análisis de la identidad del atacante
+El análisis del archivo access.registro permitió identificar de forma inequívoca los datos del agente que interactuó con la vulnerabilidad. (Figura 10)
+
+| Campo                     | Valor                                   |
+| ------------------------- | --------------------------------------- |
+| Dirección IP del atacante | 192.168.1.6                             |
+| Navegador utilizado       | Firefox 78.0 ESR                        |
+| Sistema operativo         | Linux x86_64 (probablemente Kali Linux) |
+
+La dirección IP pertenece al rango de red local, lo que sugiere que el atacante operó desde dentro de la misma red o a través de un sistema comprometido en la misma subred.
 
 ## 8. Limitaciones
 Durante el análisis se identificaron las siguientes limitaciones que podrían condicionar parcialmente las conclusiones:
