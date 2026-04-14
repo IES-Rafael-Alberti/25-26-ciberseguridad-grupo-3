@@ -154,7 +154,9 @@ La integridad de las evidencias analizadas fue verificada correctamente. Los val
 | Volcado de memoria RAM       | Verificada — hash coincidente |
 | Perfil de memoria            | Verificada — hash coincidente |
 
-[enlace al archivo de comprobación](./hallazgos/Tablas de Integridad Forense.pdf)
+[enlace al archivo de comprobación](./hallazgos/Tablas de Integridad Forense .pdf)
+
+[enlace al archivo de comprobación](https://github.com/IES-Rafael-Alberti/25-26-ciberseguridad-grupo-3/blob/main/Analisis_forense/Proyecto_05/hallazgos/Tablas%20de%20Integridad%20Forense.pdf)
 
 ### Anexo 3. Índice de Hallazgos
 #### Hallazgo 1: ping.php
