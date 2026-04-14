@@ -41,3 +41,20 @@ Los peritos firmantes declaran bajo juramento que el presente informe ha sido el
 
 ## 4. Resumen Ejecutivo
 El presente informe documenta el análisis forense realizado sobre un servidor Linux comprometido mediante la explotación de una vulnerabilidad crítica de inyección de comandos del sistema operativo (CWE-78) presente en una aplicación web desarrollada en PHP. El atacante, cuya dirección IP es 192.168.1.6, utilizó esta vulnerabilidad para generar un volcado de credenciales del sistema y, presumiblemente, exfiltrarlo. El análisis de la imagen de disco y la captura de memoria RAM ha permitido reconstruir el vector de ataque, identificar los artefactos creados por el intruso y proponer medidas correctivas.
+
+## 5. Introducción
+### 5.1 Antecedentes
+El técnico responsable del centro de datos de la empresa afectada, recibió una notificación de posible incidente de seguridad que alertaba sobre la exfiltración de datos sensibles desde un servidor interno. Ante la gravedad del incidente, la empresa contrató al equipo pericial para determinar el alcance del ataque, identificar al equipo responsable y proponer medidas de remediación.
+
+### 5.2 Objetivos
+El encargo pericial persigue los siguientes objetivos:
+
+1. Identificar la vulnerabilidad de la aplicación web que fue explotada.
+
+2. Determinar la dirección IP, el cliente de navegación y el sistema operativo del atacante.
+
+3. Descubrir qué datos fueron exfiltrados del servidor comprometido.
+
+4. Analizar por qué el archivo original de contraseñas no muestra actividad durante el incidente.
+
+5. Proponer medidas de remediación para corregir la vulnerabilidad explotada.
