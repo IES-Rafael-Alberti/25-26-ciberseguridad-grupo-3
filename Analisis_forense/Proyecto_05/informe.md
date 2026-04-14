@@ -91,7 +91,7 @@ Antes de iniciar cualquier análisis, se procedió a verificar la integridad de 
 #### 7.2.1 Análisis de la vulnerabilidad web
 La investigación comenzó con el análisis del archivo de registro de accesos de Apache, localizado en /var/registro/apache2/access.registro. En dicho archivo se observaron múltiples peticiones dirigidas al recurso ping.php, lo que motivó una inspección directa del archivo. 
 
-![alt text](<img/2026-04-13 19_12_08-access.registro_ Bloc de notas.png>)
+![alt text](img/2026-04-13%2019_12_08-access.log_%20Bloc%20de%20notas.png)
 (Figura 2) Registro de peticiones a ese archivo
 
 ![alt text](<img/2026-04-13 19_13_44-Exterro FTK Imager 8.2.0.26.png>)
@@ -144,6 +144,9 @@ Adicionalmente, se identificó la presencia de un registro de actividad del serv
 
 ![alt text](<img/2026-04-13 19_35_45-Exterro FTK Imager 8.2.0.26.png>)
 (Figura 9) posición y nombre del registro de samba
+
+### 7.2.4 Análisis de la ausencia de actividad en el archivo original
+El archivo /etc/passwd original del sistema no presenta modificaciones durante el periodo del incidente porque el atacante no alteró su contenido en ningún momento: únicamente lo leyó. El comando cat, utilizado para volcar su contenido, es una operación de solo lectura que no modifica el archivo ni actualiza su marca de tiempo de modificación. Por tanto, el único registro de la actividad es la creación del archivo passwd.txt en el directorio web, que sí quedó documentada en los metadatos de dicho archivo.
 
 ## 8. Limitaciones
 Durante el análisis se identificaron las siguientes limitaciones que podrían condicionar parcialmente las conclusiones:
