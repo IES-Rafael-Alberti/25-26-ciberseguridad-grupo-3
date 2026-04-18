@@ -56,8 +56,7 @@ Cuando lo tengamos, lo usamos sobre el debug y lo imprimimos en un json:
 Con ello, ya tenemos lo que necesitamos, así que solo queda dárselo a volatility 3:
 
 ```
-cp Ubuntu_16.04-4.4.0-1061-aws.json \
-   ~/Desktop/volatility3/volatility3/symbols/linux/
+cp Ubuntu_16.04-4.4.0-1061-aws.json \ ~/Desktop/volatility3/volatility3/symbols/linux/
 ```
 
 Y ya podríamos empezar con el análisis.
@@ -130,7 +129,49 @@ Vamos teniendo una idea de cual fue la línea de eventos. Vamos a hacer un anali
 
 Pero por desgracia, no parece haber constancia de cuales fueron las ips que realizaron las conexiones, al menos en memoria. El análsis de disco nos podrá decir más.
 
-## 4. Conclusión preliminar.
+## 4. Tabla de evidencias
+
+> Los campos MAC time, tamaño y hash no son recuperables directamente desde un
+> volcado de memoria para artefactos de RAM (no son archivos en disco).
+> Se indica la fuente de cada evidencia y el método de obtención.
+
+| ID | Nombre / Artefacto | Localización en RAM | MAC time | Tamaño | Hash | Fuente / Método | Descripción |
+|---|---|---|---|---|---|---|---|
+| RAM-01 | `RAM.bin` | Archivo de volcado entregado | — | — | MD5/SHA1 verificados con Hashrat ✓ | Comprobación de integridad | Volcado de memoria del servidor. Hash coincide con el proporcionado por el perito |
+| RAM-02 | Kernel banner `4.4.0-1061-aws` | Región de memoria del kernel | — | — | — | `banners.Banners` | Identifica el sistema operativo como Ubuntu 16.04 con kernel AWS. Necesario para construir el perfil de símbolos |
+| RAM-03 | Árbol de procesos Apache (PID 27428 + workers) | Tabla de procesos en memoria | — | — | — | `linux.psaux` | 9 workers de Apache activos (PIDs 5573, 5763, 6196, 6262, 6266, 6281, 6285, 6286, 6287, 9054). Estructura de procesos padre-hijo normal. Sin anidación anómala |
+| RAM-04 | Proceso `sshd` → `bash` → `sudo` → `insmod lime` | Tabla de procesos en memoria | — | — | — | `linux.psaux` | Cadena PID 1340→9055→9118→9126→14088→14089. Evidencia de que el volcado fue realizado por el usuario `ubuntu` mediante LiME desde sesión SSH |
+| RAM-05 | Anonymous mappings en workers Apache | Regiones de memoria de PIDs 6262, 6266, 6281, 6285 | — | — | — | `linux.malfind` | Código ejecutándose sin archivo de respaldo en disco (anonymous mapping). Indicador de código inyectado. Permisos `rwx` |
+| RAM-06 | Petición multipart de subida — `XLPYhlEtQOyiMKb.php` | Buffer HTTP de worker Apache en RAM | 23/07/2018 ~11:23 | — | — | `strings` + grep | Fragmento del POST capturado en caché: `Content-Disposition: form-data; name="qqfile"; filename="XLPYhlEtQOyiMKb.php"`. Confirma subida via `multipart/form-data` |
+| RAM-07 | Petición multipart de subida — `vmGAbaiewrSSuMs.php` | Buffer HTTP de worker Apache en RAM | 23/07/2018 ~11:25 | — | — | `strings` + grep | `Content-Disposition: form-data; name="qqfile"; filename="vmGAbaiewrSSuMs.php"` |
+| RAM-08 | Petición multipart de subida — `PLoeJFOEVoc.php` | Buffer HTTP de worker Apache en RAM | 23/07/2018 ~11:54 | — | — | `strings` + grep | `Content-Disposition: form-data; name="qqfile"; filename="PLoeJFOEVoc.php"` |
+| RAM-09 | Path traversal del exploit | Buffer HTTP en RAM | — | — | — | `strings` + grep | Cadena `../../../../../uploads/2018/07/[archivo].php` presente para los 5 archivos. Huella del módulo `wp_reflexgallery_file_upload` de Metasploit |
+| RAM-10 | Respuesta JSON de subida exitosa | Buffer HTTP de worker Apache en RAM | — | — | — | `strings` + grep | `{"success":true,"fileName":"\\/2018\\/07\\/vmGAbaiewrSSuMs.php"}` presente 3 veces. Confirmación del servidor de que la subida fue aceptada |
+| RAM-11 | Ruta completa de `vmGAbaiewrSSuMs.php` con `eval()'d code` | Región de memoria PHP (proceso Apache) | — | — | — | `strings` + grep | `/var/www/html/wordpress/wp-content/uploads/2018/07/vmGAbaiewrSSuMs.php(1) : eval()'d code`. Confirma ejecución activa del payload en el momento del volcado |
+| RAM-12 | Cadena de `eval()` anidados — capa 2 en línea 434 | Región de memoria PHP (proceso Apache) | — | — | — | `strings` + grep | `vmGAbaiewrSSuMs.php(1) : eval()'d code(434) : eval()'d code`. Estructura de doble desofuscación del PHP Meterpreter de Metasploit |
+| RAM-13 | Funciones `stdapi_*` del módulo Meterpreter | Región de memoria PHP en offset `0x7f065b6a....` | — | — | — | `strings` + grep | 30+ funciones identificadas: `stdapi_fs_*`, `stdapi_sys_*`, `stdapi_net_*`, `channel_create_*`. El agente Meterpreter estaba completamente cargado en memoria |
+| RAM-14 | Funciones del loader inicial — `file_get_contents` y `socket_set_option` | Offset `0x7f065b696721` y `0x7f065b6967bc` | — | — | — | `strings` + grep | Pertenecen a la capa 1 del payload. Usadas para establecer la conexión reversa al C2 antes de cargar el Meterpreter completo |
+| RAM-15 | Conexión SSH activa `172.31.47.60:22 ↔ 23.226.128.37:42760` | Tabla de sockets del kernel | — | — | — | `linux.sockstat` | Única conexión TCP ESTABLISHED con IP externa en el momento del volcado. Corresponde a la sesión SSH del investigador, no al atacante |
+| RAM-16 | Rutas de los 5 archivos PHP en `/uploads/2018/07/` | Múltiples regiones del heap de Apache | — | — | — | `strings` + grep | Todas las rutas absolutas `/var/www/html/wordpress/wp-content/uploads/2018/07/[archivo].php` presentes en memoria para los 5 archivos subidos |
+
+## 5. Pruebas con resultado negativo
+
+| Prueba | Resultado | Observación |
+|---|---|---|
+| Proceso ssh con permisos altos | No concluyente | Se identificó, por medio de pstree, un proceso anidado con el último hijo como insmod, usado para cargar módulos de kernel (Figura 10). Se concluyó que se trataba de parte de la preparación del laboratorio.
+| `linux.sockstat`: búsqueda de conexión TCP activa del Meterpreter | **Negativo** | No hay ninguna conexión ESTABLISHED hacia IP externa sospechosa. La sesión Meterpreter ya había concluido antes del volcado |
+| Identificación del LHOST del C2 en memoria | **No concluyente** | La IP del servidor de Metasploit no aparece de forma aislada en los strings analizados. Podría recuperarse con análisis binario de las regiones `rwx` volcadas por `malfind` |
+| `linux.psaux`: procesos maliciosos independientes | **Negativo** | No se encontró ningún proceso de sistema anómalo fuera de los workers Apache. El payload operó enteramente dentro del contexto del proceso Apache |
+
+
+
+![alt text](<img/2026-04-15 19_59_22-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 10) Arbol del proceso anidado insmod
+
+**Nota**: Algunas de estas pruebas han sido no concluyentes o negativas por falta de información. El análisis de disco más profundo puede permitir una correlación mejor.
+
+## 6. Conclusión preliminar.
 
 Entonces, de momento, sabemos qué:
 
