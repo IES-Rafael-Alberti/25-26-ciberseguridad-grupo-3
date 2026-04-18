@@ -1,0 +1,6 @@
+[Mon Jul 23 06:25:02.066358 2018] [mpm_prefork:notice] [pid 27428] AH00163: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g configured -- resuming normal operations
+[Mon Jul 23 06:25:02.066389 2018] [core:notice] [pid 27428] AH00094: Command line: '/usr/sbin/apache2'
+[Mon Jul 23 11:08:46.122251 2018] [:error] [pid 6262] [client 94.242.54.22:53632] script '/var/www/html/wordpress/searchreplacedb2.php' not found or unable to stat, referer: https://ganga.site/
+[Mon Jul 23 11:08:46.279207 2018] [:error] [pid 6262] [client 94.242.54.22:53632] script '/var/www/html/wordpress/emergency.php' not found or unable to stat, referer: https://ganga.site/
+[Mon Jul 23 11:08:48.309567 2018] [:error] [pid 6262] [client 94.242.54.22:53632] PHP Fatal error:  Uncaught Error: Call to undefined function _deprecated_file() in /var/www/html/wordpress/wp-includes/rss-functions.php:8\nStack trace:\n#0 {main}\n  thrown in /var/www/html/wordpress/wp-includes/rss-functions.php on line 8, referer: https://ganga.site/
+[Mon Jul 23 11:10:16.670795 2018] [:error] [pid 6266] [client 94.242.54.22:53652] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /var/www/html/wordpress/wp-content/themes/twentyseventeen/index.php:18\nStack trace:\n#0 {main}\n  thrown in /var/www/html/wordpress/wp-content/themes/twentyseventeen/index.php on line 18, referer: https://ganga.site/
