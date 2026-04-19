@@ -69,19 +69,19 @@ El análisis de la imagen forense `Disc.E01` se ha llevado a cabo utilizando **d
 
 La siguiente tabla reconstruye cronológicamente los eventos identificados durante el análisis, relacionando las evidencias localizadas en los distintos artefactos del sistema:
 
-| Hora (UTC)   | Origen             | Evento                                                                          | Artefacto fuente       |
-|--------------|--------------------|---------------------------------------------------------------------------------|------------------------|
-| `06:25:02`   | Sistema            | Arranque normal del servidor Apache 2.4.18                          | `error.log`            |
-| `11:08:46`   | `94.242.54.22`     | WPScan inicia reconocimiento activo del servidor WordPress                      | `access.log`           |
-| `11:08:46`   | `94.242.54.22`     | Peticiones a `xmlrpc.php` — endpoint activo y respondiendo                     | `access.log`           |
-| `11:08:46`   | `94.242.54.22`     | Búsqueda de `searchreplacedb2.php` y `emergency.php` — no encontrados          | `error.log`            |
-| `11:08:48`   | `94.242.54.22`     | PHP Fatal error en `rss-functions.php` por fingerprinting de versión           | `error.log`            |
-| `11:08:xx`   | `94.242.54.22`     | Petición a `readme.txt` del plugin ReFlex Gallery — versión 3.1.3 expuesta     | `access.log`           |
-| `11:10:16`   | `94.242.54.22`     | PHP Fatal error en `index.php` del tema `twentyseventeen` — prueba de RCE      | `error.log`            |
-| `11:20:xx`   | `94.242.54.22`     | POST a `php.php` — explotación de CVE-2015-4133 y subida de webshells          | `access.log`           |
-| `11:20:xx`   | `94.242.54.22`     | GET a `PSMOfbPom.php`, `XLPYhlEtQOyiMKb.php`, `yDdoSpsx.php` — ejecución confirmada | `access.log`      |
-| `11:54:xx`   | `88.0.112.115`     | Segunda sesión de ataque — mismo vector CVE-2015-4133                           | `access.log`           |
-| `11:54:xx`   | `88.0.112.115`     | GET a `VmGAbaiewrSSuMs.php`, `PLoeJFOEVoc.php` — ejecución confirmada          | `access.log`           |
+| Hora (UTC)   | Origen             | Evento                                                                               | Artefacto fuente |
+|--------------|--------------------|--------------------------------------------------------------------------------------|------------------|
+| `06:25:02`   | Sistema            | Arranque normal del servidor Apache 2.4.18                                           | `error.log`      |
+| `11:08:35`   | `94.242.54.22`     | WPScan inicia reconocimiento activo del servidor WordPress                           | `access.log`     |
+| `11:08:46`   | `94.242.54.22`     | Peticiones a `xmlrpc.php` — endpoint activo y respondiendo                          | `access.log`     |
+| `11:08:46`   | `94.242.54.22`     | Búsqueda de `searchreplacedb2.php` y `emergency.php` — no encontrados               | `error.log`      |
+| `11:08:48`   | `94.242.54.22`     | PHP Fatal error en `rss-functions.php` por fingerprinting de versión                | `error.log`      |
+| `11:08:49`   | `94.242.54.22`     | Petición a `readme.txt` del plugin ReFlex Gallery — versión 3.1.3 expuesta          | `access.log`     |
+| `11:10:16`   | `94.242.54.22`     | PHP Fatal error en `index.php` del tema `twentyseventeen` — prueba de RCE           | `error.log`      |
+| `11:20:26`   | `94.242.54.22`     | POST a `php.php` — explotación de CVE-2015-4133 y subida de webshells               | `access.log`     |
+| `11:20:28`   | `94.242.54.22`     | GET a `PSMOfbPom.php`, `XLPYhlEtQOyiMKb.php`, `yDdoSpsx.php` — ejecución confirmada | `access.log`    |
+| `11:54:31`   | `88.0.112.115`     | Segunda sesión de ataque — mismo vector CVE-2015-4133                                | `access.log`     |
+| `11:54:34`   | `88.0.112.115`     | GET a `VmGAbaiewrSSuMs.php`, `PLoeJFOEVoc.php` — ejecución confirmada               | `access.log`     |
 
 ---
 
@@ -89,12 +89,21 @@ La siguiente tabla reconstruye cronológicamente los eventos identificados duran
 
 **Artefacto fuente:** `/var/log/apache2/access.log`
 
-| Atributo     | Valor                                         |
-|--------------|-----------------------------------------------|
-| Nombre       | `access.log`                                  |
-| Ruta         | `/var/log/apache2/access.log`                 |
-| Tamaño       | 108 KB    |
-| Hash SHA256    | 46BF61392DE369143890AE080E91502050F9478CD3D1DCB063C8223A6E58662E|
+| Atributo       | Valor                                                             |
+|----------------|-------------------------------------------------------------------|
+| Nombre         | `access.log`                                                      |
+| Ruta           | `/var/log/apache2/access.log`                                     |
+| Tamaño         | 108 KB                                                            |
+| Hash SHA256    | 46BF61392DE369143890AE080E91502050F9478CD3D1DCB063C8223A6E58662E |
+| Hash MD5    | 325d4e7fad4213e46faf58dcf76af017 |
+
+| Timestamp       | Valor                                                            |
+|----------------|-------------------------------------------------------------------|
+| Date Created   | 23/07/2018 06:25:01 UTC                                           |
+| Date Accessed  | 23/07/2018 06:25:01 UTC                                           |
+| Date Modified  | 24/07/2018 05:19:11 UTC                                           |
+
+> El **Date Created** coincide con el arranque de Apache (`06:25:02`).
 
 Al examinar el archivo `/var/log/apache2/access.log` se detectaron peticiones al plugin
 `reflex-gallery`. La respuesta `200 OK` al fichero `readme.txt` del plugin expuso la versión
@@ -121,6 +130,17 @@ repitió el mismo ataque.
 
 **Artefacto fuente:** `/var/log/apache2/access.log` + sistema de archivos `/wp-content/uploads/2018/07/`
 
+| Timestamp       | Valor                  |
+|----------------|-------------------------|
+| Date Created   | 20/07/2018 09:54:05 UTC |
+| Date Accessed  | 23/07/2018 11:54:56 UTC |
+| Date Modified  | 23/07/2018 11:54:36 UTC |
+
+> El **Date Modified `11:54:36`** y el **Date Accessed `11:54:56`** coinciden con la segunda
+> sesión de ataque (`88.0.112.115`), corroborando la escritura y ejecución de webshells en
+> ese directorio. **Los archivos `.php` no fueron recuperados en el sistema de archivos**,
+> lo que indica que el atacante los eliminó tras su ejecución para dificultar el análisis.
+
 ![img](img/php.png)
 
 ![img](img/php1.png)
@@ -144,12 +164,22 @@ atacante podría ejecutar comandos arbitrarios, exfiltrar datos o escalar privil
 
 **Artefacto fuente:** `/var/log/apache2/error.log`
 
-| Atributo | Valor                               |
-|----------|-------------------------------------|
-| Nombre   | `error.log`                         |
-| Ruta     | `/var/log/apache2/error.log`        |
-| Tamaño   | 2 KB      |
-| Hash SHA256 |A8F34244C110114462935045C11C9208F846B54ABE47EA69909EBBD46518EAEC |
+| Atributo       | Valor                                                             |
+|----------------|-------------------------------------------------------------------|
+| Nombre         | `error.log`                                                       |
+| Ruta           | `/var/log/apache2/error.log`                                      |
+| Tamaño         | 2 KB                                                              |
+| Hash SHA256    | A8F34244C110114462935045C11C9208F846B54ABE47EA69909EBBD46518EAEC  |
+| Hash MD5    | 496044572974077b25d87ecc950ec4bc |
+
+| Timestamp       | Valor                                                            |
+|----------------|-------------------------------------------------------------------|
+| Date Created   | 23/07/2018 06:25:01 UTC                                           |
+| Date Accessed  | 23/07/2018 06:25:01 UTC                                           |
+| Date Modified  | 23/07/2018 11:10:16 UTC                                           |
+
+> El **Date Modified `11:10:16`** coincide exactamente con la última entrada del log
+> (PHP Fatal error en `index.php`).
 
 Al examinar el archivo `/var/log/apache2/error.log` se obtuvieron cuatro entradas relevantes
 que corroboran y complementan los Hallazgos 1 y 2.
@@ -182,12 +212,24 @@ fuera del contexto de WordPress**, consistente con pruebas de RCE post-explotaci
 
 **Artefacto fuente:** `/var/www/html/wordpress/xmlrpc.php`
 
-| Atributo | Valor                                          |
-|----------|------------------------------------------------|
-| Nombre   | `xmlrpc.php`                                   |
-| Ruta     | `/var/www/html/wordpress/xmlrpc.php`           |
-| Tamaño   |3 KB                  |
-| Hash SHA256 | 639CD36E1C7262A5DF907DFBDFCC5F3BC64E152A9389AAF5DE606F17A1434314                 |
+| Atributo       | Valor                                                              |
+|----------------|--------------------------------------------------------------------|
+| Nombre         | `xmlrpc.php`                                                       |
+| Ruta           | `/var/www/html/wordpress/xmlrpc.php`                               |
+| Tamaño         | 3 KB                                                               |
+| Hash SHA256    | 639CD36E1C7262A5DF907DFBDFCC5F3BC64E152A9389AAF5DE606F17A1434314  |
+| Hash MD5    | 6c53e2ff076280c5cfc410a3c632c785 |
+
+| Timestamp       | Valor                                                             |
+|----------------|--------------------------------------------------------------------|
+| Date Created   | 20/07/2018 09:48:01 UTC                                            |
+| Date Accessed  | 23/07/2018 11:08:46 UTC                                            |
+| Date Modified  | 31/08/2016 16:31:29 UTC                                            |
+
+> El **Date Modified de 2016** corresponde al timestamp original del repositorio de WordPress,
+> confirmando que el fichero no fue alterado. El **Date Accessed `11:08:46`** coincide
+> exactamente con las peticiones GET de WPScan registradas en el `access.log`,
+> corroborando directamente la actividad del atacante.
 
 Durante el escaneo con WPScan a las `11:08:46`, se realizaron dos peticiones GET al endpoint
 `/xmlrpc.php`, que respondió activamente confirmando que el protocolo XML-RPC estaba
@@ -209,6 +251,25 @@ significativamente la superficie de ataque del servidor comprometido.
 ### 4.6 Hallazgo 5: Artefactos en `/home/ubuntu` — Actividad del administrador
 
 **Artefactos fuente:** `/home/ubuntu/`
+
+| Artefacto         | Date Created            | Date Modified           | Relevancia                                 |
+|-------------------|-------------------------|-------------------------|--------------------------------------------|
+| `authorized_keys` | 20/07/2018 09:10:35 UTC | 20/07/2018 09:10:35 UTC | Sin actividad en fecha del ataque — no comprometido |
+| Hash SHA1    | 7af0fd9291fe5d2aeb99a6c7684ecd502a4b10e1  |
+| Hash MD5    | 59c096ca4ef45cf62b564dfb58dbf708 |
+| `.bash_history`   | 20/07/2018 10:08:11 UTC | 20/07/2018 10:08:11 UTC | Sin acceso post-ataque — no hubo sesión interactiva |
+| Hash SHA1    | 47a87f7a01bac5cf1fd0977d85c6161e3682452a  |
+| Hash MD5    | f5fb4797e6c70004de4d045c245c96d3 |
+| `.mysql_history`  | 20/07/2018 09:53:14 UTC | 20/07/2018 09:53:14 UTC | Sin actividad posterior — BD no accedida desde consola |
+| Hash SHA1    | bb39cc93f23f9f11d72155015be4ab64d9b4e1b1  |
+| Hash MD5    | e8d34a14f41f2675709b484e381a843e |
+| `.viminfo`        | 20/07/2018 10:03:58 UTC | 20/07/2018 10:03:58 UTC | Sin ediciones post-instalación             |
+| Hash SHA1    | 4f973f6d777fedeb0bb3947deade073b02d15b41  |
+| Hash MD5    | a69b9874db6cbb6c88fc6e2781c4c536 |
+
+> Todos los artefactos de `/home/ubuntu/` convergen en el **20/07/2018** (fase de
+> configuración) y **ninguno registra actividad el 23/07/2018**, confirmando que el atacante
+> no obtuvo persistencia o escalada de privilegios.
 
 ![img](img/home-ubuntu.png)
 
