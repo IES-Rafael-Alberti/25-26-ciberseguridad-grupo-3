@@ -35,7 +35,19 @@ Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
 
 ## 3. Índice de Figuras
 
-
+| N.º | Figura |
+|---|---|
+| [Figura 1](#figura-1) | Cálculo de integridad del artefacto de disco (`Disc.E01`) |
+| [Figura 2](#figura-2) | Cálculo de integridad del artefacto de memoria RAM |
+| [Figura 3](#figura-3) | Banner del kernel — `Linux version 4.4.0-1061-aws` |
+| [Figura 4](#figura-4) | Árbol de procesos Apache (`linux.pstree`) |
+| [Figura 5](#figura-5) | Anonymous mappings `rwx` en `linux.malfind` |
+| [Figura 6](#figura-6) | Endpoint vulnerable en `access.log` |
+| [Figura 7](#figura-7) | Cuatro archivos PHP maliciosos |
+| [Figura 8](#figura-8) | Quinto archivo PHP malicioso |
+| [Figura 9](#figura-9) | Errores en `error.log` |
+| [Figura 10](#figura-10) | Archivos del directorio home de `ubuntu` |
+| [Figura 11](#figura-11) | Archivo `xmlrpc.php` activo |
 ---
 
 ## 4. Resumen Ejecutivo
@@ -94,18 +106,20 @@ valores hash de referencia para verificación de integridad. El análisis se ini
 | Fecha de descarga | 15/04/2026 — 12:12 CEST |
 | Tamaño de la imagen | 983.1 MiB (1.030.873.131 bytes) |
 
-![alt text](investigaciones/img/hashes.png)
+<a id="figura-1"></a>
+![Figura 1](investigaciones/img/hashes.png)
 
-(Figura ) Cálculo de integridad de artefacto de disco.
+(Figura 1) Cálculo de integridad del artefacto de disco.
 
 | Algoritmo | Hash calculado | Hash proporcionado | ¿Coincide? |
 |---|---|---|---|
 | MD5 | bac5561328b477f0508fab7c5d9ee0a6 | bac5561328b477f0508fab7c5d9ee0a6 | Sí |
 | SHA1 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | Sí |
 
-![alt text](<investigaciones/img/2026-04-15 20_23_27-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+<a id="figura-2"></a>
+![Figura 2](<investigaciones/img/2026-04-15 20_23_27-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
 
-(Figura ) Cálculo de integridad de artefacto de memoria ram
+(Figura 2) Cálculo de integridad del artefacto de memoria RAM.
 
 #### Volcado de RAM — `RAM.bin`
 
@@ -138,25 +152,30 @@ Volatility 3, que localizó el banner **`Linux version 4.4.0-1061-aws`**. Con es
 descargó el paquete debug correspondiente desde los servidores de símbolos de Ubuntu y se
 generó el perfil JSON necesario para Volatility mediante `dwarf2json`.
 
-![alt text](<investigaciones/img/2026-04-15 12_39_09-Kali (changed username kali to midex882) [Corriendo] - Oracle VirtualBox.png>)
+<a id="figura-3"></a>
+![Figura 3](<investigaciones/img/2026-04-15 12_39_09-Kali (changed username kali to midex882) [Corriendo] - Oracle VirtualBox.png>)
+
+(Figura 3) Banner del kernel — Linux version 4.4.0-1061-aws.
 
 **Análisis de procesos y código inyectado**
 
 El plugin `linux.pstree` mostró 10 procesos Apache activos (PID padre 27428 más 9 workers) con
 estructura padre-hijo normal y sin anidación anómala. 
 
-![alt text](<investigaciones/img/2026-04-15 21_05_26-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+<a id="figura-4"></a>
+![Figura 4](<investigaciones/img/2026-04-15 21_05_26-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
 
-(Figura ) Procesos de apache2 en la herramienta pstree.
+(Figura 4) Procesos Apache en pstree.
 
 Sin embargo, `linux.malfind` detectó
 **regiones de memoria con permisos `rwx` sin archivo de respaldo en disco** en los workers
 PID 6262, 6266, 6281 y 6285, indicativo inequívoco de código inyectado en ejecución dentro
 del proceso Apache en el momento del volcado.
 
-![alt text](<investigaciones/img/2026-04-15 21_01_59-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+<a id="figura-5"></a>
+![Figura 5](<investigaciones/img/2026-04-15 21_01_59-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
 
-(Figura ) Anonymous mapping en los procesos de apache
+(Figura 5) Anonymous mappings rwx en malfind.
 
 El análisis de strings sobre estas regiones y sobre la caché de páginas del kernel reveló
 la traza de ejecución `eval()'d code` del archivo `vmGAbaiewrSSuMs.php` y más de 30 funciones
@@ -190,8 +209,9 @@ la versión **3.1.3**, afectada por CVE-2015-4133 (*Unrestricted File Upload* �
 archivos arbitrarios sin autenticación). A las 11:20 UTC se inició la explotación mediante
 POST al endpoint `wp-content/plugins/reflex-gallery/FileUploader/php.php`.
 
-![img](investigaciones/img/log2.png)
-Figura: Endpoint 'wp/content/plugins/reflex-gallery/FileUploader/php.php'
+<a id="figura-6"></a>
+![Figura 6](investigaciones/img/log2.png)
+(Figura 6) Endpoint vulnerable en access.log.
 
 | Atributo | Valor |
 |---|---|
@@ -210,10 +230,12 @@ consistentes con la función `rand_text_alpha` del módulo Metasploit
 `exploit/unix/webapp/wp_reflexgallery_file_upload`. Todos devolvieron HTTP 200 al ser
 ejecutados, confirmando su correcta ejecución por el servidor.
 
-![img](investigaciones/img/php.png)
-Figura: Cuatro archivos PHP maliciosos
-![img](investigaciones/img/php1.png)
-Figura: Quinto archivo PHP malicioso
+<a id="figura-7"></a>
+![Figura 7](investigaciones/img/php.png)
+(Figura 7) Cuatro archivos PHP maliciosos.
+<a id="figura-8"></a>
+![Figura 8](investigaciones/img/php1.png)
+(Figura 8) Quinto archivo PHP malicioso.
 
 | Archivo | IP origen | Hora UTC |
 |---|---|---|
@@ -237,8 +259,9 @@ al ataque documentado. Los errores PHP fatales en `rss-functions.php` (11:08:48)
 agresivo de WPScan y revelan la ruta absoluta del servidor:
 `/var/www/html/wordpress/`.
 
-![img](investigaciones/img/error-log.png)
-Figura: Log del archivo error.log con los errores citados
+<a id="figura-9"></a>
+![Figura 9](investigaciones/img/error-log.png)
+(Figura 9) Errores en error.log.
 
 
 | Atributo | Valor |
@@ -260,8 +283,9 @@ obtuvo acceso interactivo al sistema ni modificó el entorno del usuario adminis
 `.mysql_history` confirma la creación de la base de datos `ganga` con conexión al endpoint
 RDS de Amazon `ganga.ctmbcxcdb3us.eu-central-1.rds.amazonaws.com`.
 
-![img](investigaciones/img/home-ubuntu.png)
-Figura: Archivos del directorio home de 'ubuntu'
+<a id="figura-10"></a>
+![Figura 10](investigaciones/img/home-ubuntu.png)
+(Figura 10) Archivos del directorio home de ubuntu.
 
 **`xmlrpc.php` activo**
 
@@ -271,8 +295,9 @@ corresponde al original de WordPress sin modificaciones, pero su exposición sup
 de ataque adicional para fuerza bruta amplificada mediante `system.multicall` y abuso de
 pingbacks.
 
-![img](investigaciones/img/xmlrpc-php.png)
-Figura: Archivo xmlrpc.php
+<a id="figura-11"></a>
+![Figura 11](investigaciones/img/xmlrpc-php.png)
+(Figura 11) Archivo xmlrpc.php activo.
 
 ---
 
