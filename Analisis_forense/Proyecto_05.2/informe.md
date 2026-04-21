@@ -95,3 +95,32 @@ Figura: Archivo xmlrpc.php
 
 ---
 
+## 8. Limitaciones
+
+| Limitación | Descripción |
+|---|---|
+| IP del servidor de mando y control (LHOST) no recuperada | Los sockets TCP de Apache aparecen en estado `CLOSE` en el volcado. La dirección IP del C2 de Metasploit podría recuperarse mediante análisis binario de las regiones `rwx` volcadas por `malfind`, lo que queda fuera del alcance de este análisis |
+| Archivos PHP maliciosos eliminados del disco | Los cinco archivos PHP no están presentes en el sistema de archivos de la imagen de disco. Su existencia queda acreditada por los logs y por los artefactos en RAM, pero no es posible realizar análisis estático de su código desde el disco |
+| Relación entre `94.242.54.22` y `88.0.112.115` no determinada | No es posible confirmar con los datos disponibles si ambas IPs corresponden al mismo actor (uso de VPN o pivot) o a dos actores distintos coordinados |
+| Ausencia de registros de red adicionales | No se dispone de capturas de tráfico (PCAP) ni registros de cortafuegos que permitan correlacionar las conexiones a nivel de paquete |
+
+---
+
+## 9. Conclusiones
+
+El 23 de julio de 2018, un atacante identificó el plugin Reflex Gallery 3.1.3 instalado en el
+WordPress de `ganga.site` mediante reconocimiento manual y automatizado con WPScan, y explotó
+la vulnerabilidad CVE-2015-4133 para subir cinco archivos PHP sin necesidad de autenticación.
+Una de las cargas maliciosas (`vmGAbaiewrSSuMs.php`) contenía un agente Meterpreter de
+Metasploit que se ejecutó dentro del proceso Apache y quedó residente en memoria hasta el
+momento del volcado, aunque su canal de comunicación con el servidor de mando y control ya
+había cerrado. Los archivos PHP fueron eliminados del disco tras su ejecución, pero su
+existencia y ejecución quedan acreditadas por los registros de Apache y por los artefactos
+recuperados de la memoria RAM.
+
+No se encontró evidencia de escalada de privilegios al usuario `ubuntu`, de modificación del
+core de WordPress, de persistencia más allá del proceso Apache ni de actividad maliciosa
+previa al 23 de julio de 2018.
+
+---
+
