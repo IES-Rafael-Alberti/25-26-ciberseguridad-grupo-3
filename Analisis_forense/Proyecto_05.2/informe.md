@@ -1,3 +1,38 @@
+# Informe Pericial Forense — Incidente de Seguridad en ganga.site
+### Grupo 3
+
+---
+
+## 1. Juramento y Declaración de Abstención y Tacha
+
+Los abajo firmantes, integrantes del Grupo 3, declaran que el presente informe ha sido
+elaborado con objetividad, rigor técnico e imparcialidad, sin relación de dependencia con
+ninguna de las partes implicadas. El análisis se ha realizado exclusivamente sobre las
+evidencias proporcionadas, sin extralimitarse en las conclusiones más allá de lo que los
+datos permiten sostener.
+
+---
+
+## 2. Palabras Clave
+
+| Término | Definición |
+|---|---|
+Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
+| Wordpress | Herramienta para la creación de páginas web |
+| Reflex Gallery | Plugin de Wordpress |
+| CVE | Identificador estandarizado de vulnerabilidades conocidas (Common Vulnerabilities and Exposures) |
+| PHP | Lenguaje de programación usado para servidores web. Wordpress está programado en este lenguaje |
+| Post-explotación | Acciones que quien penetra un sistema lleva acabo después de la penetración para alcanzar su objetivo inicial |
+| Memoria RAM | Memoria en la que se almacenan procesos mientras el equipo está encendido. Es volatil; se pierde casi completamente al apagarse.
+| Volcado de memoria (RAM dump) | Captura del contenido de la memoria volátil de un sistema en un instante determinado |
+| Hash | Función matemática que genera un valor de longitud fija a partir de datos de entrada, usada para verificar integridad |
+| Webshell | Archivo ejecutable subido al servidor que permite al atacante ejecutar comandos remotos |
+| WPScan | Herramienta de reconocimiento específica para instalaciones WordPress |
+| Anonymous mapping | Región de memoria con permisos de ejecución que no tiene ningún archivo en disco que la respalde |
+| LiME | Módulo de los sistemas operativos Linux que permite extraer el contenido de la RAM a un archivo |
+
+---
+
 #### 7.2.2 Análisis de la imagen de disco
 
 **Vector de entrada — CVE-2015-4133**
