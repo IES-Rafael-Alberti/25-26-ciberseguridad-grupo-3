@@ -64,10 +64,72 @@ Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
 La integridad del volcado fue verificada mediante Hashrat, con hash MD5 y SHA1 coincidentes
 con los valores de referencia proporcionados. El volcado fue tomado mediante LiME (Linux
 Memory Extractor) insertado como módulo de kernel (`insmod lime-4.4.0-1061-aws.ko`) desde
-una sesión SSH activa el 24/07/2018 entre las 05:24 y las 05:26 UTC.
+una sesión SSH.
 
-*AÑADIR AQUI: CAPTURAS DE COMPROBACIONES DE HASH (con las figuras etiquetadas y puestas en el apartado figuras)*
-![alt text](<investigaciones/img/2026-04-16 13_41_48-Kali (Volatility 3 installed) [Corriendo] - Oracle VirtualBox.png>)
+## 7. Análisis
+
+### 7.1 Herramientas Utilizadas
+
+| Herramienta | Versión | Plataforma | Función |
+|---|---|---|---|
+| Autopsy | 4.22.1 | Windows | Análisis completo de imagen de disco: módulos de ingest, línea de tiempo, artefactos del sistema, archivos eliminados |
+| FTK Imager | 4.7.3.81 | Windows | Exploración del sistema de archivos, extracción de artefactos, verificación de hashes |
+| Volatility 3 | — | Kali Linux | Análisis de volcado de memoria RAM |
+| dwarf2json | — | Kali Linux | Conversión del debug del kernel a perfil de símbolos para Volatility |
+| Hashrat | — | Kali Linux | Verificación de integridad de las evidencias |
+| strings + grep | — | Kali Linux | Extracción de cadenas de texto significativas del volcado de RAM |
+
+### 7.2 Procesos
+
+#### 7.2.1 Análisis del volcado de memoria RAM
+
+**Obtención del perfil de memoria**
+
+El primer paso fue identificar la versión del kernel mediante el plugin `banners.Banners` de
+Volatility 3, que localizó el banner **`Linux version 4.4.0-1061-aws`**. Con este dato se
+descargó el paquete debug correspondiente desde los servidores de símbolos de Ubuntu y se
+generó el perfil JSON necesario para Volatility mediante `dwarf2json`.
+
+![alt text](<investigaciones/img/2026-04-15 12_39_09-Kali (changed username kali to midex882) [Corriendo] - Oracle VirtualBox.png>)
+
+**Análisis de procesos y código inyectado**
+
+El plugin `linux.pstree` mostró 10 procesos Apache activos (PID padre 27428 más 9 workers) con
+estructura padre-hijo normal y sin anidación anómala. 
+
+![alt text](<investigaciones/img/2026-04-15 21_05_26-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura ) Procesos de apache2 en la herramienta pstree.
+
+Sin embargo, `linux.malfind` detectó
+**regiones de memoria con permisos `rwx` sin archivo de respaldo en disco** en los workers
+PID 6262, 6266, 6281 y 6285, indicativo inequívoco de código inyectado en ejecución dentro
+del proceso Apache en el momento del volcado.
+
+![alt text](<investigaciones/img/2026-04-15 21_01_59-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura ) Anonymous mapping en los procesos de apache
+
+El análisis de strings sobre estas regiones y sobre la caché de páginas del kernel reveló
+la traza de ejecución `eval()'d code` del archivo `vmGAbaiewrSSuMs.php` y más de 30 funciones
+`stdapi_*` características del agente Meterpreter de Metasploit completamente cargado en
+memoria.
+
+**Análisis de conexiones de red**
+
+`linux.sockstat` mostró una única conexión TCP ESTABLISHED en el momento del volcado:
+`172.31.47.60:22 ↔ 23.226.128.37:42760`, correspondiente a la sesión SSH del investigador
+que realizó la adquisición. Los sockets de los workers Apache aparecían en estado `CLOSE`,
+lo que confirma que la sesión Meterpreter había finalizado su conexión con el servidor de
+mando y control antes del volcado, sin que sea posible recuperar la IP de destino de dicha
+conexión en este estado.
+
+La page cache del kernel contenía fragmentos del `access.log` y del `auth.log` de Apache, que
+permitieron recuperar las peticiones de WPScan, las subidas de archivos PHP y los registros
+de conexión SSH — incluyendo la identificación de la IP `23.226.128.37` como origen de la
+sesión SSH con ejecución de comandos privilegiados, que inicialmente se consideró sospechosa
+pero fue descartada como actividad del investigador al correlacionarla con la cadena de
+adquisición (`insmod lime`) visible en el árbol de procesos.
 
 #### 7.2.2 Análisis de la imagen de disco
 
