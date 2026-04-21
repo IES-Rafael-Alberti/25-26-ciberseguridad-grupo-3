@@ -1,3 +1,44 @@
+## 6. Fuentes de Información
+
+### 6.1 Adquisición de Evidencias
+
+#### Imagen de disco — `Disc.E01`
+
+| Campo | Valor |
+|---|---|
+| Archivo recibido | `Disc.E01.zip` |
+| Fuente | Administrador |
+| Fecha de descarga | 15/04/2026 — 12:12 CEST |
+| Tamaño de la imagen | 983.1 MiB (1.030.873.131 bytes) |
+
+![alt text](investigaciones/img/hashes.png)
+
+(Figura ) Cálculo de integridad de artefacto de disco.
+
+| Algoritmo | Hash calculado | Hash proporcionado | ¿Coincide? |
+|---|---|---|---|
+| MD5 | bac5561328b477f0508fab7c5d9ee0a6 | bac5561328b477f0508fab7c5d9ee0a6 | Sí |
+| SHA1 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | Sí |
+
+![alt text](<investigaciones/img/2026-04-15 20_23_27-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura ) Cálculo de integridad de artefacto de memoria ram
+
+#### Volcado de RAM — `RAM.bin`
+
+La integridad del volcado fue verificada mediante Hashrat, con hash MD5 y SHA1 coincidentes
+con los valores de referencia proporcionados. El volcado fue tomado mediante LiME (Linux
+Memory Extractor) insertado como módulo de kernel (`insmod lime-4.4.0-1061-aws.ko`) desde
+una sesión SSH activa el 24/07/2018 entre las 05:24 y las 05:26 UTC.
+
+*AÑADIR AQUI: CAPTURAS DE COMPROBACIONES DE HASH (con las figuras etiquetadas y puestas en el apartado figuras)*
+![alt text](<investigaciones/img/2026-04-16 13_41_48-Kali (Volatility 3 installed) [Corriendo] - Oracle VirtualBox.png>)
+
+
+
+
+
+
 #### 7.2.2 Análisis de la imagen de disco
 
 **Vector de entrada — CVE-2015-4133**
