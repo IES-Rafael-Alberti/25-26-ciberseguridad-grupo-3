@@ -33,53 +33,103 @@ Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
 
 ---
 
-## 3. Índice de Figuras
+## 6. Fuentes de Información
 
+### 6.1 Adquisición de Evidencias
 
+#### Imagen de disco — `Disc.E01`
 
----
+| Campo | Valor |
+|---|---|
+| Archivo recibido | `Disc.E01.zip` |
+| Fuente | Administrador |
+| Fecha de descarga | 15/04/2026 — 12:12 CEST |
+| Tamaño de la imagen | 983.1 MiB (1.030.873.131 bytes) |
 
-## 4. Resumen Ejecutivo
+![alt text](investigaciones/img/hashes.png)
 
-El presente informe analiza un incidente de seguridad ocurrido el **23 de julio de 2018**
-sobre un servidor Ubuntu 16.04 alojado en AWS que ejecutaba WordPress 4.8.1 en el dominio
-`ganga.site`. El incidente fue posible por la presencia del plugin **Reflex Gallery 3.1.3**,
-afectado por la vulnerabilidad **CVE-2015-4133** (*Unrestricted File Upload* sin
-autenticación).
+(Figura ) Cálculo de integridad de artefacto de disco.
 
-Un atacante desde la dirección IP `94.242.54.22` realizó reconocimiento manual y automatizado
-del servidor, identificó el plugin vulnerable y procedió a subir varias puertas traseras en
-PHP. Posteriormente, desde una segunda IP (`88.0.112.115`), se desplegó un agente de
-post-explotación que quedó activo en memoria dentro de los procesos web. Los
-archivos PHP maliciosos fueron eliminados del disco tras su ejecución, pero su presencia queda
-acreditada tanto en el registro de acceso de Apache como en artefactos residentes en la
-memoria RAM en el momento de su adquisición.
+| Algoritmo | Hash calculado | Hash proporcionado | ¿Coincide? |
+|---|---|---|---|
+| MD5 | bac5561328b477f0508fab7c5d9ee0a6 | bac5561328b477f0508fab7c5d9ee0a6 | Sí |
+| SHA1 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 | Sí |
 
-El análisis no encontró evidencias de escalada de privilegios ni de persistencia más allá del
-proceso web.
+![alt text](<investigaciones/img/2026-04-15 20_23_27-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
 
----
+(Figura ) Cálculo de integridad de artefacto de memoria ram
 
-## 5. Introducción
+#### Volcado de RAM — `RAM.bin`
 
-### 5.1 Antecedentes
+La integridad del volcado fue verificada mediante Hashrat, con hash MD5 y SHA1 coincidentes
+con los valores de referencia proporcionados. El volcado fue tomado mediante LiME (Linux
+Memory Extractor) insertado como módulo de kernel (`insmod lime-4.4.0-1061-aws.ko`) desde
+una sesión SSH.
 
-Se pone en conocimiento del equipo de ciberseguridad de la empresa que ha ocurrido un defacement de la web de la empresa, y se procede al análisis del servidor que contiene la web. Se reciben dos artefactos:
+## 7. Análisis
 
-- **`Disc.E01`**: imagen forense del disco duro del servidor comprometido
-- **`RAM.bin`**: volcado de memoria RAM tomado en caliente el 24 de julio de 2018
+### 7.1 Herramientas Utilizadas
 
-Ambas evidencias fueron proporcionadas por el administrador del servidor, con
-valores hash de referencia para verificación de integridad. El análisis se inició el
-**15/04/2026** a las **12:10 CEST**.
+| Herramienta | Versión | Plataforma | Función |
+|---|---|---|---|
+| Autopsy | 4.22.1 | Windows | Análisis completo de imagen de disco: módulos de ingest, línea de tiempo, artefactos del sistema, archivos eliminados |
+| FTK Imager | 4.7.3.81 | Windows | Exploración del sistema de archivos, extracción de artefactos, verificación de hashes |
+| Volatility 3 | — | Kali Linux | Análisis de volcado de memoria RAM |
+| dwarf2json | — | Kali Linux | Conversión del debug del kernel a perfil de símbolos para Volatility |
+| Hashrat | — | Kali Linux | Verificación de integridad de las evidencias |
+| strings + grep | — | Kali Linux | Extracción de cadenas de texto significativas del volcado de RAM |
 
-### 5.2 Objetivos
+### 7.2 Procesos
 
-- 1.Verificar la integridad de las evidencias recibidas.
-- 2.Determinar el vector de entrada utilizado por el atacante
-- 3.Reconstruir la secuencia de eventos del incidente.
-- 4.Identificar los artefactos maliciosos desplegados en el sistema.
-- 5.Establecer el alcance del compromiso y la presencia de persistencia.
+#### 7.2.1 Análisis del volcado de memoria RAM
+
+**Obtención del perfil de memoria**
+
+El primer paso fue identificar la versión del kernel mediante el plugin `banners.Banners` de
+Volatility 3, que localizó el banner **`Linux version 4.4.0-1061-aws`**. Con este dato se
+descargó el paquete debug correspondiente desde los servidores de símbolos de Ubuntu y se
+generó el perfil JSON necesario para Volatility mediante `dwarf2json`.
+
+![alt text](<investigaciones/img/2026-04-15 12_39_09-Kali (changed username kali to midex882) [Corriendo] - Oracle VirtualBox.png>)
+
+**Análisis de procesos y código inyectado**
+
+El plugin `linux.pstree` mostró 10 procesos Apache activos (PID padre 27428 más 9 workers) con
+estructura padre-hijo normal y sin anidación anómala. 
+
+![alt text](<investigaciones/img/2026-04-15 21_05_26-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura ) Procesos de apache2 en la herramienta pstree.
+
+Sin embargo, `linux.malfind` detectó
+**regiones de memoria con permisos `rwx` sin archivo de respaldo en disco** en los workers
+PID 6262, 6266, 6281 y 6285, indicativo inequívoco de código inyectado en ejecución dentro
+del proceso Apache en el momento del volcado.
+
+![alt text](<investigaciones/img/2026-04-15 21_01_59-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura ) Anonymous mapping en los procesos de apache
+
+El análisis de strings sobre estas regiones y sobre la caché de páginas del kernel reveló
+la traza de ejecución `eval()'d code` del archivo `vmGAbaiewrSSuMs.php` y más de 30 funciones
+`stdapi_*` características del agente Meterpreter de Metasploit completamente cargado en
+memoria.
+
+**Análisis de conexiones de red**
+
+`linux.sockstat` mostró una única conexión TCP ESTABLISHED en el momento del volcado:
+`172.31.47.60:22 ↔ 23.226.128.37:42760`, correspondiente a la sesión SSH del investigador
+que realizó la adquisición. Los sockets de los workers Apache aparecían en estado `CLOSE`,
+lo que confirma que la sesión Meterpreter había finalizado su conexión con el servidor de
+mando y control antes del volcado, sin que sea posible recuperar la IP de destino de dicha
+conexión en este estado.
+
+La page cache del kernel contenía fragmentos del `access.log` y del `auth.log` de Apache, que
+permitieron recuperar las peticiones de WPScan, las subidas de archivos PHP y los registros
+de conexión SSH — incluyendo la identificación de la IP `23.226.128.37` como origen de la
+sesión SSH con ejecución de comandos privilegiados, que inicialmente se consideró sospechosa
+pero fue descartada como actividad del investigador al correlacionarla con la cadena de
+adquisición (`insmod lime`) visible en el árbol de procesos.
 
 #### 7.2.2 Análisis de la imagen de disco
 
