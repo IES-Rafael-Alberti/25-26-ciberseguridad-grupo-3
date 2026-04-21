@@ -124,3 +124,27 @@ previa al 23 de julio de 2018.
 
 ---
 
+## 10. Anexo 1. Sobre el Perito
+
+| Campo | Valor |
+|---|---|
+| Grupo | Grupo 3 |
+| Asignatura | Análisis Forense Informático |
+| Fecha del informe | 20/04/2026 |
+
+---
+
+## 11. Anexo 2. Sumas de Verificación
+
+| Evidencia | Algoritmo | Hash |
+|---|---|---|
+| `Disc.E01` | MD5 | bac5561328b477f0508fab7c5d9ee0a6 |
+| `Disc.E01` | SHA1 | 5b0a9cc8ff4ebd5aa3e1e36d8713e3b24b072e79 |
+| `RAM.bin` | MD5 | *(valor del hashrat)* |
+| `RAM.bin` | SHA1 | *(valor del hashrat)* |
+| `access.log` | MD5 | 325d4e7fad4213e46faf58dcf76af017 |
+| `access.log` | SHA256 | 46BF61392DE369143890AE080E91502050F9478CD3D1DCB063C8223A6E58662E |
+| `error.log` | MD5 | 496044572974077b25d87ecc950ec4bc |
+| `error.log` | SHA256 | A8F34244C110114462935045C11C9208F846B54ABE47EA69909EBBD46518EAEC |
+| `xmlrpc.php` | MD5 | 6c53e2ff076280c5cfc410a3c632c785 |
+| `xmlrpc.php` | SHA256 | 639CD36E1C7262A5DF907DFBDFCC5F3BC64E152A9389AAF5DE606F17A1434314 |
