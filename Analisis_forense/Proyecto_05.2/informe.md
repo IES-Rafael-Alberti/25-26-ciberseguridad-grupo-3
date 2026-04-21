@@ -33,6 +33,54 @@ Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
 
 ---
 
+## 3. Índice de Figuras
+
+
+
+---
+
+## 4. Resumen Ejecutivo
+
+El presente informe analiza un incidente de seguridad ocurrido el **23 de julio de 2018**
+sobre un servidor Ubuntu 16.04 alojado en AWS que ejecutaba WordPress 4.8.1 en el dominio
+`ganga.site`. El incidente fue posible por la presencia del plugin **Reflex Gallery 3.1.3**,
+afectado por la vulnerabilidad **CVE-2015-4133** (*Unrestricted File Upload* sin
+autenticación).
+
+Un atacante desde la dirección IP `94.242.54.22` realizó reconocimiento manual y automatizado
+del servidor, identificó el plugin vulnerable y procedió a subir varias puertas traseras en
+PHP. Posteriormente, desde una segunda IP (`88.0.112.115`), se desplegó un agente de
+post-explotación que quedó activo en memoria dentro de los procesos web. Los
+archivos PHP maliciosos fueron eliminados del disco tras su ejecución, pero su presencia queda
+acreditada tanto en el registro de acceso de Apache como en artefactos residentes en la
+memoria RAM en el momento de su adquisición.
+
+El análisis no encontró evidencias de escalada de privilegios ni de persistencia más allá del
+proceso web.
+
+---
+
+## 5. Introducción
+
+### 5.1 Antecedentes
+
+Se pone en conocimiento del equipo de ciberseguridad de la empresa que ha ocurrido un defacement de la web de la empresa, y se procede al análisis del servidor que contiene la web. Se reciben dos artefactos:
+
+- **`Disc.E01`**: imagen forense del disco duro del servidor comprometido
+- **`RAM.bin`**: volcado de memoria RAM tomado en caliente el 24 de julio de 2018
+
+Ambas evidencias fueron proporcionadas por el administrador del servidor, con
+valores hash de referencia para verificación de integridad. El análisis se inició el
+**15/04/2026** a las **12:10 CEST**.
+
+### 5.2 Objetivos
+
+- 1.Verificar la integridad de las evidencias recibidas.
+- 2.Determinar el vector de entrada utilizado por el atacante
+- 3.Reconstruir la secuencia de eventos del incidente.
+- 4.Identificar los artefactos maliciosos desplegados en el sistema.
+- 5.Establecer el alcance del compromiso y la presencia de persistencia.
+
 #### 7.2.2 Análisis de la imagen de disco
 
 **Vector de entrada — CVE-2015-4133**
