@@ -113,7 +113,7 @@ Esto es llamativo porque reflex gallery contiene una vulnerabilidad conocida, CV
 
 Y vemos subidas tanto de la ip 94.242.54.22, identificada como potencial atacante, como de otra ip más, la 88.0.112.115.
 
-Es probable que con esto tengamos un registro suficiente de cómo de llevó a cabo el web defacement, ya que 
+Es probable que con esto tengamos un registro suficiente de cómo de llevó a cabo el web defacement.
 
 ## 4. Tabla de evidencias
 

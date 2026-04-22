@@ -48,6 +48,11 @@ Plugin | Fragmento añadido de un programa que permite otras funcionalidades |
 | [Figura 9](#figura-9) | Errores en `error.log` |
 | [Figura 10](#figura-10) | Archivos del directorio home de `ubuntu` |
 | [Figura 11](#figura-11) | Archivo `xmlrpc.php` activo |
+| [Figura 12](#figura-12)| Conexiones ssh con ejecución de procesos con privilegios elevados. IP: 23.226.128.37 |
+| [Figura 13](#figura-13)| Ocurrencias de la ip sospechosa relacionadas con la web desplegada en el servidor afectado. |
+| [Figura 14](#figura-14)| Ocurrencias de la dirección de la web con escaneos usando herramientas de análisis de vulnerabilidades. |
+| [Figura 15](#figura-15)| Llamadas de la ip sospechos al plugin vulnerable. |
+| [Figura 16](#figura-16)| Llamadas al plugin vulnerable de una IP adicional. |
 ---
 
 ## 4. Resumen Ejecutivo
@@ -177,26 +182,48 @@ del proceso Apache en el momento del volcado.
 
 (Figura 5) Anonymous mappings rwx en malfind.
 
-El análisis de strings sobre estas regiones y sobre la caché de páginas del kernel reveló
-la traza de ejecución `eval()'d code` del archivo `vmGAbaiewrSSuMs.php` y más de 30 funciones
-`stdapi_*` características del agente Meterpreter de Metasploit completamente cargado en
-memoria.
-
 **Análisis de conexiones de red**
 
-`linux.sockstat` mostró una única conexión TCP ESTABLISHED en el momento del volcado:
-`172.31.47.60:22 ↔ 23.226.128.37:42760`, correspondiente a la sesión SSH del investigador
-que realizó la adquisición. Los sockets de los workers Apache aparecían en estado `CLOSE`,
-lo que confirma que la sesión Meterpreter había finalizado su conexión con el servidor de
-mando y control antes del volcado, sin que sea posible recuperar la IP de destino de dicha
-conexión en este estado.
+`linux.sockstat` mostró conexiones ssh con posterior ejecución de comandos con privilegios elevados.
 
-La page cache del kernel contenía fragmentos del `access.log` y del `auth.log` de Apache, que
-permitieron recuperar las peticiones de WPScan, las subidas de archivos PHP y los registros
-de conexión SSH — incluyendo la identificación de la IP `23.226.128.37` como origen de la
-sesión SSH con ejecución de comandos privilegiados, que inicialmente se consideró sospechosa
-pero fue descartada como actividad del investigador al correlacionarla con la cadena de
-adquisición (`insmod lime`) visible en el árbol de procesos.
+<a id="figura-12"></a>
+![alt text](<investigaciones/img/2026-04-19 18_53_42-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 12) Conexiones ssh con ejecución de procesos con privilegios elevados. IP: 23.226.128.37.
+
+Se procede a buscar en memoria las ocurrencias de la IP 23.226.128.37.
+
+<a id="figura-13"></a>
+![alt text](<investigaciones/img/2026-04-19 19_15_53-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 13) Ocurrencias de la ip sospechosa relacionadas con la web desplegada en el servidor afectado.
+
+Se procede entonces a buscar ocurrencias en memoria de la dirección url de la web.
+
+<a id="figura-14"></a>
+![alt text](<investigaciones/img/2026-04-19 19_21_28-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 14) Ocurrencias de la dirección de la web con escaneos usando herramientas de análisis de vulnerabilidades.
+
+Comprobamos que la web ha sido analizada en numerosas ocasiones con wpscan, una herramienta de escaneo de vulnerabilidades de wordpress. Vemos que estos escaneos los realiza otra dirección IP distinta, 94.242.54.22.
+
+En los registros, se observa también que ha habido conexiones de esa misma IP con el plugin reflex gallery de wordpress, que posee una vulnerabilidad conocida, CVE-2015-4133 (Reflex Gallery Arbitrary File Upload). Esta vulnerabilidad permite la subida de archivos sin filtrar.
+
+<a id="figura-15"></a>
+![alt text](<investigaciones/img/2026-04-19 19_30_55-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 15) Llamadas de la ip sospechos al plugin vulnerable.
+
+Se prorcede entonces a buscar ocurrencias del plugin en memoria, y se encuentran llamadas por parte de otra IP, la 88.0.112.115.
+
+<a id="figura-16"></a>
+![alt text](<investigaciones/img/2026-04-19 19_34_23-kali-linux-2025.4-virtualbox-amd64 (after upgrade 2) [Corriendo] - Oracle Virtua.png>)
+
+(Figura 16) Llamadas al plugin vulnerable de una IP adicional.
+
+
+
+
 
 #### 7.2.2 Análisis de la imagen de disco
 
@@ -328,9 +355,9 @@ No se encontró evidencia de escalada de privilegios al usuario `ubuntu`, de mod
 core de WordPress, de persistencia más allá del proceso Apache ni de actividad maliciosa
 previa al 23 de julio de 2018.
 
----
 
-## 10. Anexo 1. Sobre el Perito
+## 10. Anexos
+### Anexo 1. Sobre el Perito
 
 | Campo | Valor |
 |---|---|
@@ -338,9 +365,8 @@ previa al 23 de julio de 2018.
 | Asignatura | Análisis Forense Informático |
 | Fecha del informe | 20/04/2026 |
 
----
 
-## 11. Anexo 2. Sumas de Verificación
+### Anexo 2. Sumas de Verificación
 
 | Evidencia | Algoritmo | Hash |
 |---|---|---|
