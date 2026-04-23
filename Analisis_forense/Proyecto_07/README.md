@@ -26,4 +26,40 @@
 
 ![img](img/HASH_LASSANDRA_CORDAIS_AB.png)
 
+- Imagen de la tarjeta SD de la Cámara IP Imou
+
+![img](img/HASH_IMAGEN_SD_AD.png)
+
+- Extracción conversaciones Telegram - Teléfono Xiaomi Redmi Note 11 de Lassandra (víctima)
+
+![img](img/HASH_TELEGRAM_LASSANDRA.png)
+
+- Extracción conversaciones WhatsApp - Teléfono Xiaomi Redmi Note 11 de Lassandra (víctima)
+
+![img](img/HASH_WHATSAPP_LASSANDRA.png)
+
+- Extracción conversaciones WhatsApp - Teléfono X25 de Atalus (principal sospechoso)
+
+![img](img/HASH_WHATSAPP_ATALUS.png)
+
+- Extracción conversaciones WhatsApp - Teléfono Xiaomi Redmi Note 11 de Camillo (cómplice)
+
+![img](img/HASH_WHATSAPP_CAMILO.png)
+
+- Extracción copia de seguridad del servidor Instagram de Lassandra (víctima)
+
+![img](img/HASH_INSTAGRAM_LASSANDRA.png)
+
+- Extracción copia de seguridad del servidor Google de Lassandra (víctima)
+
+![img](img/GOOGLE_DATA_LASSANDRA.png)
+
+- Extracción copia de seguridad del servidor Google de Atalus (principal sospechoso)
+
+![img](img/GOOGLE_DATA_ATALAUS.png)
+
+- Extracción copia de seguridad del servidor Google de Camillo (cómplice)
+
+![img](img/GOOGLE_DATA_CAMILO.png)
+
 
