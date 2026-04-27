@@ -67,7 +67,7 @@ acoso cibernético, análisis forense digital, Rubber Ducky, inyección de tecla
 
 **Figuras en Anexos**
 
-Las imágenes y vestigios referenciados a lo largo del análisis se encuentran documentados en el archivo [Anexos.md](Anexos.md), numerados del 1 al 21 (imágenes) y del 1 al 10 (vestigios).
+Las imágenes y vestigios referenciados a lo largo del análisis se encuentran documentados en el archivo [Anexos.md](anexos.md), numerados del 1 al 21 (imágenes) y del 1 al 10 (vestigios).
 
 ---
 
@@ -232,13 +232,13 @@ ocasiones. Al día siguiente, Atalus reveló haber estado vigilándola físicame
 al mencionar haberla visto salir del cine, a lo que Lassandra respondió
 acusándole directamente de acoso.
 
-[Véase Anexo de Imágenes. Imagen 1.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 1.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 2.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 2.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 3.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 3.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 1.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 1.](anexos.md)
 
 En el WhatsApp de Atalus se encontró además una conversación con Camillo Richbald
 fechada el 28 de abril, en la que Atalus comunica haber sido bloqueado por Lassandra
@@ -246,11 +246,11 @@ y ambos planifican una represalia. En este intercambio Atalus describe abiertame
 su plan de usar un Rubber Ducky para robar las credenciales de la víctima, y Camillo
 responde animándole a ejecutarlo.
 
-[Véase Anexo de Imágenes. Imagen 4.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 4.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 5.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 5.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 6.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 6.](anexos.md)
 
 La conversación entre Atalus y Camillo continuó el 29 de abril de 2023. En este punto
 el Rubber Ducky ya había sido conectado en el ordenador del centro el día anterior,
@@ -261,13 +261,13 @@ A partir de ese momento, y siguiendo la sugerencia de Camillo,
 quien le envió la imagen que quería usar como foto de perfil de la víctima, Atalus
 procedió a acceder de forma no autorizada a la cuenta de Instagram de Lassandra.
 
-[Véase Anexo de Imágenes. Imagen 7.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 7.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 8.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 8.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 9.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 9.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 2.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 2.](anexos.md)
 
 ### 7.2.3 Análisis de Actividad en Telegram
 
@@ -275,9 +275,9 @@ Tras el bloqueo en WhatsApp, Atalus continuó el hostigamiento a través de Tele
 Los mensajes extraídos de la base de datos de Lassandra muestran un tono amenazante
 y recriminatorio, con referencias directas al rechazo recibido.
 
-[Véase Anexo de Imágenes. Imagen 10.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 10.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 4.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 4.](anexos.md)
 
 ### 7.2.4 Análisis del Historial de Búsquedas de Atalus
 
@@ -286,11 +286,11 @@ formas de obtener imágenes de perfil de cuentas de Instagram ajenas. Estas cons
 son anteriores a la ejecución del ataque, lo que evidencia una premeditación clara
 y un proceso de preparación técnica previo.
 
-[Véase Anexo de Imágenes. Imagen 11.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 11.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 12.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 12.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 3.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 3.](anexos.md)
 
 ### 7.2.5 Análisis de Grabaciones Cámara IP
 
@@ -300,13 +300,13 @@ dispositivo USB y abandona rápidamente el lugar. Posteriormente, Lassandra se s
 en ese mismo ordenador y trabaja con él, momento en el que el payload del Rubber
 Ducky ya habría ejecutado la extracción de sus credenciales de forma silenciosa.
 
-[Véase Anexo de Imágenes. Imagen 13.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 13.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 14.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 14.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 5.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 5.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 6.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 6.](anexos.md)
 
 ### 7.2.6 Análisis de Accesos a Instagram de Lassandra
 
@@ -320,27 +320,27 @@ terminal móvil de Atalus, identificado cruzando los datos de su cuenta de Googl
 > horas para obtener la hora local CEST (UTC+2), y diez horas adicionales en el caso
 > de los registros internos de la plataforma.
 
-[Véase Anexo de Imágenes. Imagen 15.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 15.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 16.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 16.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 17.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 17.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 7.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 7.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 8.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 8.](anexos.md)
 
 El historial del navegador del móvil de Atalus registra además la búsqueda y
 selección de la imagen utilizada como nueva foto de perfil de Lassandra, imagen
 que Camillo le había sugerido expresamente en la conversación de WhatsApp.
 
-[Véase Anexo de Imágenes. Imagen 18.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 18.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 19.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 19.](anexos.md)
 
-[Véase Anexo de Imágenes. Imagen 20.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 20.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 9.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 9.](anexos.md)
 
 ### 7.2.7 Análisis del Correo Electrónico de la Víctima
 
@@ -349,9 +349,9 @@ notificaciones de acceso a su cuenta de Instagram que se corresponden con los ev
 identificados en el análisis: el acceso desde el ordenador del centro, el acceso desde
 el móvil de Atalus y el acceso de la propia víctima al descubrir la manipulación.
 
-[Véase Anexo de Imágenes. Imagen 21.](Anexos.md)
+[Véase Anexo de Imágenes. Imagen 21.](anexos.md)
 
-[Véase Anexo de Vestigios. Vestigio 10.](Anexos.md)
+[Véase Anexo de Vestigios. Vestigio 10.](anexos.md)
 
 ---
 
