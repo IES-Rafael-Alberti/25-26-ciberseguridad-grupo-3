@@ -281,3 +281,14 @@ que Camillo le habia sugerido expresamente en la conversacion de WhatsApp.
 [Vease Anexo de Imagenes. Imagen 20.](Anexos.md)
 
 [Vease Anexo de Vestigios. Vestigio 9.](Anexos.md)
+
+## 4.7 Correo Electronico de la Victima<div id='correo' />
+
+El archivo de correo de Lassandra, obtenido del export de Google, contiene tres
+notificaciones de acceso a su cuenta de Instagram que se corresponden con los eventos
+identificados en el analisis: el acceso desde el ordenador del centro, el acceso desde
+el movil de Atalus y el acceso de la propia victima al descubrir la manipulacion.
+
+[Vease Anexo de Imagenes. Imagen 21.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 10.](Anexos.md)
