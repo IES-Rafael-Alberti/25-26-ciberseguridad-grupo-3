@@ -247,3 +247,37 @@ Ducky ya habria ejecutado la extraccion de sus credenciales de forma silenciosa.
 [Vease Anexo de Vestigios. Vestigio 5.](Anexos.md)
 
 [Vease Anexo de Vestigios. Vestigio 6.](Anexos.md)
+
+## 4.6 Accesos a Instagram de Lassandra<div id='instagram' />
+
+El registro de actividad de la cuenta de Instagram de Lassandra muestra tres inicios
+de sesion desde dispositivos diferentes. El primero procede de un navegador de
+escritorio cuya marca temporal coincide con la segunda grabacion de la camara IP.
+El segundo se origina desde un agente de usuario que corresponde exactamente al
+terminal movil de Atalus, identificado cruzando los datos de su cuenta de Google.
+
+Nota tecnica: todas las marcas horarias de Instagram deben ajustarse sumando dos
+horas para obtener la hora local CEST (UTC+2), y diez horas adicionales en el caso
+de los registros internos de la plataforma.
+
+[Vease Anexo de Imagenes. Imagen 15.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 16.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 17.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 7.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 8.](Anexos.md)
+
+El historial del navegador del movil de Atalus registra ademas la busqueda y
+seleccion de la imagen utilizada como nueva foto de perfil de Lassandra, imagen
+que Camillo le habia sugerido expresamente en la conversacion de WhatsApp.
+
+[Vease Anexo de Imagenes. Imagen 18.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 19.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 20.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 9.](Anexos.md)
