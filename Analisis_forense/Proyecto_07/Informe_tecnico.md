@@ -292,3 +292,13 @@ el movil de Atalus y el acceso de la propia victima al descubrir la manipulacion
 [Vease Anexo de Imagenes. Imagen 21.](Anexos.md)
 
 [Vease Anexo de Vestigios. Vestigio 10.](Anexos.md)
+
+# 5. Conclusion<div id='conclusion' />
+
+El origen del incidente es el rechazo de Lassandra hacia Atalus, que
+escalo desde el acoso por mensajeria hasta un ataque informatico premeditado. Atalus
+se documento sobre el uso de dispositivos Rubber Ducky, conecto uno de ellos en el
+ordenador que usaba la victima en el centro educativo y obtuvo sus credenciales,
+con las que accedio posteriormente a su Instagram desde su propio movil para
+alterar su perfil. En todo momento conto con el respaldo y la instigacion de
+Camillo Richbald.
