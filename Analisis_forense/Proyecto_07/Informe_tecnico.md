@@ -100,3 +100,134 @@ hash de verificacion.
 | WhatsApp-Database-Lassandra-Cordalis.zip | 167.088 | 83b83a02e748e322933bbe29d98bdf8c21af8fd5457185a9d5ee903f9079e3c5 | 1477180EFC30A310B09166274D509C77 | 934014579462B514AA5D4A897558B17A6E63DFD0 |
 
 ---
+
+# 4. Desarrollo del Analisis<div id='desarrollo' />
+
+## 4.1 Verificacion de Integridad<div id='integridad' />
+
+Antes de iniciar cualquier proceso de analisis, se procedio a calcular y comparar los
+valores hash de cada evidencia con los de referencia proporcionados. La verificacion
+confirma que ninguna de las evidencias ha sido alterada desde su adquisicion original.
+
+- Imagen del disco del PC de Lassandra
+
+![img](img/hash-disco-img.png)
+
+![img](img/hash-disco-zip.png)
+
+- Extracción copia de seguridad ADB - Teléfono X25 de Atalus
+
+![img](img/HASH_ATALUS_GRASSTEM_AB.png)
+
+- Extracción copia de seguridad ADB - Teléfono Xiaomi Redmi Note 11 de Camillo
+
+![img](img/HASH_CAMILO_RICHBALD_AB.png)
+
+- Extracción copia de seguridad ADB - Teléfono Xiaomi Redmi Note 11 de Lassandra
+
+![img](img/HASH_LASSANDRA_CORDAIS_AB.png)
+
+- Imagen de la tarjeta SD de la Cámara IP Imou
+
+![img](img/HASH_IMAGEN_SD_AD.png)
+
+- Extracción conversaciones Telegram - Teléfono Xiaomi Redmi Note 11 de Lassandra (víctima)
+
+![img](img/HASH_TELEGRAM_LASSANDRA.png)
+
+- Extracción conversaciones WhatsApp - Teléfono Xiaomi Redmi Note 11 de Lassandra (víctima)
+
+![img](img/HASH_WHATSAPP_LASSANDRA.png)
+
+- Extracción conversaciones WhatsApp - Teléfono X25 de Atalus (principal sospechoso)
+
+![img](img/HASH_WHATSAPP_ATALUS.png)
+
+- Extracción conversaciones WhatsApp - Teléfono Xiaomi Redmi Note 11 de Camillo (cómplice)
+
+![img](img/HASH_WHATSAPP_CAMILO.png)
+
+- Extracción copia de seguridad del servidor Instagram de Lassandra (víctima)
+
+![img](img/HASH_INSTAGRAM_LASSANDRA.png)
+
+- Extracción copia de seguridad del servidor Google de Lassandra (víctima)
+
+![img](img/GOOGLE_DATA_LASSANDRA.png)
+
+- Extracción copia de seguridad del servidor Google de Atalus (principal sospechoso)
+
+![img](img/GOOGLE_DATA_ATALAUS.png)
+
+- Extracción copia de seguridad del servidor Google de Camillo (cómplice)
+
+![img](img/GOOGLE_DATA_CAMILO.png)
+
+## 4.2 Conversaciones WhatsApp<div id='whatsapp' />
+
+El analisis de la base de datos de WhatsApp de Lassandra muestra como Atalus
+establecio contacto con ella el 26 de abril de 2023, presentandose como compañero
+de clase e insistiendo en quedar. La victima rechazo sus propuestas en varias
+ocasiones. Al dia siguiente, Atalus revelo haber estado vigilandola fisicamente
+al mencionar haberla visto salir del cine, a lo que Lassandra respondio
+acusandole directamente de acoso.
+
+[Vease Anexo de Imagenes. Imagen 1.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 2.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 3.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 1.](Anexos.md)
+
+En el WhatsApp de Atalus se encontro ademas una conversacion con Camillo Richbald
+fechada el 28 de abril, en la que Atalus comunica haber sido bloqueado por Lassandra
+y ambos planifican una represalia. En este intercambio Atalus describe abiertamente
+su plan de usar un Rubber Ducky para robar las credenciales de la victima, y Camillo
+responde animandole a ejecutarlo.
+
+[Vease Anexo de Imagenes. Imagen 4.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 5.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 6.](Anexos.md)
+
+La conversacion entre Atalus y Camillo continuo el 29 de abril de 2023. En este punto
+el Rubber Ducky ya habia sido conectado en el ordenador del centro el dia anterior,
+pero Atalus encontro dificultades tecnicas. 
+Tras desplazarse al domicilio de Camillo para solventar el problema,
+Atalus confirmo a las 20:25 que ya podia operar con normalidad.
+A partir de ese momento, y siguiendo la sugerencia de Camillo,
+quien le envio la imagen que queria usar como foto de perfil de la victima, Atalus
+procedio a acceder de forma no autorizada a la cuenta de Instagram de Lassandra.
+
+[Vease Anexo de Imagenes. Imagen 7.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 8.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 9.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 2.](Anexos.md)
+
+## 4.3 Actividad en Telegram<div id='telegram' />
+
+Tras el bloqueo en WhatsApp, Atalus continuo el hostigamiento a traves de Telegram el 28 de abril a las 19:31.
+Los mensajes extraidos de la base de datos de Lassandra muestran un tono amenazante
+y recriminatorio, con referencias directas al rechazo recibido.
+
+[Vease Anexo de Imagenes. Imagen 10.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 4.](Anexos.md)
+
+## 4.4 Historial de Busquedas de Atalus<div id='busquedas' />
+
+El examen de los datos de Google de Atalus revela busquedas especificas el 27 de abril a partir de las 19:00, sobre el funcionamiento de dispositivos Rubber Ducky, metodos de robo de credenciales y
+formas de obtener imagenes de perfil de cuentas de Instagram ajenas. Estas consultas
+son anteriores a la ejecucion del ataque, lo que evidencia una premeditacion clara
+y un proceso de preparacion tecnica previo.
+
+[Vease Anexo de Imagenes. Imagen 11.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 12.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 3.](Anexos.md)
