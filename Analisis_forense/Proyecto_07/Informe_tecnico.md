@@ -37,3 +37,9 @@ robarle las credenciales de acceso. Camillo Richbald participo activamente en la
 planificacion e incitacion de dicho ataque. La culminacion de la operacion fue el
 acceso no autorizado a la cuenta de Instagram de Lassandra y la manipulacion de su
 perfil publico.
+
+## Linea Temporal<div id='linea' />
+
+![linea_temporal.png](img/linea_temporal.png)
+
+---
