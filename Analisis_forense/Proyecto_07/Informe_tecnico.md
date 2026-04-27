@@ -302,3 +302,17 @@ ordenador que usaba la victima en el centro educativo y obtuvo sus credenciales,
 con las que accedio posteriormente a su Instagram desde su propio movil para
 alterar su perfil. En todo momento conto con el respaldo y la instigacion de
 Camillo Richbald.
+
+# 6. Recomendaciones<div id='recomendaciones' />
+
+- Bloqueo de puertos USB en los equipos del centro educativo para impedir la
+  conexion de dispositivos no autorizados, eliminando el vector de ataque empleado.
+- Activacion de autenticacion en dos factores en todas las cuentas digitales del
+  alumnado, lo que habria impedido el acceso a Instagram incluso con las credenciales
+  comprometidas.
+- Formacion en ciberseguridad dirigida tanto al alumnado como al personal docente,
+  con especial atencion al reconocimiento de situaciones de acoso digital y a la
+  proteccion de credenciales personales.
+- Implantacion de un protocolo de denuncia confidencial dentro del centro para que
+  el alumnado pueda reportar situaciones de ciberacoso de forma segura y sin temor
+  a represalias.
