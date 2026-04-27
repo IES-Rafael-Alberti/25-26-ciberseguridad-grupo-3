@@ -1,36 +1,58 @@
-# Anexos
+# Anexos — Caso Forense Digital
 
-## Metodología Utilizada
+## Indice
 
-A continuación se describe el procedimiento seguido por el perito durante las distintas fases de la investigación forense digital.
+1. [Metodologia](#metodologia)
+2. [Herramientas Empleadas](#herramientas)
+3. [Imagenes](#imagenes)
+4. [Vestigios](#vestigios)
 
-### Adquisición de Evidencia Digital
+---
 
-El proceso de adquisición debe garantizar la integridad de cada evidencia obtenida, minimizando cualquier riesgo de alteración. Para ello se seguirán los siguientes criterios:
+## 1. Metodologia<div id='metodologia' />
 
-- Registrar con exactitud la **fecha y hora** en que se llevó a cabo cada extracción.
-- Evitar la instalación de software en los dispositivos objeto de análisis salvo que resulte imprescindible para el proceso de adquisición.
-- Obtener las evidencias respetando el **orden de volatilidad**.
-- Documentar cada paso del proceso con el nivel de detalle necesario para garantizar su **reproducibilidad**, de modo que cualquier otro perito pueda replicar el procedimiento y obtener los mismos resultados.
+El proceso de investigacion se estructuro en tres fases diferenciadas:
 
-### Preservación y Almacenamiento de la Evidencia
+**Adquisicion de evidencias**
 
-Con el fin de mantener la integridad de las evidencias y garantizar una cadena de custodia válida, se registrará la siguiente información para cada elemento recopilado:
+Se siguieron los criterios estandar de la forensia digital para garantizar la
+integridad de cada artefacto:
 
-- **Lugar, fecha y hora** en que fue descubierta y recolectada la evidencia.
-- **Identidad de la persona** responsable de su recogida.
-- **Registro de manipulaciones**, indicando quién accedió a la evidencia, en qué momento y con qué finalidad.
-- **Custodia de la evidencia**, especificando quién la ha tenido bajo su responsabilidad, durante cuánto tiempo y en qué condiciones se ha conservado.
-- **Cambios de custodia**, reflejando el nombre del nuevo responsable, la fecha y hora del traspaso, y la posterior comprobación de los hashes para verificar que no se ha producido ninguna alteración.
-- **Método de almacenamiento**, que dependerá del tipo de dispositivo. En el caso de terminales móviles, se recomienda su conservación en **bolsas de Faraday** para impedir comunicaciones externas que puedan comprometer la evidencia.
+1. Registro exacto de la fecha y hora de cada extraccion.
+2. Minimizacion de la interaccion con los dispositivos analizados para evitar
+   cualquier modificacion del estado original.
+3. Recogida de evidencias respetando el orden de volatilidad.
+4. Documentacion exhaustiva del proceso para asegurar su reproducibilidad por
+   parte de cualquier otro perito.
 
-### Análisis de Evidencias
+**Preservacion y cadena de custodia**
 
-En esta fase se desarrollarán distintos procedimientos técnicos orientados a reconstruir los hechos investigados y responder a cuestiones clave del incidente, como el origen del acceso no autorizado, los sistemas o cuentas afectadas, los métodos empleados y la posible autoría de los hechos.
+Para cada evidencia se registro la siguiente informacion:
 
-Para asegurar la validez del análisis, todas las actuaciones deberán realizarse conforme a los siguientes principios:
+- Lugar, fecha y hora de descubrimiento y recogida.
+- Identidad del responsable de la recogida y de cada acceso posterior.
+- Condiciones y metodo de almacenamiento. Los dispositivos moviles se conservaron
+  en bolsas de Faraday para impedir cualquier comunicacion inalambrica que pudiera
+  comprometer su contenido.
+- En caso de traspaso de custodia: nombre del nuevo responsable, fecha y hora,
+  y verificacion de hashes para confirmar que no se ha producido alteracion alguna.
 
-- **Metódico**, siguiendo un procedimiento ordenado y estructurado.
-- **Auditable**, dejando constancia de todas las acciones efectuadas.
-- **Repetible**, de manera que otro profesional pueda obtener el mismo resultado aplicando el mismo proceso.
-- **Defendible**, apoyando cada conclusión en evidencias objetivas, verificables y debidamente documentadas.
+**Analisis**
+
+Todas las actuaciones analiticas se llevaron a cabo respetando los principios de
+metodicidad, auditabilidad, repetibilidad y defensa en juicio de cada conclusion.
+
+---
+
+## 2. Herramientas Empleadas<div id='herramientas' />
+
+| Herramienta | Version | Uso |
+| --- | --- | --- |
+| WhatsApp Msgstore Viewer | Ultima disponible | Lectura y visualizacion de mensajes desde msgstore.db |
+| DB Browser for SQLite | 3.12.2.0 | Inspeccion manual de bases de datos SQLite |
+| FTK Imager | 3.1.2 | Adquisicion y verificacion de imagenes forenses |
+| Android Backup Extractor | master-20221109063121 | Extraccion de copias de seguridad ADB |
+| telegram_extractor.py | 1.0 (script propio) | Extraccion de mensajes desde cache4.db de Telegram |
+| USB Detective | 1.2 | Analisis de artefactos de conexion de dispositivos USB |
+
+---
