@@ -391,11 +391,10 @@ Camillo Richbald.
 
 | Campo | Datos |
 |-------|-------|
-| Nombre y apellidos | |
-| Titulación | |
-| Número de colegiado / acreditación | |
-| Experiencia profesional | |
-| Contacto | |
+| Nombre y apellidos | David Jimenez Ruíz |
+| Titulación | Perito forense |
+| Número de colegiado / acreditación | 4901948498 |
+| Contacto | jimenezruizdavid2@gmail.com |
 
 El perito declara haber actuado con plena independencia técnica y que las conclusiones
 recogidas en este informe reflejan su opinión profesional fundamentada exclusivamente
