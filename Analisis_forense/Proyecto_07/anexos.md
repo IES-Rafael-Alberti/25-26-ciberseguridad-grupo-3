@@ -130,4 +130,48 @@ Imagen 20<div id='20' />
 Imagen 21<div id='21' />
 ![CORREOS_LASSANDRA.png](img/CORREOS_LASSANDRA.png)
 
----
+## 4. Vestigios<div id='vestigios' />
+
+[Vestigio 1](#v1) | [Vestigio 2](#v2) | [Vestigio 3](#v3) | [Vestigio 4](#v4) |
+[Vestigio 5](#v5) | [Vestigio 6](#v6) | [Vestigio 7](#v7) | [Vestigio 8](#v8) |
+[Vestigio 9](#v9) | [Vestigio 10](#v10)
+
+Vestigio 1<div id='v1' />
+
+| Campo | Valor |
+| --- | --- |
+| Ruta | WhatsApp-Database-Lassandra-Cordalis/msgstore.db |
+| Tamano | 1.228.800 bytes |
+| HASH MD5 | 4f7e0758d093ce4cf33e1c851dc62c9f |
+| HASH SHA256 | dcc837420c7d72b7b3ea09483ff0586daa7a50ca9c8c78b790db95866dcae0f5 |
+| Contenido | ![whats-Atalus_Lassandra.png](img/whats-Atalus_Lassandra.png) |
+
+Vestigio 2<div id='v2' />
+
+| Campo | Valor |
+| --- | --- |
+| Ruta | WhatsApp-Database-Atalus-Grasstem/msgstore.db |
+| Tamano | 1.273.856 bytes |
+| HASH MD5 | abfacf6b7a029fe358d0a13c3ce7e2a8 |
+| HASH SHA256 | 4a053239cfacab3f674a875c84cc0d80d873a418e608e1be249a26f93870f3cc |
+| Contenido | ![whats-Atalus_Camilo.png](img/whats-Atalus_Camilo.png) |
+
+Vestigio 3<div id='v3' />
+
+| Campo | Valor |
+| --- | --- |
+| Ruta | Google-Data-Atalus-Grasstem/takeout-20230505T011442Z-001/Takeout/Mi actividad/Busqueda/MiActividad.html |
+| Tamano | 168.832 bytes |
+| HASH MD5 | 107aa75dd60145151336cccaab37f21e |
+| HASH SHA256 | dcbd51ba2f77917998623ae88b82ff10697bd8b53c78a46bbc9d6a8e28bcf1fe |
+| Contenido | ![Busqueda-Atalus_Ruberducky.png](img/Busqueda-Atalus_Ruberducky.png) |
+
+Vestigio 4<div id='v4' />
+
+| Campo | Valor |
+| --- | --- |
+| Ruta | telegram/apps/org.telegram.messenger/f/cache4.db |
+| Tamano | 4.096 bytes |
+| HASH MD5 | 48fd1091cab6792ec9f4f79184fc4a8e |
+| HASH SHA256 | 7c0cbac0764d013f7a25b5fddabdc2e74706cd17c04d7c30c4d51c58b254b5eb |
+| Contenido | ![Telegram_Lassandra.png](img/Telegram_Lassandra.png) |

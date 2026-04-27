@@ -40,7 +40,7 @@ perfil publico.
 
 ## Linea Temporal<div id='linea' />
 
-![linea_temporal.png](img/linea_temporal.png)
+![alt text](img/Linea_Temporal.png)
 
 ---
 
@@ -231,3 +231,19 @@ y un proceso de preparacion tecnica previo.
 [Vease Anexo de Imagenes. Imagen 12.](Anexos.md)
 
 [Vease Anexo de Vestigios. Vestigio 3.](Anexos.md)
+
+## 4.5 Grabaciones Camara IP<div id='camara' />
+
+Las grabaciones de la camara IP Imou del centro muestran a una persona con capucha
+el 28 de abril de 2023 se acerca a uno de los equipos del aula, conecta un
+dispositivo USB y abandona rapidamente el lugar. Posteriormente, Lassandra se sienta
+en ese mismo ordenador y trabaja con el, momento en el que el payload del Rubber
+Ducky ya habria ejecutado la extraccion de sus credenciales de forma silenciosa.
+
+[Vease Anexo de Imagenes. Imagen 13.](Anexos.md)
+
+[Vease Anexo de Imagenes. Imagen 14.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 5.](Anexos.md)
+
+[Vease Anexo de Vestigios. Vestigio 6.](Anexos.md)
