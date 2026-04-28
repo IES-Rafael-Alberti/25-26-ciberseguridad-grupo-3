@@ -2,32 +2,32 @@
 
 ## Índice
 
-1. [Juramento y Declaración de Abstención y Tacha](#1-juramento-y-declaración-de-abstención-y-tacha)
-2. [Palabras Clave](#2-palabras-clave)
-3. [Índice de Figuras](#3-índice-de-figuras)
-4. [Resumen Ejecutivo](#4-resumen-ejecutivo)
+1. [Juramento y declaración de abstención y tacha](#1-juramento-y-declaración-de-abstención-y-tacha)
+2. [Palabras clave](#2-palabras-clave)
+3. [Índice de figuras](#3-índice-de-figuras)
+4. [Resumen ejecutivo](#4-resumen-ejecutivo)
 5. [Introducción](#5-introducción)
    - 5.1 [Antecedentes](#51-antecedentes)
    - 5.2 [Objetivos](#52-objetivos)
    - 5.3 [Alcance](#53-alcance)
-6. [Fuentes de Información](#6-fuentes-de-información)
-   - 6.1 [Adquisición de Evidencias](#61-adquisición-de-evidencias)
+6. [Fuentes de información](#6-fuentes-de-información)
+   - 6.1 [Adquisición de evidencias](#61-adquisición-de-evidencias)
 7. [Análisis](#7-análisis)
-   - 7.1 [Herramientas Utilizadas](#71-herramientas-utilizadas)
+   - 7.1 [Herramientas utilizadas](#71-herramientas-utilizadas)
    - 7.2 [Procesos](#72-procesos)
-     - 7.2.1 [Verificación de Integridad](#721-verificación-de-integridad)
-     - 7.2.2 [Análisis de Conversaciones WhatsApp](#722-análisis-de-conversaciones-whatsapp)
-     - 7.2.3 [Análisis de Actividad en Telegram](#723-análisis-de-actividad-en-telegram)
-     - 7.2.4 [Análisis del Historial de Búsquedas de Atalus](#724-análisis-del-historial-de-búsquedas-de-atalus)
-     - 7.2.5 [Análisis de Grabaciones Cámara IP](#725-análisis-de-grabaciones-cámara-ip)
-     - 7.2.6 [Análisis de Accesos a Instagram de Lassandra](#726-análisis-de-accesos-a-instagram-de-lassandra)
-     - 7.2.7 [Análisis del Correo Electrónico de la Víctima](#727-análisis-del-correo-electrónico-de-la-víctima)
+     - 7.2.1 [Verificación de integridad](#721-verificación-de-integridad)
+     - 7.2.2 [Análisis de conversaciones WhatsApp](#722-análisis-de-conversaciones-whatsapp)
+     - 7.2.3 [Análisis de actividad en Telegram](#723-análisis-de-actividad-en-telegram)
+     - 7.2.4 [Análisis del historial de búsquedas de Atalus](#724-análisis-del-historial-de-búsquedas-de-atalus)
+     - 7.2.5 [Análisis de grabaciones cámara IP](#725-análisis-de-grabaciones-cámara-ip)
+     - 7.2.6 [Análisis de accesos a Instagram de Lassandra](#726-análisis-de-accesos-a-instagram-de-lassandra)
+     - 7.2.7 [Análisis del correo electrónico de la víctima](#727-análisis-del-correo-electrónico-de-la-víctima)
 8. [Limitaciones](#8-limitaciones)
 9. [Conclusiones](#9-conclusiones)
-10. [Anexo 1. Sobre el Perito](#10-anexo-1-sobre-el-perito)
-11. [Anexo 2. Sumas de Verificación](#11-anexo-2-sumas-de-verificación)
+10. [Anexo 1. Sobre el perito](#10-anexo-1-sobre-el-perito)
+11. [Anexo 2. Sumas de verificación](#11-anexo-2-sumas-de-verificación)
 
----
+ 
 
 # 1. Juramento y Declaración de Abstención y Tacha
 
@@ -35,20 +35,17 @@ El/la abajo firmante, en calidad de perito/a informático/a, jura o promete sole
 
 Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstención o tacha previstas en la legislación vigente en relación con las partes implicadas en el presente procedimiento, y que no existe ningún vínculo personal, profesional ni económico que pueda comprometer su imparcialidad en la emisión del presente dictamen.
 
----
-
 # 2. Palabras Clave
 
-acoso cibernético, análisis forense digital, Rubber Ducky, inyección de teclado, robo de credenciales, extracción ADB, WhatsApp, Telegram, Instagram, cámara IP, imagen de disco, hash SHA-256, cadena de custodia, evidencia digital, acceso no autorizado
-
----
+- **Rubber Ducky**: Dispositivo que se conecta por USB y simula ser un teclado para ejecutar comandos automáticos en el ordenador víctima.
+- **Inyección de teclado**: suplantación de un teclado legítimo con el objetivo de ejecutar acciones en un equipo víctima. 
 
 # 3. Índice de Figuras
 
 **Figuras embebidas en el informe**
 
 | Figura | Descripción | Sección |
-|--------|-------------|---------|
+|  --|    -|   |
 | Figura 1 | Línea temporal del incidente | 4 |
 | Figura 2 | Verificación hash — disco PC infectado (.img) | 7.2.1 |
 | Figura 3 | Verificación hash — disco PC infectado (.zip) | 7.2.1 |
@@ -69,7 +66,7 @@ acoso cibernético, análisis forense digital, Rubber Ducky, inyección de tecla
 
 Las imágenes y vestigios referenciados a lo largo del análisis se encuentran documentados en el archivo [Anexos.md](anexos.md), numerados del 1 al 21 (imágenes) y del 1 al 10 (vestigios).
 
----
+ 
 
 # 4. Resumen Ejecutivo
 
@@ -86,8 +83,6 @@ perfil público.
 ## Línea Temporal
 
 ![Línea temporal del incidente](img/Linea_Temporal.png)
-
----
 
 # 5. Introducción
 
@@ -120,17 +115,24 @@ cuentas de Google, la base de datos de Telegram de la víctima, el export de su 
 de Instagram, la imagen forense del ordenador del aula y las grabaciones de la cámara
 IP Imou del centro.
 
----
+ 
 
 # 6. Fuentes de Información
 
+## 6.1 Sumas de verificación
+
+Antes de iniciar cualquier proceso de análisis, se procedió a calcular y comparar los
+valores hash de cada evidencia con los de referencia proporcionados. La verificación
+confirma que ninguna de las evidencias ha sido alterada desde su adquisición original.
+
+Se muestran las sumas de verificación y los comandos utilizados en el [Palabras clave](#-palabras-clave)
+
 ## 6.1 Adquisición de Evidencias
 
-A continuación se listan todas las evidencias sometidas a análisis. Los valores hash
-se encuentran detallados en el **Anexo 2** de este informe.
+A continuación se listan todas las evidencias sometidas a análisis.
 
 | Evidencia | Tamaño (Bytes) |
-|-----------|---------------|
+|   --|     |
 | adb-backup-Atalus-Grasstem.ab | 29.013.457 |
 | adb-backup-Camillo-Richbald.ab | 158.652 |
 | adb-backup-Lassandra-Cordalis.ab | 523.014 |
@@ -146,14 +148,14 @@ se encuentran detallados en el **Anexo 2** de este informe.
 | WhatsApp-Database-Camillo-Richbald.zip | 185.621 |
 | WhatsApp-Database-Lassandra-Cordalis.zip | 167.088 |
 
----
+ 
 
 # 7. Análisis
 
 ## 7.1 Herramientas Utilizadas
 
 | Herramienta | Uso |
-|-------------|-----|
+|    -| --|
 | ADB (Android Debug Bridge) | Extracción de copias de seguridad de dispositivos Android |
 | DB Browser for SQLite | Análisis de bases de datos WhatsApp y Telegram |
 | Autopsy / FTK Imager | Análisis de imagen forense del disco del PC |
@@ -163,11 +165,188 @@ se encuentran detallados en el **Anexo 2** de este informe.
 
 ## 7.2 Procesos
 
-### 7.2.1 Verificación de Integridad
+### 7.2.1 Análisis de Conversaciones WhatsApp
 
-Antes de iniciar cualquier proceso de análisis, se procedió a calcular y comparar los
-valores hash de cada evidencia con los de referencia proporcionados. La verificación
-confirma que ninguna de las evidencias ha sido alterada desde su adquisición original.
+El análisis de la base de datos de WhatsApp de Lassandra muestra cómo Atalus
+estableció contacto con ella el 26 de abril de 2023, presentándose como compañero
+de clase e insistiendo en quedar. La víctima rechazó sus propuestas en varias
+ocasiones. Al día siguiente, Atalus reveló haber estado vigilándola físicamente
+al mencionar haberla visto salir del cine, a lo que Lassandra respondió
+acusándole directamente de acoso.
+
+[Véase Anexo de Imágenes. Imagen 1.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 2.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 3.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 1.](anexos.md)
+
+En el WhatsApp de Atalus se encontró además una conversación con Camillo Richbald
+fechada el 28 de abril, en la que Atalus comunica haber sido bloqueado por Lassandra
+y ambos planifican una represalia. En este intercambio Atalus describe abiertamente
+su plan de usar un Rubber Ducky para robar las credenciales de la víctima, y Camillo
+responde animándole a ejecutarlo.
+
+[Véase Anexo de Imágenes. Imagen 4.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 5.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 6.](anexos.md)
+
+La conversación entre Atalus y Camillo continuó el 29 de abril de 2023. En este punto
+el Rubber Ducky ya había sido conectado en el ordenador del centro el día anterior,
+pero Atalus encontró dificultades técnicas.
+Tras desplazarse al domicilio de Camillo para solventar el problema,
+Atalus confirmó a las 20:25 que ya podía operar con normalidad.
+A partir de ese momento, y siguiendo la sugerencia de Camillo,
+quien le envió la imagen que quería usar como foto de perfil de la víctima, Atalus
+procedió a acceder de forma no autorizada a la cuenta de Instagram de Lassandra.
+
+[Véase Anexo de Imágenes. Imagen 7.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 8.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 9.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 2.](anexos.md)
+
+### 7.2.2 Análisis de Actividad en Telegram
+
+Tras el bloqueo en WhatsApp, Atalus continuó el hostigamiento a través de Telegram el 28 de abril a las 19:31.
+Los mensajes extraídos de la base de datos de Lassandra muestran un tono amenazante
+y recriminatorio, con referencias directas al rechazo recibido.
+
+[Véase Anexo de Imágenes. Imagen 10.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 4.](anexos.md)
+
+### 7.2.3 Análisis del Historial de Búsquedas de Atalus
+
+El examen de los datos de Google de Atalus revela búsquedas específicas el 27 de abril a partir de las 19:00, sobre el funcionamiento de dispositivos Rubber Ducky, métodos de robo de credenciales y
+formas de obtener imágenes de perfil de cuentas de Instagram ajenas. Estas consultas
+son anteriores a la ejecución del ataque, lo que evidencia una premeditación clara
+y un proceso de preparación técnica previo.
+
+[Véase Anexo de Imágenes. Imagen 11.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 12.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 3.](anexos.md)
+
+### 7.2.4 Análisis de Grabaciones Cámara IP
+
+Las grabaciones de la cámara IP Imou del centro muestran a una persona con capucha
+el 28 de abril de 2023 que se acerca a uno de los equipos del aula, conecta un
+dispositivo USB y abandona rápidamente el lugar. Posteriormente, Lassandra se sienta
+en ese mismo ordenador y trabaja con él, momento en el que el payload del Rubber
+Ducky ya habría ejecutado la extracción de sus credenciales de forma silenciosa.
+
+[Véase Anexo de Imágenes. Imagen 13.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 14.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 5.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 6.](anexos.md)
+
+### 7.2.5 Análisis de Accesos a Instagram de Lassandra
+
+El registro de actividad de la cuenta de Instagram de Lassandra muestra tres inicios
+de sesión desde dispositivos diferentes. El primero procede de un navegador de
+escritorio cuya marca temporal coincide con la segunda grabación de la cámara IP.
+El segundo se origina desde un agente de usuario que corresponde exactamente al
+terminal móvil de Atalus, identificado cruzando los datos de su cuenta de Google.
+
+> **Nota:** todas las marcas horarias de Instagram deben ajustarse sumando dos
+> horas para obtener la hora local CEST (UTC+2), y diez horas adicionales en el caso
+> de los registros internos de la plataforma.
+
+[Véase Anexo de Imágenes. Imagen 15.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 16.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 17.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 7.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 8.](anexos.md)
+
+El historial del navegador del móvil de Atalus registra además la búsqueda y
+selección de la imagen utilizada como nueva foto de perfil de Lassandra, imagen
+que Camillo le había sugerido expresamente en la conversación de WhatsApp.
+
+[Véase Anexo de Imágenes. Imagen 18.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 19.](anexos.md)
+
+[Véase Anexo de Imágenes. Imagen 20.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 9.](anexos.md)
+
+### 7.2.6 Análisis del Correo Electrónico de la Víctima
+
+El archivo de correo de Lassandra, obtenido del export de Google, contiene tres
+notificaciones de acceso a su cuenta de Instagram que se corresponden con los eventos
+identificados en el análisis: el acceso desde el ordenador del centro, el acceso desde
+el móvil de Atalus y el acceso de la propia víctima al descubrir la manipulación.
+
+[Véase Anexo de Imágenes. Imagen 21.](anexos.md)
+
+[Véase Anexo de Vestigios. Vestigio 10.](anexos.md)
+
+ 
+
+# 8. Limitaciones
+
+El presente análisis se ha llevado a cabo sobre las evidencias digitales proporcionadas, sin posibilidad de acceder físicamente a los dispositivos originales una vez realizadas las extracciones. Esto ha resultado en no poder verificar completamente que el usb "Rubber Ducky" contenía código malicioso.
+
+ 
+
+# 9. Conclusiones
+
+El origen del incidente es el rechazo de Lassandra hacia Atalus, que
+escaló desde el acoso por mensajería hasta un ataque informático premeditado. Atalus
+se documentó sobre el uso de dispositivos Rubber Ducky, conectó uno de ellos en el
+ordenador que usaba la víctima en el centro educativo y obtuvo sus credenciales,
+con las que accedió posteriormente a su Instagram desde su propio móvil para
+alterar su perfil. En todo momento contó con el respaldo y la instigación de
+Camillo Richbald.
+
+**Recomendaciones**
+
+- Bloqueo de puertos USB en los equipos del centro educativo para impedir la
+  conexión de dispositivos no autorizados, eliminando el vector de ataque empleado.
+- Activación de autenticación en dos factores en todas las cuentas digitales del
+  alumnado, lo que habría impedido el acceso a Instagram incluso con las credenciales
+  comprometidas.
+- Formación en ciberseguridad dirigida tanto al alumnado como al personal docente,
+  con especial atención al reconocimiento de situaciones de acoso digital y a la
+  protección de credenciales personales.
+- Implantación de un protocolo de denuncia confidencial dentro del centro para que
+  el alumnado pueda reportar situaciones de ciberacoso de forma segura y sin temor
+  a represalias.
+
+ 
+
+# 10. Anexos.
+
+## 10.1 Sobre el Perito
+
+| Campo | Datos |
+|  -|  -|
+| Nombre y apellidos | Grupo3 Forensics |
+| Titulación | Perritos forenses |
+| Número de colegiado / acreditación | 4901948498 |
+| Contacto | jimenezruizdavid2@gmail.com |
+
+El perito declara haber actuado con plena independencia técnica y que las conclusiones
+recogidas en este informe reflejan su opinión profesional fundamentada exclusivamente
+en el análisis de las evidencias digitales disponibles.
+
+ 
+
+## 10.2 Anexo 2. Sumas de Verificación
 
 **Imagen del disco del PC de Lassandra**
 
@@ -223,189 +402,8 @@ confirma que ninguna de las evidencias ha sido alterada desde su adquisición or
 
 ![Verificación hash — Google Data de Camillo](img/GOOGLE_DATA_CAMILO.png)
 
-### 7.2.2 Análisis de Conversaciones WhatsApp
-
-El análisis de la base de datos de WhatsApp de Lassandra muestra cómo Atalus
-estableció contacto con ella el 26 de abril de 2023, presentándose como compañero
-de clase e insistiendo en quedar. La víctima rechazó sus propuestas en varias
-ocasiones. Al día siguiente, Atalus reveló haber estado vigilándola físicamente
-al mencionar haberla visto salir del cine, a lo que Lassandra respondió
-acusándole directamente de acoso.
-
-[Véase Anexo de Imágenes. Imagen 1.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 2.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 3.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 1.](anexos.md)
-
-En el WhatsApp de Atalus se encontró además una conversación con Camillo Richbald
-fechada el 28 de abril, en la que Atalus comunica haber sido bloqueado por Lassandra
-y ambos planifican una represalia. En este intercambio Atalus describe abiertamente
-su plan de usar un Rubber Ducky para robar las credenciales de la víctima, y Camillo
-responde animándole a ejecutarlo.
-
-[Véase Anexo de Imágenes. Imagen 4.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 5.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 6.](anexos.md)
-
-La conversación entre Atalus y Camillo continuó el 29 de abril de 2023. En este punto
-el Rubber Ducky ya había sido conectado en el ordenador del centro el día anterior,
-pero Atalus encontró dificultades técnicas.
-Tras desplazarse al domicilio de Camillo para solventar el problema,
-Atalus confirmó a las 20:25 que ya podía operar con normalidad.
-A partir de ese momento, y siguiendo la sugerencia de Camillo,
-quien le envió la imagen que quería usar como foto de perfil de la víctima, Atalus
-procedió a acceder de forma no autorizada a la cuenta de Instagram de Lassandra.
-
-[Véase Anexo de Imágenes. Imagen 7.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 8.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 9.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 2.](anexos.md)
-
-### 7.2.3 Análisis de Actividad en Telegram
-
-Tras el bloqueo en WhatsApp, Atalus continuó el hostigamiento a través de Telegram el 28 de abril a las 19:31.
-Los mensajes extraídos de la base de datos de Lassandra muestran un tono amenazante
-y recriminatorio, con referencias directas al rechazo recibido.
-
-[Véase Anexo de Imágenes. Imagen 10.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 4.](anexos.md)
-
-### 7.2.4 Análisis del Historial de Búsquedas de Atalus
-
-El examen de los datos de Google de Atalus revela búsquedas específicas el 27 de abril a partir de las 19:00, sobre el funcionamiento de dispositivos Rubber Ducky, métodos de robo de credenciales y
-formas de obtener imágenes de perfil de cuentas de Instagram ajenas. Estas consultas
-son anteriores a la ejecución del ataque, lo que evidencia una premeditación clara
-y un proceso de preparación técnica previo.
-
-[Véase Anexo de Imágenes. Imagen 11.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 12.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 3.](anexos.md)
-
-### 7.2.5 Análisis de Grabaciones Cámara IP
-
-Las grabaciones de la cámara IP Imou del centro muestran a una persona con capucha
-el 28 de abril de 2023 que se acerca a uno de los equipos del aula, conecta un
-dispositivo USB y abandona rápidamente el lugar. Posteriormente, Lassandra se sienta
-en ese mismo ordenador y trabaja con él, momento en el que el payload del Rubber
-Ducky ya habría ejecutado la extracción de sus credenciales de forma silenciosa.
-
-[Véase Anexo de Imágenes. Imagen 13.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 14.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 5.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 6.](anexos.md)
-
-### 7.2.6 Análisis de Accesos a Instagram de Lassandra
-
-El registro de actividad de la cuenta de Instagram de Lassandra muestra tres inicios
-de sesión desde dispositivos diferentes. El primero procede de un navegador de
-escritorio cuya marca temporal coincide con la segunda grabación de la cámara IP.
-El segundo se origina desde un agente de usuario que corresponde exactamente al
-terminal móvil de Atalus, identificado cruzando los datos de su cuenta de Google.
-
-> **Nota técnica:** todas las marcas horarias de Instagram deben ajustarse sumando dos
-> horas para obtener la hora local CEST (UTC+2), y diez horas adicionales en el caso
-> de los registros internos de la plataforma.
-
-[Véase Anexo de Imágenes. Imagen 15.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 16.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 17.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 7.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 8.](anexos.md)
-
-El historial del navegador del móvil de Atalus registra además la búsqueda y
-selección de la imagen utilizada como nueva foto de perfil de Lassandra, imagen
-que Camillo le había sugerido expresamente en la conversación de WhatsApp.
-
-[Véase Anexo de Imágenes. Imagen 18.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 19.](anexos.md)
-
-[Véase Anexo de Imágenes. Imagen 20.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 9.](anexos.md)
-
-### 7.2.7 Análisis del Correo Electrónico de la Víctima
-
-El archivo de correo de Lassandra, obtenido del export de Google, contiene tres
-notificaciones de acceso a su cuenta de Instagram que se corresponden con los eventos
-identificados en el análisis: el acceso desde el ordenador del centro, el acceso desde
-el móvil de Atalus y el acceso de la propia víctima al descubrir la manipulación.
-
-[Véase Anexo de Imágenes. Imagen 21.](anexos.md)
-
-[Véase Anexo de Vestigios. Vestigio 10.](anexos.md)
-
----
-
-# 8. Limitaciones
-
-El presente análisis se ha llevado a cabo sobre las evidencias digitales proporcionadas, sin posibilidad de acceder físicamente a los dispositivos originales una vez realizadas las extracciones. No ha sido posible identificar visualmente con certeza a la persona que aparece en las grabaciones de la cámara IP, dado que portaba capucha durante toda la secuencia relevante. La atribución de dicha persona a Atalus Grasstem se fundamenta en la correlación de múltiples indicios digitales, no en reconocimiento biométrico directo.
-
----
-
-# 9. Conclusiones
-
-El origen del incidente es el rechazo de Lassandra hacia Atalus, que
-escaló desde el acoso por mensajería hasta un ataque informático premeditado. Atalus
-se documentó sobre el uso de dispositivos Rubber Ducky, conectó uno de ellos en el
-ordenador que usaba la víctima en el centro educativo y obtuvo sus credenciales,
-con las que accedió posteriormente a su Instagram desde su propio móvil para
-alterar su perfil. En todo momento contó con el respaldo y la instigación de
-Camillo Richbald.
-
-**Recomendaciones**
-
-- Bloqueo de puertos USB en los equipos del centro educativo para impedir la
-  conexión de dispositivos no autorizados, eliminando el vector de ataque empleado.
-- Activación de autenticación en dos factores en todas las cuentas digitales del
-  alumnado, lo que habría impedido el acceso a Instagram incluso con las credenciales
-  comprometidas.
-- Formación en ciberseguridad dirigida tanto al alumnado como al personal docente,
-  con especial atención al reconocimiento de situaciones de acoso digital y a la
-  protección de credenciales personales.
-- Implantación de un protocolo de denuncia confidencial dentro del centro para que
-  el alumnado pueda reportar situaciones de ciberacoso de forma segura y sin temor
-  a represalias.
-
----
-
-# 10. Anexo 1. Sobre el Perito
-
-| Campo | Datos |
-|-------|-------|
-| Nombre y apellidos | Grupo3 Forensics |
-| Titulación | Perritos forenses |
-| Número de colegiado / acreditación | 4901948498 |
-| Contacto | jimenezruizdavid2@gmail.com |
-
-El perito declara haber actuado con plena independencia técnica y que las conclusiones
-recogidas en este informe reflejan su opinión profesional fundamentada exclusivamente
-en el análisis de las evidencias digitales disponibles.
-
----
-
-# 11. Anexo 2. Sumas de Verificación
-
 | Evidencia | Tamaño (Bytes) | SHA-256 | MD5 | SHA1 |
-|-----------|---------------|---------|-----|------|
+|   --|     |   | --|  |
 | adb-backup-Atalus-Grasstem.ab | 29.013.457 | e64e952c3f43c235baf5d83f8cea1a86d7640821baefcbe89c480b0fff7688cf | 69E1E89FD971E5817A2C8C6279A80601 | 7EA6F0F6CADE8F6FA55C01C51C683216CD53D463 |
 | adb-backup-Camillo-Richbald.ab | 158.652 | 9c9c983de848c7b600a8f97a191b2fc7f9c77f5826de42fef93b410094bfac43 | 927713F263F80B4B747F65E58A1BDD53 | 985B4C25B4B72201A7ED591338FBDA9629E12154 |
 | adb-backup-Lassandra-Cordalis.ab | 523.014 | 40e6f12cf248468c2849aa2c8094d186b0264bb758d4839ee190486721da013a | DDFF7DFE751359D2C7ED4E743B91A774 | FC560A40196DC92D463C172481FBAF166D223C76 |
