@@ -45,7 +45,7 @@ Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstenci�
 **Figuras embebidas en el informe**
 
 | Figura | Descripción | Sección |
-|  --|    -|   |
+|  --|    -|   -- |
 | Figura 1 | Línea temporal del incidente | 4 |
 | Figura 2 | Verificación hash — disco PC infectado (.img) | 7.2.1 |
 | Figura 3 | Verificación hash — disco PC infectado (.zip) | 7.2.1 |
@@ -65,8 +65,6 @@ Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstenci�
 **Figuras en Anexos**
 
 Las imágenes y vestigios referenciados a lo largo del análisis se encuentran documentados en el archivo [Anexos.md](anexos.md), numerados del 1 al 21 (imágenes) y del 1 al 10 (vestigios).
-
- 
 
 # 4. Resumen Ejecutivo
 
@@ -125,14 +123,14 @@ Antes de iniciar cualquier proceso de análisis, se procedió a calcular y compa
 valores hash de cada evidencia con los de referencia proporcionados. La verificación
 confirma que ninguna de las evidencias ha sido alterada desde su adquisición original.
 
-Se muestran las sumas de verificación y los comandos utilizados en el [Palabras clave](#-palabras-clave)
+Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2](#102-anexo-2-sumas-de-verificación)
 
 ## 6.1 Adquisición de Evidencias
 
 A continuación se listan todas las evidencias sometidas a análisis.
 
 | Evidencia | Tamaño (Bytes) |
-|   --|     |
+|-----------|----------------|
 | adb-backup-Atalus-Grasstem.ab | 29.013.457 |
 | adb-backup-Camillo-Richbald.ab | 158.652 |
 | adb-backup-Lassandra-Cordalis.ab | 523.014 |
@@ -148,37 +146,43 @@ A continuación se listan todas las evidencias sometidas a análisis.
 | WhatsApp-Database-Camillo-Richbald.zip | 185.621 |
 | WhatsApp-Database-Lassandra-Cordalis.zip | 167.088 |
 
- 
-
 # 7. Análisis
 
 ## 7.1 Herramientas Utilizadas
 
-| Herramienta | Uso |
-|    -| --|
-| ADB (Android Debug Bridge) | Extracción de copias de seguridad de dispositivos Android |
-| DB Browser for SQLite | Análisis de bases de datos WhatsApp y Telegram |
-| Autopsy / FTK Imager | Análisis de imagen forense del disco del PC |
-| sha256sum / md5sum / sha1sum | Verificación de integridad de evidencias |
-| Google Takeout export parser | Análisis de datos de actividad de Google |
-| Visor de imágenes SD (.ad1) | Análisis de grabaciones de la cámara IP Imou |
+| Herramienta | Version | Uso |
+| --- | --- | --- |
+| WhatsApp Msgstore Viewer | Ultima disponible | Lectura y visualizacion de mensajes desde msgstore.db |
+| DB Browser for SQLite | 3.12.2.0 | Inspeccion manual de bases de datos SQLite |
+| FTK Imager | 3.1.2 | Adquisicion y verificacion de imagenes forenses |
+| Android Backup Extractor | master-20221109063121 | Extraccion de copias de seguridad ADB |
+| telegram_extractor.py | 1.0 (script propio) | Extraccion de mensajes desde cache4.db de Telegram |
+| USB Detective | 1.2 | Analisis de artefactos de conexion de dispositivos USB |
 
 ## 7.2 Procesos
 
 ### 7.2.1 Análisis de Conversaciones WhatsApp
 
-El análisis de la base de datos de WhatsApp de Lassandra muestra cómo Atalus
-estableció contacto con ella el 26 de abril de 2023, presentándose como compañero
-de clase e insistiendo en quedar. La víctima rechazó sus propuestas en varias
-ocasiones. Al día siguiente, Atalus reveló haber estado vigilándola físicamente
-al mencionar haberla visto salir del cine, a lo que Lassandra respondió
-acusándole directamente de acoso.
+El análisis de la base de datos de WhatsApp de Lassandra muestra cómo Atalus estableció contacto con ella el 26 de abril de 2023, presentándose como compañero de clase e insistiendo en quedar. La víctima rechazó sus propuestas en varias ocasiones. Al día siguiente, Atalus reveló haber estado vigilándola físicamente
+al mencionar haberla visto salir del cine, a lo que Lassandra respondió acusándole directamente de acoso.
+
+![alt text](img/whats-Atalus_Lassandra.png)
 
 [Véase Anexo de Imágenes. Imagen 1.](anexos.md)
+
+![alt text](img/whats-Atalus_Lassandra_2.png)
 
 [Véase Anexo de Imágenes. Imagen 2.](anexos.md)
 
 [Véase Anexo de Imágenes. Imagen 3.](anexos.md)
+
+| Campo | Valor |
+| --- | --- |
+| Ruta | WhatsApp-Database-Lassandra-Cordalis/msgstore.db |
+| Tamano | 1.228.800 bytes |
+| HASH MD5 | 4f7e0758d093ce4cf33e1c851dc62c9f |
+| HASH SHA256 | dcc837420c7d72b7b3ea09483ff0586daa7a50ca9c8c78b790db95866dcae0f5 |
+| Contenido | ![whats-Atalus_Lassandra.png](img/whats-Atalus_Lassandra.png) |
 
 [Véase Anexo de Vestigios. Vestigio 1.](anexos.md)
 
@@ -188,7 +192,11 @@ y ambos planifican una represalia. En este intercambio Atalus describe abiertame
 su plan de usar un Rubber Ducky para robar las credenciales de la víctima, y Camillo
 responde animándole a ejecutarlo.
 
+![whats-Atalus_Camilo.png](img/whats-Atalus_Camilo.png)
+
 [Véase Anexo de Imágenes. Imagen 4.](anexos.md)
+
+![whats-Atalus_Camilo_2.png](img/whats-Atalus_Camilo_2.png)
 
 [Véase Anexo de Imágenes. Imagen 5.](anexos.md)
 
@@ -203,7 +211,12 @@ A partir de ese momento, y siguiendo la sugerencia de Camillo,
 quien le envió la imagen que quería usar como foto de perfil de la víctima, Atalus
 procedió a acceder de forma no autorizada a la cuenta de Instagram de Lassandra.
 
+![whats-Atalus_Camilo_4.png](img/whats-Atalus_Camilo_4.png)
+
+
 [Véase Anexo de Imágenes. Imagen 7.](anexos.md)
+
+![whats-Atalus_Camilo_5.png](img/whats-Atalus_Camilo_5.png)
 
 [Véase Anexo de Imágenes. Imagen 8.](anexos.md)
 
@@ -217,6 +230,8 @@ Tras el bloqueo en WhatsApp, Atalus continuó el hostigamiento a través de Tele
 Los mensajes extraídos de la base de datos de Lassandra muestran un tono amenazante
 y recriminatorio, con referencias directas al rechazo recibido.
 
+![Telegram_Lassandra.png](img/Telegram_Lassandra.png)
+
 [Véase Anexo de Imágenes. Imagen 10.](anexos.md)
 
 [Véase Anexo de Vestigios. Vestigio 4.](anexos.md)
@@ -228,7 +243,11 @@ formas de obtener imágenes de perfil de cuentas de Instagram ajenas. Estas cons
 son anteriores a la ejecución del ataque, lo que evidencia una premeditación clara
 y un proceso de preparación técnica previo.
 
+![Busqueda-Atalus_Ruberducky.png](img/Busqueda-Atalus_Ruberducky.png)
+
 [Véase Anexo de Imágenes. Imagen 11.](anexos.md)
+
+![Busqueda-Atalus_Ruberducky_2.png](img/Busqueda-Atalus_Ruberducky_2.png)
 
 [Véase Anexo de Imágenes. Imagen 12.](anexos.md)
 
@@ -242,7 +261,11 @@ dispositivo USB y abandona rápidamente el lugar. Posteriormente, Lassandra se s
 en ese mismo ordenador y trabaja con él, momento en el que el payload del Rubber
 Ducky ya habría ejecutado la extracción de sus credenciales de forma silenciosa.
 
+![IMAGEN_USB.png](img/IMAGEN_USB.png)
+
 [Véase Anexo de Imágenes. Imagen 13.](anexos.md)
+
+![IMAGEN_INICIO_PC.png](img/IMAGEN_INICIO_PC.png)
 
 [Véase Anexo de Imágenes. Imagen 14.](anexos.md)
 
@@ -264,7 +287,11 @@ terminal móvil de Atalus, identificado cruzando los datos de su cuenta de Googl
 
 [Véase Anexo de Imágenes. Imagen 15.](anexos.md)
 
+![INICIO_SESION_INSTAGRAM.png](img/INICIO_SESION_INSTAGRAM.png)
+
 [Véase Anexo de Imágenes. Imagen 16.](anexos.md)
+
+![INICIO_SESION_INSTAGRAM_2_Atalus.png](img/INICIO_SESION_INSTAGRAM_2_Atalus.png)
 
 [Véase Anexo de Imágenes. Imagen 17.](anexos.md)
 
@@ -276,7 +303,11 @@ El historial del navegador del móvil de Atalus registra además la búsqueda y
 selección de la imagen utilizada como nueva foto de perfil de Lassandra, imagen
 que Camillo le había sugerido expresamente en la conversación de WhatsApp.
 
+![IMAGEN_INSTAGRAM.png](img/IMAGEN_INSTAGRAM.png)
+
 [Véase Anexo de Imágenes. Imagen 18.](anexos.md)
+
+![BUSQUEDA_ATALUS_IMAGEN_INSTAGRAM.png](img/BUSQUEDA_ATALUS_IMAGEN_INSTAGRAM.png)
 
 [Véase Anexo de Imágenes. Imagen 19.](anexos.md)
 
@@ -290,6 +321,8 @@ El archivo de correo de Lassandra, obtenido del export de Google, contiene tres
 notificaciones de acceso a su cuenta de Instagram que se corresponden con los eventos
 identificados en el análisis: el acceso desde el ordenador del centro, el acceso desde
 el móvil de Atalus y el acceso de la propia víctima al descubrir la manipulación.
+
+![CORREOS_LASSANDRA.png](img/CORREOS_LASSANDRA.png)
 
 [Véase Anexo de Imágenes. Imagen 21.](anexos.md)
 
@@ -403,7 +436,7 @@ en el análisis de las evidencias digitales disponibles.
 ![Verificación hash — Google Data de Camillo](img/GOOGLE_DATA_CAMILO.png)
 
 | Evidencia | Tamaño (Bytes) | SHA-256 | MD5 | SHA1 |
-|   --|     |   | --|  |
+| -- | -- | -- | -- | -- |
 | adb-backup-Atalus-Grasstem.ab | 29.013.457 | e64e952c3f43c235baf5d83f8cea1a86d7640821baefcbe89c480b0fff7688cf | 69E1E89FD971E5817A2C8C6279A80601 | 7EA6F0F6CADE8F6FA55C01C51C683216CD53D463 |
 | adb-backup-Camillo-Richbald.ab | 158.652 | 9c9c983de848c7b600a8f97a191b2fc7f9c77f5826de42fef93b410094bfac43 | 927713F263F80B4B747F65E58A1BDD53 | 985B4C25B4B72201A7ED591338FBDA9629E12154 |
 | adb-backup-Lassandra-Cordalis.ab | 523.014 | 40e6f12cf248468c2849aa2c8094d186b0264bb758d4839ee190486721da013a | DDFF7DFE751359D2C7ED4E743B91A774 | FC560A40196DC92D463C172481FBAF166D223C76 |
