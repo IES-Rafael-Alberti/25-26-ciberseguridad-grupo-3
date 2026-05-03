@@ -1,34 +1,41 @@
-# Contribuciones: José María Escalón Prada
+# Contribuciones — Abel García Domínguez
 
-### Día 22 de abril (16:30h - 17:30h)
+**Proyecto:** Proyecto 10 — Análisis de Riesgos (AR_G3)
 
-- Instalación de la herramienta PILAR.
+---
 
-### Día 27 de abril (13:30h - 14:30h, 17:00 - 18:00)
+### Día 22 de abril (13:30h - 14:30h)
 
-- Trabajo en las horas de clase.
+- Descripción del proyecto, lectura y instalación de la herramienta PILAR.
+
+### Día 27 de abril (12:30h - 14:30h)
+
+- Trabajo en las horas de clase y resolución de dudas.
 - Revisión del caso de la empresa tratada.
-- Introducción de activos en PILAR y asignación de clases de activos.
+- Identificación de los activos para introducirlos en PILAR y asignación de clases de activos.
 
 ### Día 28 de abril (12:30h - 14:30h) y (18:00h - 19:30h)
 
+- Trabajo en las horas de clase y resolución de dudas.
 - Asignación de dependencias de activos (activos padres e hijos).
 - Valoración de los activos en las diferentes dimensiones.
 - Identificación y asociación de amenazas a cada activo según el catálogo de PILAR.
-- Resolución de problemas con las dependencias de activos y sus amenazas.
+- Trabajo en casa por la tarde para resolver problemas con las dependencias de activos y sus amenazas.
 
-### Día 29 de abril (17:30h - 19:00)
+### Día 29 de abril (13:30h - 14:30h)
 
+- Trabajo en la hora de clase y resolución de dudas.
 - Tratamiento de los riesgos.
 - Asignación de salvaguardas para los activos de la empresa.
 
-### Día 3 de mayo (10:30h - 14:30hm, 16:30 - 19:00)
+### Día 3 de mayo (10:30h - 14:30h)
 
 - Trabajo en casa: formateo del documento de análisis de riesgos generado por PILAR.
 - Redacción del plan de acción en ciberseguridad con medidas organizadas a corto, medio y largo plazo.
 - Incorporación de los principios de Economía Circular aplicados a las medidas técnicas de seguridad.
-  
-- Diseño y creación de la presentación.
+- Trabajo en la presentación y el contenido del informe final.
+
+---
 
 ## Resumen de horas
 
