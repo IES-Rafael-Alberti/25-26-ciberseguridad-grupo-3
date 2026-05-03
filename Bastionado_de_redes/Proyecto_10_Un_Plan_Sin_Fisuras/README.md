@@ -116,7 +116,7 @@ Los tres riesgos más críticos (riesgo > 6,0) identificados en la fase *current
 
 ## 📅 Registro de Trabajo
 
-El reparto de tareas y el registro diario de cada miembro se encuentra en la carpeta [`defensa/`](defensa/), con un archivo `.md` por integrante del grupo donde se indica la fecha y las tareas realizadas cada día.
+El reparto de tareas y el registro diario de cada miembro se encuentra en la carpeta [`defensa/`](Defensa/), con un archivo `.md` por integrante del grupo donde se indica la fecha y las tareas realizadas cada día.
 
 ---
 
