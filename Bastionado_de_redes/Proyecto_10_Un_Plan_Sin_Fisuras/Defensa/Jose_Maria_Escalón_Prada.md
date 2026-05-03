@@ -1,4 +1,4 @@
-# Contribuciones — José María Escalón Prada
+# Contribuciones: José María Escalón Prada
 
 ### Día 22 de abril (16:30h - 17:30h)
 
