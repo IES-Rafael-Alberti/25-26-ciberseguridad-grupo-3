@@ -22,7 +22,7 @@
 - Tratamiento de los riesgos.
 - Asignación de salvaguardas para los activos de la empresa.
 
-### Día 3 de mayo (10:30h - 14:30hm, 16:30 - 19:00)
+### Día 3 de mayo (10:30h - 14:30hm, 16:30 - 18:00)
 
 - Trabajo en casa: formateo del documento de análisis de riesgos generado por PILAR.
 - Redacción del plan de acción en ciberseguridad con medidas organizadas a corto, medio y largo plazo.
@@ -32,11 +32,11 @@
 
 ## Resumen de horas
 
-| Día | Horario | Horas |
-|---|---|---|
-| 22 de abril | 13:30h – 14:30h | 1h |
-| 27 de abril | 12:30h – 14:30h | 2h |
-| 28 de abril | 12:30h – 14:30h y 18:00h – 19:30h | 3h 30min |
-| 29 de abril | 13:30h – 14:30h | 1h |
-| 3 de mayo | 10:30h – 14:30h | 4h |
-| **Total** | | **11h 30min** |
+| Día | Horario |
+|---|---|
+| 22 de abril | 13:30h – 14:30h |
+| 27 de abril | 13:30h – 14:30h, 17:00 - 18:00 |
+| 28 de abril | 12:30h – 14:30h, 18:00h – 19:30h |
+| 29 de abril | 13:30h – 14:30h, 18:00 - 19:30 |
+| 3 de mayo | 10:30h – 14:30h, 16:30 - 18:00 |
+| **Total** | **11h 30min** |
