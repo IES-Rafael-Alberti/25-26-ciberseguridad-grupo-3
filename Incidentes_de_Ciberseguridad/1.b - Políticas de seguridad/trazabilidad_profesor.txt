@@ -1,0 +1,525 @@
+# Plantilla de Trazabilidad para la Selección de Políticas de Seguridad
+
+```
+## Cómo usar este documento
+
+Este fichero es el hilo argumental que conecta el diagnóstico inicial (Plan Director de Seguridad — PDS) con las políticas y controles concretos que se propondrán para la organización. Está pensado para ser utilizado por alumnos/consultores como plantilla viva: durante el trabajo incorporaréis evidencia (extractos del PDS, inventarios, entrevistas y hojas de cálculo con la matriz de priorización).
+
+Formato y expectativas de redacción:
+- Escribe en estilo profesional pero claro: tercera persona, frases cortas y evidencia cuando declares hechos.
+- Cada sección incluye: 1) una breve explicación del propósito, 2) la información mínima que debe contener, 3) una tabla (si procede) y 4) un cierre que resume lo que debe quedar documentado.
+- Longitud orientativa por sección: 150–400 palabras (salvo tablas). Prioriza claridad y trazabilidad sobre extensión.
+
+Consejos generales para el alumnado
+- Mantén la trazabilidad: cada conclusión debe poder remontarse a un hallazgo del PDS o a una evidencia concreta.
+- Documenta fuentes: enlaza al PDS, a hojas de cálculo y a capturas cuando cites cifras o riesgos.
+- Usa lenguaje defendible: evita afirmaciones vagas; cuando digas "alto impacto" añade la razón o la evidencia.
+```
+
+## 1. Introducción
+
+```
+Propósito de la sección
+Esta introducción debe situar al lector: explicar en pocas líneas por qué se ha realizado el análisis, cuál es el alcance del documento y qué producto final se espera (lista priorizada de políticas con sus checklists y un plan de despliegue). Debe proporcionar contexto al lector que abra el documento terminado sin necesidad de consultar otros ficheros inmediatamente.
+
+Qué incluir aquí
+- Origen del trabajo (PDS o proyecto asignado).
+- Alcance (qué unidades, qué tipos de puesto, si incluye teletrabajo, etc.).
+- Producto entregable (n.º de políticas, checklists, mapa de trazabilidad, plan de implementación).
+
+Cierre de la sección
+Al finalizar esta sección el lector debe saber en una o dos frases cuál fue el punto de partida y qué va a encontrar en el resto del documento. Esta introducción servirá como resumen ejecutivo abreviado cuando el documento esté terminado.
+
+TODO: Antes de empezar, asegúrate de tener a mano:
+- El PDS completo (enlace o copia) y su matriz de riesgos.
+- Inventario de activos y listados de puestos de trabajo.
+- Resultados de entrevistas con responsables de área (IT, RRHH, Dirección).
+
+Mini-checklist sección 1
+- [ ] Localizar y abrir el PDS referido en el README.md.
+- [ ] Reunir la lista de responsables (Contacto de Seguridad, IT, RRHH).
+- [ ] Preparar un repositorio de evidencias (enlaces, capturas, inventarios).
+```
+
+## 2. Revisión del Plan Director de Seguridad
+
+```
+Propósito de la sección
+Explicar al lector cómo los hallazgos del PDS (activos, puestos, riesgos) motivan la selección de políticas. Esta sección debe ser la "fuente de verdad": todo lo que se afirma a partir de aquí debe poder relacionarse con entradas del PDS.
+```
+
+### 2.1. Resumen del PDS Previo
+
+**Enlace al PDS**: [Incluir enlace al repositorio del PDS]
+
+**Principales hallazgos del PDS**:
+
+- **Activos críticos identificados**: [Describir brevemente]
+- **Puestos de trabajo definidos**: [Listar]
+- **Riesgos principales detectados**: [Enumerar]
+- **Prioridades de seguridad**: [Indicar]
+
+```
+Narrativa de ejemplo (útil para redactar)
+"El PDS, realizado entre febrero y abril de 2025, identificó como activos críticos los portátiles corporativos que contienen repositorios de código (AC-01), el ERP de facturación (AC-02) y los almacenes de documentación de clientes (AC-03). Entre los riesgos más críticos destacan el phishing dirigido (R-01) y la fuga de información (R-03). Estos hallazgos motivan la priorización de políticas orientadas a reducir vectores de phishing y proteger los puestos que acceden al ERP y repositorios." 
+
+Cierre de la sección
+Especifica aquí qué evidencias del PDS has usado (p. ej. sección X, tabla Y) y deja un pequeño listado de preguntas abiertas que deberán responderse en el análisis posterior (¿hay backups automáticos? ¿qué porcentaje de equipos están gestionados por IT?).
+
+TODO: Para completar esta sección recolecta:
+- Enlace al PDS y la sección exacta (página o sección) que se está citando.
+- Lista de 4–6 hallazgos clave del PDS (activos, puestos, riesgos prioritarios).
+- Evidencia: extractos del PDS, capturas de la matriz de riesgos o export CSV.
+
+Mini-checklist sección 2
+- [ ] Copiar enlace al PDS y la sección exacta citada.
+- [ ] Enumerar 3–6 hallazgos del PDS con evidencia.
+- [ ] Relacionar cada hallazgo con al menos un riesgo identificado.
+```
+
+## 3. Análisis de Puestos de Trabajo y Activos Críticos
+
+```
+Propósito de la sección
+Concretar qué puestos y qué activos son prioridad para proteger. Aquí se conecta el inventario de la organización con la evaluación de riesgos: el lector debe entender qué se protege y por qué.
+
+Esta sección combina tablas (para consulta rápida) con narración que explique decisiones, por ejemplo: por qué se considera "crítica" la estación de trabajo de un asesor fiscal y qué evidencia apoya esa calificación.
+```
+
+### 3.1. Identificación de Puestos de Trabajo
+
+| ID Puesto | Puesto de Trabajo                  | Departamento   | Nº Empleados  | Criticidad        |
+|-----------|------------------------------------|----------------|---------------|-------------------|
+| PT-01     | [Ejemplo: Personal administrativo] | Administración | [Nº]          | [Alta/Media/Baja] |
+| PT-02     | [Ejemplo: Asesor fiscal]           | Asesoría       | [Nº]          | [Alta/Media/Baja] |
+| PT-03     | [Ejemplo: Técnico TI]              | IT             | [Nº]          | [Alta/Media/Baja] |
+| PT-04     | [...]                              | [...]          | [...]         | [...]             |
+
+```
+Cierre y preguntas guía
+- ¿Qué evidencia documenta que el activo existe y quién lo usa? (inventario, etiquetas, tickets)
+- ¿Qué impacto específico (económico, legal, reputacional) tendría su compromiso?
+
+TODO: Acciones concretas para completar la sección 3
+1. Exportar/extraer la lista de puestos del PDS o del inventario de RRHH.
+2. Para cada puesto, anotar 2–3 activos críticos y su impacto.
+3. Revisar la matriz de riesgos del PDS y traer los riesgos que afectan a estos puestos (IDs y texto original).
+
+Mini-checklist sección 3
+- [ ] Listado de puestos con IDs y criticidad completa.
+- [ ] Inventario de activos por puesto con tipo y impacto.
+- [ ] Mapeo de riesgos del PDS a cada puesto (IDs R-XX).
+```
+
+### 3.2. Activos Clave por Puesto de Trabajo
+Tras revisar el inventario y el PDS, se han identificado los siguientes activos críticos asociados a cada puesto de trabajo:
+
+
+| ID Puesto  | Activos Clave (Elementos del PT)                   | Tipo de Activo                | Impacto si se compromete  |
+|------------|----------------------------------------------------|-------------------------------|---------------------------|
+| PT-01      | [Ej: PC de oficina, ERP facturación, credenciales] | Hardware/Software/Información | [Describir]               |
+| PT-02      | [Ej: Documentación clientes, correo electrónico]   | Información/Software          | [Describir]               |
+| PT-03      | [Ej: Servidores, consolas de gestión, VPN]         | Hardware/Software             | [Describir]               |
+| PT-04      | [...]                                              | [...]                         | [...]                     |
+
+
+### 3.3. Escenarios de Riesgo Identificados
+
+Los riesgos asociados a los puestos de trabajo y activos críticos se resumen en la siguiente tabla:
+
+| ID Riesgo  | Puesto Afectado  | Descripción del Riesgo                  | Probabilidad  | Impacto  | Nivel de Riesgo  |
+|------------|------------------|-----------------------------------------|---------------|----------|------------------|
+| R-01       | PT-01            | [Ej: Malware por correo electrónico]    | Alta          | Alto     | **CRÍTICO**      |
+| R-02       | PT-01            | [Ej: Robo de credenciales]              | Media         | Alto     | **ALTO**         |
+| R-03       | PT-02            | [Ej: Fuga de información de clientes]   | Media         | Muy Alto | **CRÍTICO**      |
+| R-04       | PT-03            | [Ej: Acceso no autorizado a servidores] | Baja          | Muy Alto | **ALTO**         |
+| R-05       | [...]            | [...]                                   | [...]         | [...]    | [...]            |
+
+Matriz de Riesgos (ejemplo):
+
+```
+IMPACTO
+    Muy Alto |     R-03        R-04
+        Alto |  R-01   R-02
+       Medio |  R-05
+        Bajo |
+             +------------------------
+                Baja  Media  Alta
+                   PROBABILIDAD
+```
+
+```
+
+Cierre de la sección
+Al terminar, el lector debe poder señalar para cada puesto cuáles son los riesgos prioritarios y qué activos concretos justifican esa priorización.
+```
+
+## 4. Criterios de Priorización de Políticas
+
+```
+Propósito de la sección
+Justificar de forma transparente los criterios y pesos usados para priorizar políticas. Este es el mecanismo de decisión: debe permitir auditar por qué se eligió una política sobre otra.
+```
+
+### 4.1. Criterios Definidos
+
+Los criterios y pesos utilizados para evaluar y priorizar las políticas de seguridad son los siguientes:
+
+| Criterio                               | Peso  | Descripción                                                              |
+|----------------------------------------|-------|--------------------------------------------------------------------------|
+| **Impacto en la reducción de riesgos** | 35%   | Capacidad de la política para mitigar los riesgos críticos identificados |
+| **Cobertura de activos críticos**      | 25%   | Número y criticidad de activos protegidos por la política                |
+| **Facilidad de implementación**        | 20%   | Recursos necesarios vs. disponibles; tiempo de despliegue                |
+| **Cumplimiento normativo**             | 15%   | Alineación con requisitos legales (GDPR, LOPDGDD, ISO 27001)             |
+| **Coste-beneficio**                    | 5%    | Relación entre inversión necesaria y beneficio esperado                  |
+
+```
+Narrativa de uso
+Explica brevemente por qué se escogieron esos pesos en vuestro caso (ej.: organización pequeña, escasez de recursos -> mayor peso a facilidad de implementación).
+
+TODO: Pasos para definir los criterios en vuestro caso
+- Confirmar los pesos con Dirección/Responsable de Seguridad.
+- Probar la matriz con 3–5 políticas candidatas y ajustar si hace falta.
+- Documentar la justificación del peso en 1–2 frases.
+
+Mini-checklist sección 4
+- [ ] Verificar pesos y criterios con el Responsable de Seguridad.
+- [ ] Documentar cambios (si los hubiese) y quién los aprobó.
+- [ ] Guardar la matriz de evaluación (CSV o similar) en el repositorio.
+```
+
+### 4.2. Políticas Candidatas Evaluadas
+
+La siguiente tabla muestra la evaluación de las políticas candidatas según los criterios definidos:
+
+| Política Candidata        | Impacto Riesgos (35%) | Cobertura Activos (25%)  | Facilidad (20%)  | Cumplimiento (15%) | Coste-Beneficio (5%)  | **TOTAL** |
+|---------------------------|-----------------------|--------------------------|------------------|--------------------|-----------------------|:---------:|
+| Protección Puesto Trabajo | 35                    | 25                       | 18               | 15                 | 5                     |  **98**   |
+| Aplicaciones Permitidas   | 30                    | 20                       | 16               | 12                 | 4                     |  **82**   |
+| Gestión RRHH              | 25                    | 15                       | 18               | 15                 | 5                     |  **78**   |
+| Contraseñas               | 28                    | 18                       | 20               | 12                 | 5                     |  **83**   |
+| Control de Accesos        | 32                    | 22                       | 12               | 15                 | 4                     |  **85**   |
+| Copias de Seguridad       | 30                    | 20                       | 15               | 10                 | 4                     |  **79**   |
+| Teletrabajo Seguro        | 25                    | 18                       | 14               | 10                 | 3                     |  **70**   |
+| [...]                     | [...]                 | [...]                    | [...]            | [...]              | [...]                 |   [...]   |
+
+> **Nota**: Ajustar puntuaciones según el análisis específico de la organización.
+
+```
+
+Cierre de la sección
+Documenta aquí cualquier ajuste manual que se haya hecho a la puntuación (por ejemplo, prioridad de un riesgo no capturada por la matriz) y quién lo aprobó.
+
+```
+
+## 5. Selección de Políticas a Implementar
+
+```
+
+Propósito de la sección
+Exponer la decisión final: qué políticas se implementan, por qué y cómo se espera que reduzcan la exposición al riesgo. Este apartado es el núcleo del documento: debe permitir a Dirección entender el impacto y a IT poner en marcha controles concretos.
+
+Aquí se documenta la selección final de políticas, por qué se han elegido y cómo contribuyen a mitigar los riesgos. 
+
+Cómo interpretar la matriz de puntuación
+- Cada política recibe una puntuación por criterio (por ejemplo, en escala 0–35 para Impacto). La suma ponderada da el TOTAL.
+- La política con mayor TOTAL es la más prioritaria, pero es importante revisar la cobertura de riesgos críticos: una política con puntuación ligeramente menor puede ser necesaria si cubre un riesgo CRÍTICO no cubierto por la primera.
+
+Ejemplo resuelto: Selección de 4 políticas
+- Política 1: Protección del Puesto de Trabajo — Puntuación: 98/100.
+  Justificación: Mitiga R-01 (Phishing), R-02 (Robo credenciales) y R-04 (Acceso no autorizado), cubre activos AC-01 y AC-03 y es fácil de desplegar con herramientas y procesos ya disponibles.
+
+- Política 2: Control de Aplicaciones Permitidas — Puntuación: 85/100.
+  Justificación: Reduce la superficie de ataque en estaciones de trabajo y evita ejecución de software no aprobado; imprescindible para entornos con desarrolladores y contratistas.
+
+- Política 3: Gestión de Identidades y Accesos (IAM) — Puntuación: 83/100.
+  Justificación: Mejora el control de accesos a sistemas críticos (ERP, repositorios), permite MFA y gestión de ciclos de vida de cuentas.
+
+- Política 4: Copias de Seguridad y Recuperación — Puntuación: 79/100.
+  Justificación: Reduce impacto económico y de disponibilidad frente a ransomware y fallos de hardware.
+
+TODO: Pasos reproducibles para la puntuación
+1. Preparar una hoja (CSV/Excel) con filas = políticas candidatas y columnas = criterios (Impacto, Cobertura, Facilidad, Cumplimiento, Coste-beneficio).
+2. Rellenar las puntuaciones por criterio (usar escala absoluta compatible con los pesos; por ejemplo, Impacto 0–35, Cobertura 0–25, etc.).
+3. Calcular la suma ponderada y ordenar por TOTAL.
+4. Revisar manualmente los 2–3 máximos para comprobar cobertura de riesgos críticos.
+5. Registrar la decisión y firmar por el Responsable de Seguridad.
+
+Cierre de la sección
+Al terminar debe quedar un registro claro de la decisión (nombre de la política, puntuación, riesgos que mitiga, responsable y fecha objetivo). Si hubo desacuerdo en la priorización, documentad el razonamiento y la decisión final.
+
+Mini-checklist sección 5
+- [ ] Subir la hoja de cálculo con la matriz de puntuación al repositorio.
+- [ ] Justificar la selección de cada política con 2–3 frases y riesgos mitigados.
+- [ ] Asignar prioridad, responsable y fecha objetivo para cada política.
+```
+
+### 5.1. Políticas Seleccionadas
+
+Basándonos en el análisis anterior, se han seleccionado las siguientes **cuatro políticas** para su implementación, aunque eso no quiere decir que sean las únicas necesarias. Cada política incluye una justificación basada en su puntuación y el impacto esperado en la reducción de riesgos.
+
+#### Política 1: Protección del Puesto de Trabajo ✅ OBLIGATORIA
+
+**Puntuación**: 98/100
+
+**Justificación**:
+- Cubre los riesgos más críticos identificados (R-01, R-02, R-04)
+- Protege los activos de los puestos más sensibles (PT-01, PT-03)
+- Política fundamental y transversal a toda la organización
+- Alta alineación con estándares ISO 27001 y ENS
+
+**Riesgos mitigados**: [Listar IDs de riesgos que mitiga]
+
+**Puestos beneficiados**: [Listar IDs de puestos]
+
+
+#### Política 2: [Nombre de la Segunda Política]
+
+**Puntuación**: [XX]/100
+
+**Justificación**:
+- [Explicar por qué se selecciona esta política]
+- [Conexión con riesgos identificados]
+- [Activos que protege]
+- [Facilidad de implementación]
+
+**Riesgos mitigados**: [Listar IDs]
+
+**Puestos beneficiados**: [Listar IDs]
+
+
+#### Política 3: [Nombre de la Tercera Política]
+
+**Puntuación**: [XX]/100
+
+**Justificación**:
+- [Explicar por qué se selecciona esta política]
+- [Conexión con riesgos identificados]
+- [Activos que protege]
+- [Facilidad de implementación]
+
+**Riesgos mitigados**: [Listar IDs]
+
+**Puestos beneficiados**: [Listar IDs]
+
+
+
+#### Política 4: [Nombre de la Cuarta Política]
+
+**Puntuación**: [XX]/100
+
+**Justificación**:
+- [Explicar por qué se selecciona esta política]
+- [Conexión con riesgos identificados]
+- [Activos que protege]
+- [Facilidad de implementación]
+
+**Riesgos mitigados**: [Listar IDs]
+
+**Puestos beneficiados**: [Listar IDs]
+
+
+### 5.2. Resto de Políticas Evaluadas pero No Seleccionadas
+
+Estas politicas identificadas en el análisis tambien se tendrán que implementar, pero siguiendo la priorización del plan de implementación.
+
+| Política  | Puntuación  | Motivo de Descarte                                                                   |
+|-----------|-------------|--------------------------------------------------------------------------------------|
+| [Nombre]  | [XX]/100    | [Explicar: menor impacto, dificultad de implementación, ya cubierta por otras, etc.] |
+| [Nombre]  | [XX]/100    | [Explicar]                                                                           |
+
+## 6. Trazabilidad Completa: PDS → Políticas → Controles
+
+```
+Propósito de la sección
+Proveer un mapa que permita seguir la pista desde un activo o riesgo (en el PDS) hasta la política y el control concreto que lo mitiga. Es la "prueba" de que las políticas responden a riesgos concretos.
+```
+
+### 6.1. Mapa de Trazabilidad
+
+| Activo Crítico       | Puesto  | Riesgo (ID)  | Política Seleccionada     | Controles Específicos (Checklist)  |
+|----------------------|---------|--------------|---------------------------|------------------------------------|
+| [Ej: PC oficina]     | PT-01   | R-01         | Protección Puesto Trabajo | Control #1, #2, #5                 |
+| [Ej: ERP]            | PT-01   | R-02         | Aplicaciones Permitidas   | Control #3, #7                     |
+| [Ej: Docs. clientes] | PT-02   | R-03         | Clasificación Información | Control #2, #4, #6                 |
+| [...]                | [...]   | [...]        | [...]                     | [...]                              |
+
+
+```
+Instrucciones prácticas
+- Esta tabla debe permitir a cualquier lector seguir el rastro desde un activo o riesgo hasta la política y los controles específicos.
+- Cada control específico debe referenciarse al checklist asociado (p. ej., "Control #1" se refiere al punto 1 del checklist de la política). 
+
+TODO: Instrucciones para completar el mapa de trazabilidad
+1. Listar todos los activos críticos identificados en el PDS.
+2. Para cada activo, indicar el puesto responsable y el riesgo asociado (ID y descripción).
+3. Señalar la política seleccionada que cubre ese riesgo y los controles específicos que se implementarán.
+
+Mini-checklist sección 6.1
+- [ ] Todos los activos críticos tienen un riesgo y una política asociada.
+- [ ] Los controles específicos son claros y están alineados con las políticas.
+- [ ] Revisar con el equipo técnico que los controles son factibles y están bien definidos.
+```
+
+### 6.2. Cobertura de Riesgos
+
+En base a las políticas seleccionadas, se ha evaluado la cobertura de riesgos según los niveles definidos en la matriz de riesgos del PDS.
+
+**Resumen de cobertura**:
+
+| Nivel de Riesgo | Riesgos Identificados | Riesgos Cubiertos  | % Cobertura  |
+|-----------------|-----------------------|--------------------|--------------|
+| CRÍTICO         | [Nº]                  | [Nº]               | [%]          |
+| ALTO            | [Nº]                  | [Nº]               | [%]          |
+| MEDIO           | [Nº]                  | [Nº]               | [%]          |
+| BAJO            | [Nº]                  | [Nº]               | [%]          |
+
+**Riesgos residuales** (no cubiertos por estas políticas):
+
+- [R-XX]: [Descripción] - Motivo: [Baja prioridad / Se abordará en siguiente fase]
+- [R-XX]: [Descripción] - Motivo: [...]
+
+```
+Narrativa para clausurar la cobertura
+Describe en 2–3 frases la cobertura global (ej.: "Las cuatro políticas seleccionadas cubren X/ Y riesgos críticos, quedando pendientes Z riesgos que se abordarán en la fase 2 porque requieren inversión de infraestructura").
+
+TODO: Calcular la cobertura de riesgos
+1. Contar el nº total de riesgos identificados en la matriz de riesgos del PDS.
+2. Para cada nivel de riesgo (CRÍTICO, ALTO, MEDIO, BAJO), contar cuántos están cubiertos por al menos una política seleccionada.
+3. Calcular el % de cobertura: (Riesgos Cubiertos / Riesgos Identificados) * 100.
+
+Mini-checklist sección 6.2
+- [ ] Todos los riesgos identificados tienen al menos una política que los cubre.
+- [ ] Los porcentajes de cobertura son coherentes con los datos de la matriz de riesgos.
+- [ ] Revisar con el Responsable de Seguridad los riesgos críticos no cubiertos.
+
+```
+
+## 7. Plan de Implementación
+
+```
+Propósito de la sección
+Definir cómo se van a materializar las políticas: fases, responsables, duración y recursos. Debe permitir pasar de la decisión estratégica a la ejecución operativa.
+```
+Durante el plan de implementación, se detallan las fases de despliegue y los recursos necesarios para llevar a cabo las políticas seleccionadas.
+
+### 7.1. Fases de Despliegue
+
+| Fase   | Política                  | Prioridad  | Duración Estimada  | Responsable   |
+|--------|---------------------------|------------|--------------------|---------------|
+| Fase 1 | Protección Puesto Trabajo | Alta       | 2 semanas          | Equipo IT     |
+| Fase 2 | Control de Accesos        | Alta       | 3 semanas          | Equipo IT     |
+| Fase 3 | Gestión RRHH              | Media      | 4 semanas          | RRHH          |
+| Fase 4 | Copias de Seguridad       | Media      | 2 semanas          | Equipo TI     |
+
+```
+Narrativa práctica
+Añade hitos para cada fase (p. ej. "Fase 1 - Semana 1: inventario y despliegue antivirus al 30% de los equipos; Semana 2: formación y auditoría inicial"). Define criterios de éxito claros.
+
+TODO: Definir y acordar el plan de implementación
+- Detallar las tareas específicas, responsables y plazos en un documento de planificación.
+- Incluir hitos y criterios de éxito para cada fase.
+- Asegurar recursos y formación necesarios para la implementación.
+
+Mini-checklist sección 7.1
+- [ ] Todas las políticas seleccionadas tienen una fase de despliegue asignada.
+- [ ] Las prioridades y duraciones son realistas y están acordadas con los responsables.
+- [ ] Incluir un plan de comunicación para informar a toda la organización.
+```
+
+### 7.2. Recursos Necesarios
+
+Para la implementación de las políticas seleccionadas, se requieren los siguientes recursos:
+
+| Recurso                   | Descripción                            | Coste Estimado  |
+|---------------------------|----------------------------------------|-----------------|
+| Formación personal        | Curso de ciberseguridad para empleados | 2000 €          |
+| Software antivirus        | Licencias para todos los PCs           | 1500 €          |
+| Tiempo técnico TI         | 40 horas de consultoría externa        | 3000 €          |
+
+```
+Cierre y recomendaciones
+Incluye un plan de contingencia si algún recurso crítico no está disponible y prioriza actividades que pueden reducir riesgo con bajo coste.
+
+TODO: Revisar y ajustar los recursos necesarios
+- Confirmar con cada área responsable los recursos humanos, técnicos y financieros necesarios.
+- Incluir en el plan de implementación la obtención y asignación de estos recursos.
+
+Mini-checklist sección 7.2
+- [ ] Todos los recursos necesarios están identificados y presupuestados.
+- [ ] Los responsables han validado la disponibilidad de recursos.
+- [ ] Incluir un plan de contingencia por si faltan recursos críticos.
+
+```
+
+## 8. Conclusiones
+
+```
+Propósito de la sección
+Ofrecer al lector un resumen ejecutivo que pueda leerse de forma independiente y que explique la lógica de la selección, el impacto esperado y los próximos pasos.
+```
+
+### 8.1. Resumen Ejecutivo
+
+Este documento ha detallado el proceso de selección de políticas de seguridad para [Nombre de la Empresa], alineadas con nuestro Plan Director de Seguridad (PDS). Se han priorizado cuatro políticas clave que abordan nuestros riesgos más críticos, cubriendo un [%] de estos. Las políticas seleccionadas son:
+
+1. Protección del Puesto de Trabajo
+2. Control de Accesos
+3. Gestión RRHH
+4. Copias de Seguridad
+
+Próximos pasos:
+- Implementar las políticas según el plan de despliegue.
+- Monitorizar y reportar el progreso a la dirección.
+- Revisar y ajustar las políticas y controles según sea necesario.
+
+Cierre de sección: qué debe quedar documentado
+- Un párrafo ejecutivo claro y firmado.
+- Un plan de comunicación a Dirección y plantilla.
+- Un calendario con los hitos iniciales.
+
+### 8.2. Recomendaciones
+
+Las siguientes recomendaciones buscan maximizar la efectividad de las políticas implementadas:
+
+- **Corto plazo** (0-3 meses): Formación en ciberseguridad para todo el personal; despliegue de software antivirus.
+- **Medio plazo** (3-6 meses): Evaluación y ajuste de políticas implementadas; auditoría de cumplimiento.
+- **Largo plazo** (6-12 meses): Considerar políticas adicionales como gestión de dispositivos móviles y seguridad en la nube.
+
+```
+TODO: Personalizar el resumen ejecutivo y las recomendaciones
+- Adaptar el texto a la realidad y cultura de la organización.
+- Incluir datos concretos y compromisos de dirección.
+
+Mini-checklist sección 8
+- [ ] El resumen ejecutivo es claro, conciso y comunica los puntos clave.
+- [ ] Las recomendaciones son prácticas y alineadas con los recursos y capacidades de la organización.
+- [ ] Incluir un agradecimiento a todos los participantes en el proceso.
+
+```
+
+## 9. Referencias
+
+```
+Propósito de la sección
+Proveer todas las fuentes utilizadas para que cualquiera pueda verificar la trazabilidad: PDS, normativas, guías y ficheros internos.
+
+- Plan Director de Seguridad de [Nombre Empresa]: [Enlace]
+- ISO/IEC 27001:2022 - Information Security Management
+- Guías de INCIBE para Políticas de Seguridad en PYMES
+- ENS (Esquema Nacional de Seguridad)
+- RGPD (Reglamento General de Protección de Datos)
+
+TODO: Recolectar referencias
+- Añadir la ruta de cada documento interno usado (README.md, POLITICAS_SEGURIDAD.md, politicas/*.md, checklists/*.md).
+- Incluir versiones y fechas de los documentos citados.
+
+Cierre del documento y recomendaciones finales para el alumnado
+- Mantener la coherencia entre tablas, narrativa y evidencia: cualquier cambio en la matriz de prioridades debe registrarse con fecha y responsable.
+- Antes de entregar, revisa que cada afirmación crítica tenga una referencia: PDS, CSV, captura o acta de entrevista.
+- Entrega sugerida: un zip que contenga este documento relleno, `trazabilidad.csv`, la hoja de cálculo de priorización, y una carpeta `evidencias/` con capturas y extractos del PDS.
+```
+
+**Documento elaborado por**: [Nombre del equipo]  
+**Fecha**: [DD/MM/YYYY]  
+**Versión**: 1.1
