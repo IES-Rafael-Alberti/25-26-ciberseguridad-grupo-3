@@ -123,3 +123,17 @@ Se encontró, por medio de la herramienta de autopsy, una base de datos de la ap
 
 (Figura 1) Conversación entre la víctima y un tercero
 
+De igual manera, pudimos encontrar que el tercero con el que mantenía esta conversación estaba guardado como "John Macron".
+
+![alt text](<img/2026-05-13 14_24_54-DBeaver 26.0.4 - conversations.png>)
+
+(Figura 2) Nombre del usuario con el que la víctima mantuvo la conversación encontrada y último mensaje.
+
+Confirmamos el nombre de la víctima como Hallym Betty.
+
+![alt text](<img/2026-05-13 14_27_19-DBeaver 26.0.4 - participants.png>)
+
+(Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID
+
+
+
