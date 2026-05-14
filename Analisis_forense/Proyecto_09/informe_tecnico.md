@@ -32,6 +32,7 @@
   - [10.1 Sobre el Perito](#101-sobre-el-perito)
   - [10.2 Hallazgos](#102-hallazgos)
   - [10.3 Sumas de verificación](#103-verificacion)
+  - [10.4 Anexos complementarios](#104-anexos-complementarios)
 
 
 <div id="1-juramento-y-declaración-de-abstención-y-tacha"></div>
@@ -357,4 +358,15 @@ Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `ha
 <div id="103-verificacion"></div>
 
 ## 10.3 Sumas de verificación
+
+<div id="104-anexos-complementarios"></div>
+
+## 10.4 Anexos complementarios
+
+Además de los hallazgos conservados en la carpeta `hallazgos`, el documento [`anexos.md`](./anexos.md) recoge material complementario de apoyo al informe técnico.
+
+| Apartado añadido | Contenido | Referencia |
+| --- | --- | --- |
+| Herramientas Empleadas | Relación de herramientas utilizadas durante la adquisición, revisión y análisis de evidencias. | [Ver anexo](./anexos.md#herramientas) |
+| Imágenes | Relación de figuras, archivos de imagen y descripciones usadas como soporte visual del informe. | [Ver anexo](./anexos.md#imagenes) |
 

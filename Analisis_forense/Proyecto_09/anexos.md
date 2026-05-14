@@ -10,7 +10,9 @@
 
 ---
 
-## 1. Metodologia<div id='metodologia' />
+<div id="metodologia"></div>
+
+## 1. Metodologia
 
 El proceso de investigacion se estructuro en tres fases diferenciadas:
 
@@ -44,9 +46,54 @@ Todas las actuaciones analiticas se llevaron a cabo respetando los principios de
 metodicidad, auditabilidad, repetibilidad y defensa en juicio de cada conclusion.
 
 
-## 4. Vestigios<div id='vestigios' />
+<div id="herramientas"></div>
 
-## 4.1 Vestigio 1: Transcripcion de audios de echo<div id='vestigio1' />
+## 2. Herramientas Empleadas
+
+Las siguientes herramientas fueron empleadas durante el proceso de adquisicion, revision y analisis de las evidencias digitales:
+
+| Herramienta | Version | Uso principal |
+| --- | --- | --- |
+| DBeaver | 26.0.4 | Apertura y consulta de bases de datos SQLite, incluyendo `babel1.db`, `settings-victima.db` y `settings_marido.db`. |
+| FTK Imager | 3.1.2 | Adquisicion, montaje y verificacion de imagenes y artefactos forenses. |
+| Autopsy | 1.2 | Exploracion de volumenes, sistemas de ficheros y artefactos recuperados de los dispositivos intervenidos. |
+| Wireshark | 4.6.4 | Revision de capturas de red del entorno Smart Home. |
+| Visual Studio Code | 15.6.2 | Lectura, documentacion y revision de archivos de texto plano, registros y documentos del informe. |
+
+<div id="imagenes"></div>
+
+## 3. Imagenes
+
+Las siguientes imagenes documentan visualmente los artefactos, registros y capturas citados en el informe tecnico:
+
+| Figura | Archivo | Descripcion |
+| --- | --- | --- |
+| Figura 1 | [`2026-05-13 09_34_36-DBeaver 26.0.4 - messages.png`](./img/2026-05-13%2009_34_36-DBeaver%2026.0.4%20-%20messages.png) | Conversacion entre la victima y un tercero. |
+| Figura 2 | [`2026-05-13 14_24_54-DBeaver 26.0.4 - conversations.png`](./img/2026-05-13%2014_24_54-DBeaver%2026.0.4%20-%20conversations.png) | Nombre del usuario con el que la victima mantuvo la conversacion encontrada y ultimo mensaje. |
+| Figura 3 | [`2026-05-13 14_27_19-DBeaver 26.0.4 - participants.png`](./img/2026-05-13%2014_27_19-DBeaver%2026.0.4%20-%20participants.png) | Nombre de la victima y nombre del segundo usuario, junto a sus GAIA ID. |
+| Figura 4 | [`2026-05-14 12_15_16-mili_log.txt_ Bloc de notas.png`](./img/2026-05-14%2012_15_16-mili_log.txt_%20Bloc%20de%20notas.png) | Registro de actividad de la pulsera `mili_log.txt`. |
+| Figura 5 | [`2026-05-13 10_52_08-.png`](./img/2026-05-13%2010_52_08-.png) | Captura de pantalla `cf092f21.jpg` encontrada en la television inteligente. |
+| Figura 6 | [`timezone.png`](./img/timezone.png) | Archivo de zona horaria de la television. |
+| Figura 7 | [`kodi-log.png`](./img/kodi-log.png) | Registro `kodi.log` localizado en la Raspberry Pi usada como Smart TV. |
+| Figura 8 | [`2026-05-14 12_44_49-Alexa - Explorador de archivos.png`](./img/2026-05-14%2012_44_49-Alexa%20-%20Explorador%20de%20archivos.png) | Registro de Alexa donde se muestra la orden de poner la estacion de radio Pandora. |
+| Figura 9 | [`2026-05-14 12_57_24-Alexa - Explorador de archivos.png`](./img/2026-05-14%2012_57_24-Alexa%20-%20Explorador%20de%20archivos.png) | Transcripcion de comando de voz detectado e interpretado incorrectamente por Alexa. |
+| Figura 10 | [`2026-05-14 13_25_09-Alexa - Explorador de archivos.png`](./img/2026-05-14%2013_25_09-Alexa%20-%20Explorador%20de%20archivos.png) | Transcripcion del ultimo registro. |
+| Figura 11 | [`2026-05-14 18_43_24-DBeaver 26.0.4 - system.png`](./img/2026-05-14%2018_43_24-DBeaver%2026.0.4%20-%20system.png) | Nombre del dispositivo de la victima con identificador. |
+| Figura 12 | [`2026-05-14 18_45_43-NVIDIA GeForce Overlay.png`](./img/2026-05-14%2018_45_43-NVIDIA%20GeForce%20Overlay.png) | Direccion Bluetooth del dispositivo de la victima. |
+| Figura 13 | [`2026-05-14 19_14_26-.png`](./img/2026-05-14%2019_14_26-.png) | Nombre del dispositivo del marido de la victima. |
+| Figura 14 | [`2026-05-14 19_15_17-.png`](./img/2026-05-14%2019_15_17-.png) | Direccion Bluetooth del dispositivo del marido de la victima. |
+| Figura 15 | [`2026-05-14 19_40_33-Parsec.png`](./img/2026-05-14%2019_40_33-Parsec.png) | Direccion Bluetooth de la television. |
+| Figura 16 | [`2026-05-14 19_50_13-Parsec.png`](./img/2026-05-14%2019_50_13-Parsec.png) | Registro de deteccion del dispositivo Echo. |
+| Figura 17 | [`2026-05-14 19_56_08-Parsec.png`](./img/2026-05-14%2019_56_08-Parsec.png) | Registro de deteccion de dispositivo `mi1a`. |
+| Figura 18 | [`2026-05-14 19_51_57-Parsec.png`](./img/2026-05-14%2019_51_57-Parsec.png) | Busqueda realizada sobre el dispositivo detectado. |
+
+<div id="vestigios"></div>
+
+## 4. Vestigios
+
+<div id="vestigio1"></div>
+
+## 4.1 Vestigio 1: Transcripcion de audios de echo
 
 | Archivo / fuente                         | Fecha UTC+9 | Hora UTC+9   | Texto registrado                                                     | Observación forense                                                                                              |
 | ---------------------------------------- | ----------- | ------------ | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
