@@ -2,31 +2,29 @@
 
 ## Índice
 
-1. [Juramento y declaración de abstención y tacha](#1-juramento-y-declaración-de-abstención-y-tacha)
-2. [Palabras clave](#2-palabras-clave)
-3. [Índice de figuras](#3-índice-de-figuras)
-4. [Resumen ejecutivo](#4-resumen-ejecutivo)
-5. [Introducción](#5-introducción)
-   - 5.1 [Antecedentes](#51-antecedentes)
-   - 5.2 [Objetivos](#52-objetivos)
-   - 5.3 [Alcance](#53-alcance)
-6. [Fuentes de información](#6-fuentes-de-información)
-   - 6.1 [Adquisición de evidencias](#61-adquisición-de-evidencias)
-7. [Análisis](#7-análisis)
-   - 7.1 [Herramientas utilizadas](#71-herramientas-utilizadas)
-   - 7.2 [Procesos](#72-procesos)
-     - 7.2.1 [Verificación de integridad](#721-verificación-de-integridad)
-     - 7.2.2 [Análisis de conversaciones WhatsApp](#722-análisis-de-conversaciones-whatsapp)
-     - 7.2.3 [Análisis de actividad en Telegram](#723-análisis-de-actividad-en-telegram)
-     - 7.2.4 [Análisis del historial de búsquedas de Atalus](#724-análisis-del-historial-de-búsquedas-de-atalus)
-     - 7.2.5 [Análisis de capturas de red](#725-análisis-de-capturas-de-red)
-     - 7.2.6 [Análisis de accesos a Instagram de Lassandra](#726-análisis-de-accesos-a-instagram-de-lassandra)
-     - 7.2.7 [Análisis del correo electrónico de la víctima](#727-análisis-del-correo-electrónico-de-la-víctima)
-8. [Limitaciones](#8-limitaciones)
-9. [Conclusiones](#9-conclusiones)
-10. [Anexos](#10-anexos)
-   - 10.1 [Sobre el Perito](#101-sobre-el-perito)
-   - 10.2 [Hallazgos](#102-hallazgos)
+- [Informe técnico: Proyecto 9. Caso de homicidio.](#informe-técnico-proyecto-9-caso-de-homicidio)
+  - [Índice](#índice)
+- [1. Juramento y Declaración de Abstención y Tacha](#1-juramento-y-declaración-de-abstención-y-tacha)
+  - [2. Palabras clave](#2-palabras-clave)
+  - [3. Índice de figuras](#3-índice-de-figuras)
+  - [4. Resumen ejecutivo](#4-resumen-ejecutivo)
+  - [5. Introducción](#5-introducción)
+    - [5.1 Antecedentes](#51-antecedentes)
+    - [5.2 Objetivos](#52-objetivos)
+    - [5.3 Alcance](#53-alcance)
+  - [6. Fuentes de información.](#6-fuentes-de-información)
+  - [7. Análisis](#7-análisis)
+    - [7.1 Herramientas utilizadas](#71-herramientas-utilizadas)
+    - [7.2 Procesos](#72-procesos)
+      - [7.2.1 Análisis del teléfono de la víctima.](#721-análisis-del-teléfono-de-la-víctima)
+      - [7.2.2 Análisis del teléfono del marido de la víctima](#722-análisis-del-teléfono-del-marido-de-la-víctima)
+      - [7.2.3 Análisis de la Raspberry Pi usada como Smart TV](#723-análisis-de-la-raspberry-pi-usada-como-smart-tv)
+      - [7.2.4 Análisis de Amazon Echo](#724-análisis-de-amazon-echo)
+      - [7.2.5 Análisis de capturas de red](#725-análisis-de-capturas-de-red)
+      - [7.2.6 Análisis de registros de GoogleOnHub](#726-análisis-de-registros-de-googleonhub)
+- [10. Anexos.](#10-anexos)
+  - [10.1 Sobre el Perito](#101-sobre-el-perito)
+  - [10.2 Hallazgos](#102-hallazgos)
 
 
 # 1. Juramento y Declaración de Abstención y Tacha
@@ -118,7 +116,20 @@ Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2]
 
 #### 7.2.1 Análisis del teléfono de la víctima.
 
-Se encontró, por medio de la herramienta de autopsy, una base de datos "babel1.db" de la aplicación de mensajería "Hangouts" que contenía una conversación entre la víctima y un tercero. En ella, la víctima parece querer poner fin a la comunicación con esa ppersona.
+Se encontró, por medio de la herramienta de autopsy, la base de datos de "settings" del dispositivo, en la que se ve el nombre del dispositivo "Betty (SHV-E250L)" y la dirección bluetooth, 1C:AF:05:9E:19:74.
+
+![alt text](<img/2026-05-14 18_43_24-DBeaver 26.0.4 - system.png>)
+
+(Figura 11) Nombre del dispositivo con identificador
+
+
+Y aquí podemos ver la dirección bluetooth:
+
+![alt text](<img/2026-05-14 18_45_43-NVIDIA GeForce Overlay.png>)
+
+(Figura 12) Dirección bluetooth del dispositivo.
+
+"babel1.db" de la aplicación de mensajería "Hangouts" que contenía una conversación entre la víctima y un tercero. En ella, la víctima parece querer poner fin a la comunicación con esa ppersona.
 
 ![alt text](<img/2026-05-13 09_34_36-DBeaver 26.0.4 - messages.png>)
 
@@ -136,7 +147,6 @@ Confirmamos el nombre de la víctima como Hallym Betty.
 
 (Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID.
 
-
 Se revisó el dispositivo en busca de cualquier relación con la pulsera deportiva hallada en la escena. Siguiendo ese hilo, obtuvimos un registro de la aplicación de pulseras de actividad de xiaomi en com.xiaomi.health. 
 
 ![alt text](<img/2026-05-14 12_15_16-mili_log.txt_ Bloc de notas.png>)
@@ -145,7 +155,21 @@ Se revisó el dispositivo en busca de cualquier relación con la pulsera deporti
 
 #### 7.2.2 Análisis del teléfono del marido de la víctima
 
-Se revisó el dispositivo utilizando la herramienta Autopsy, pero no se pudo encontrar nada relevante para la investigación.
+Se revisó el dispositivo utilizando la herramienta Autopsy, y se encontraron tanto el nombre del dispositivo "Simon (SHV-E250S)" como la dirección bluetooth "50:F5.20:A5:7D:CC":
+
+![alt text](<img/2026-05-14 19_14_26-.png>)
+
+(Figura 13) Nombre del dispositivo del marido de la víctima
+
+Y la dirección bluetooth:
+
+![alt text](<img/2026-05-14 19_15_17-.png>)
+
+(Figura 14) Dirección bluetooth del dispositivo del marido de la víctima
+
+
+
+pero no se pudo encontrar nada relevante para la investigación.
 
 #### 7.2.3 Análisis de la Raspberry Pi usada como Smart TV
 
@@ -168,6 +192,32 @@ El registro `kodi.log` muestra actividad del reproductor Kodi alrededor de las 1
 ![alt text](img/kodi-log.png)
 
 (Figura 7) Registro `kodi.log` localizado en la Raspberry Pi usada como Smart TV.
+
+Se buscó también en los registros de bluetooth del dispositivo en busca de conexiones con auriculares, para contrastar las declaraciones del marido de la víctima.
+
+Se encontró la dirección bluetooth de la televisión "74:C2:46:88:5D:09"
+
+![alt text](<img/2026-05-14 19_40_33-Parsec.png>)
+
+(Figura 15) Dirección bluetooth de la televisión
+
+Se revisaron conexiones bluetooth, pero no se encontraron conexiones ni detecciones de auriculares bluetooth.
+
+![alt text](<img/2026-05-14 19_50_13-Parsec.png>)
+
+(Figura 16) Registro de detección del dispositivo echo 
+
+Se observó un registro de detección (no conexión) de un dispositivo "mi1a"
+
+![alt text](<img/2026-05-14 19_56_08-Parsec.png>)
+
+(Figura 17) Registro de detección de dispositivo "mi1a"
+
+Se ha intentado relacionar este dispositivo con auriculares, pero no se ha tenido éxito.
+
+![alt text](<img/2026-05-14 19_51_57-Parsec.png>)
+
+(Figura 18) Búsqueda en google sobre el dispositivo
 
 #### 7.2.4 Análisis de Amazon Echo
 
