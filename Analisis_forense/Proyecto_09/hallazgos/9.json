@@ -1,0 +1,25 @@
+{
+activity: {
+_disambiguationId: null,
+activityStatus: "SUCCESS",
+creationTimestamp: 1500271566327,
+description: "{"summary":"turn on pandora","firstUtteranceId":"AB72C64C86AW2:1.0/2017/07/17/06/B0F00715535302W5/06:02::TNIH_2V.43c1a76a-cb85-4920-a581-f27e558b8b4cZXV/1","firstStreamId":"AB72C64C86AW2:1.0/2017/07/17/06/B0F00715535302W5/06:02::TNIH_2V.43c1a76a-cb85-4920-a581-f27e558b8b4cZXV"}",
+domainAttributes: "{"disambiguated":false,"nBestList":[{"entryType":"PlayStation","mediaOwnerCustomerId":"A32TRBM6QOXJ5H","stationName":"Pandora Station","serviceName":"PANDORA"}]}",
+domainType: null,
+feedbackAttributes: null,
+id: "A32TRBM6QOXJ5H#1500271566327#AB72C64C86AW2#B0F00715535302W5",
+intentType: null,
+providerInfoDescription: null,
+registeredCustomerId: "A32TRBM6QOXJ5H",
+sourceActiveUsers: null,
+sourceDeviceIds: [
+{
+deviceAccountId: null,
+deviceType: "AB72C64C86AW2",
+serialNumber: "B0F00715535302W5"
+}
+],
+utteranceId: "AB72C64C86AW2:1.0/2017/07/17/06/B0F00715535302W5/06:02::TNIH_2V.43c1a76a-cb85-4920-a581-f27e558b8b4cZXV",
+version: 1
+}
+}

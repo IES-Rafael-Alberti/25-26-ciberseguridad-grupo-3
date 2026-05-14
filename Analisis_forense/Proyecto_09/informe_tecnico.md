@@ -24,8 +24,9 @@
      - 7.2.7 [Análisis del correo electrónico de la víctima](#727-análisis-del-correo-electrónico-de-la-víctima)
 8. [Limitaciones](#8-limitaciones)
 9. [Conclusiones](#9-conclusiones)
-10. [Anexo 1. Sobre el perito](#10-anexo-1-sobre-el-perito)
-11. [Anexo 2. Sumas de verificación](#11-anexo-2-sumas-de-verificación)
+10. [Anexos](#10-anexos)
+   - 10.1 [Sobre el Perito](#101-sobre-el-perito)
+   - 10.2 [Hallazgos](#102-hallazgos)
 
 
 # 1. Juramento y Declaración de Abstención y Tacha
@@ -117,7 +118,7 @@ Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2]
 
 #### 7.2.1 Análisis del teléfono de la víctima.
 
-Se encontró, por medio de la herramienta de autopsy, una base de datos de la aplicación de mensajería "Hangouts" que contenía una conversación entre la víctima y un tercero. En ella, la víctima parece querer poner fin a la comunicación con esa ppersona.
+Se encontró, por medio de la herramienta de autopsy, una base de datos "babel1.db" de la aplicación de mensajería "Hangouts" que contenía una conversación entre la víctima y un tercero. En ella, la víctima parece querer poner fin a la comunicación con esa ppersona.
 
 ![alt text](<img/2026-05-13 09_34_36-DBeaver 26.0.4 - messages.png>)
 
@@ -140,12 +141,92 @@ Se revisó el dispositivo en busca de cualquier relación con la pulsera deporti
 
 ![alt text](<img/2026-05-14 12_15_16-mili_log.txt_ Bloc de notas.png>)
 
-(Figura 4) Registro de actividad de la pulsera. No muestra información relevante en la ventana temporal de los hechos.
+(Figura 4) Registro de actividad de la pulsera "mili_log.txt". No muestra información relevante en la ventana temporal de los hechos.
 
 #### 7.2.2 Análisis del teléfono del marido de la víctima
 
 Se revisó el dispositivo utilizando la herramienta Autopsy, pero no se pudo encontrar nada relevante para la investigación.
 
+#### 7.2.3 Análisis de la Raspberry Pi usada como Smart TV
+
+Al analizar la evidencia con la herramienta autopsy, se encontró una captura de pantalla tomada a la hora en la que se declara que el marido se encontraba viendo una película.
+
+![alt text](<img/2026-05-13 10_52_08-.png>)
+
+(Figura 5) Captura de pantalla "cf092f21.jpg" encontrada en la televisión inteligente
+
+La captura se ha confirmado como perteneciente a la película "El único" (The One) de 2001.
+
+Adicionalmente, se encontró un archivo "timezone" que indicaba la zona horaria registrada para la televisión, +9:
+
+![alt text](img/timezone.png)
+ 
+(Figura 6) Archivo de zona horaria de la televisión.
+
+--------------- AÑADIR REGISTROS DE KODI -------------------
+
+#### 7.2.4 Análisis de Amazon Echo
+
+Se analizaron las conversaciones registradas por el asistende de voz "Echo". Lo primero que se confirmó fue la orden de poner música a través de la estación de radio "Pandora" a las 15:06:06.327 en UTC+9. Se proveen como anexos el registro json y el registro de audio en formato wav.
+
+![alt text](<img/2026-05-14 12_44_49-Alexa - Explorador de archivos.png>)
+
+(Figura 7) Registro de alexa donde se muestra la orden de poner la estación de radio "Pandora".
+
+
+Además se encontró una conversación, en los registros 7 y 8, a las 15:12. Se escuchan claramente una voz femenina y una voz masculina. La voz femenina sólo repite el comando "alexa stop". La transcripción de la voz masculina es la siguiente:
+
+>How could you do this? What are you thinking?
+
+>I can't belive you'd do this to me. We said we would. What are you thinking?
+
+![alt text](<img/2026-05-14 12_57_24-Alexa - Explorador de archivos.png>)
+
+(Figura 8) Transcripción de comando de voz detectado e interpretado incorrectamente por alexa
+
+Cabe mencionar que esto ocurre después del intercambio de mensajes en el que la víctima expresaba su deseo de cortar su relación con "John Macron".
+
+Posteriormente, se hay un último registro a las 15:20 en el que se oye una segunda voz masculina cuyo comando no se entiende. El usuario parece agitado.
+
+![alt text](<img/2026-05-14 13_25_09-Alexa - Explorador de archivos.png>)
+
+(Figura 9) Transcripción del último registro
+
+Véase [Transcripción de registros de echo](./anexos.md#41-vestigio-1-transcripcion-de-audios-de-echo)
+
+
+
+
+
+
+# 10. Anexos.
+
+## 10.1 Sobre el Perito
+
+| Campo | Datos |
+|  -|  -|
+| Nombre y apellidos | Grupo3 Forensics |
+| Titulación | Perritos forenses |
+| Número de colegiado / acreditación | 4901948498 |
+| Contacto | jimenezruizdavid2@gmail.com |
+
+El perito declara haber actuado con plena independencia técnica y que las conclusiones
+recogidas en este informe reflejan su opinión profesional fundamentada exclusivamente
+en el análisis de las evidencias digitales disponibles.
+
+## 10.2 Hallazgos
+
+Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `hallazgos`. Se listan como material de soporte para que cada artefacto citado en el análisis pueda localizarse y verificarse directamente.
+
+| Hallazgo | Definición breve | Enlace |
+| --- | --- | --- |
+| `9.json` | Registro de actividad de Amazon Echo asociado a la orden interpretada como `turn on pandora`, con metadatos de fecha, dispositivo, cuenta y evento. | [Abrir hallazgo](./hallazgos/9.json) |
+| `9.WAV` | Archivo de audio vinculado al evento de Amazon Echo, útil para contrastar la transcripción y la interpretación automática del comando. | [Abrir hallazgo](./hallazgos/9.WAV) |
+| `babel1.db` | Base de datos de Hangouts extraída del teléfono de la víctima; contiene información de conversaciones, participantes y mensajes analizados. | [Abrir hallazgo](./hallazgos/babel1.db) |
+| `cf092f21.jpg` | Captura de imagen recuperada de la Smart TV/Raspberry Pi, empleada para corroborar la actividad audiovisual declarada en la franja temporal investigada. | [Abrir hallazgo](./hallazgos/cf092f21.jpg) |
+| `mili_log.txt` | Registro de la aplicación de actividad Xiaomi/mi band, revisado para buscar eventos relacionados con la pulsera deportiva en el intervalo de interés. | [Abrir hallazgo](./hallazgos/mili_log.txt) |
+| `otros_Hashes.csv` | Relación de sumas de verificación de las evidencias principales, usada para comprobar la integridad de los ficheros adquiridos. | [Abrir hallazgo](./hallazgos/otros_Hashes.csv) |
+| `timezone` | Archivo de configuración de zona horaria recuperado del sistema, relevante para interpretar correctamente las marcas temporales. | [Abrir hallazgo](./hallazgos/timezone) |
 
 
 
