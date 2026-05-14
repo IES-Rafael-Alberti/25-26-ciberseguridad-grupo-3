@@ -1,5 +1,7 @@
+﻿<div id="informe-técnico-proyecto-9-caso-de-homicidio"></div>
 # Informe técnico: Proyecto 9. Caso de homicidio.
 
+<div id="índice"></div>
 ## Índice
 
 - [Informe técnico: Proyecto 9. Caso de homicidio.](#informe-técnico-proyecto-9-caso-de-homicidio)
@@ -16,17 +18,21 @@
   - [7. Análisis](#7-análisis)
     - [7.1 Herramientas utilizadas](#71-herramientas-utilizadas)
     - [7.2 Procesos](#72-procesos)
-      - [7.2.1 Análisis del teléfono de la víctima.](#721-análisis-del-teléfono-de-la-víctima)
+      - [7.2.1 Análisis del teléfono de la víctima](#721-análisis-del-teléfono-de-la-víctima)
       - [7.2.2 Análisis del teléfono del marido de la víctima](#722-análisis-del-teléfono-del-marido-de-la-víctima)
       - [7.2.3 Análisis de la Raspberry Pi usada como Smart TV](#723-análisis-de-la-raspberry-pi-usada-como-smart-tv)
       - [7.2.4 Análisis de Amazon Echo](#724-análisis-de-amazon-echo)
       - [7.2.5 Análisis de capturas de red](#725-análisis-de-capturas-de-red)
       - [7.2.6 Análisis de registros de GoogleOnHub](#726-análisis-de-registros-de-googleonhub)
+- 8. [Limitaciones](#8-limitaciones)
+- 9. [Conclusiones](#9-conclusiones)
 - [10. Anexos.](#10-anexos)
   - [10.1 Sobre el Perito](#101-sobre-el-perito)
   - [10.2 Hallazgos](#102-hallazgos)
+  - [10.3 Sumas de verificación](#103-verificacion)
 
 
+<div id="1-juramento-y-declaración-de-abstención-y-tacha"></div>
 # 1. Juramento y Declaración de Abstención y Tacha
 
 El/la abajo firmante, en calidad de perito/a informático/a, jura o promete solemnemente haber procedido y proceder con la mayor objetividad posible, tomando en consideración tanto lo que pueda favorecer como lo que sea susceptible de causar perjuicio a cualquiera de las partes, y que conoce las sanciones penales en las que podría incurrir si incumpliere su deber como perito/a.
@@ -34,6 +40,7 @@ El/la abajo firmante, en calidad de perito/a informático/a, jura o promete sole
 Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstención o tacha previstas en la legislación vigente en relación con las partes implicadas en el presente procedimiento, y que no existe ningún vínculo personal, profesional ni económico que pueda comprometer su imparcialidad en la emisión del presente dictamen.
 
 
+<div id="2-palabras-clave"></div>
 ## 2. Palabras clave
 
 - **IOT**: Del inglés "Internet Of Things" o "internet de las cosas", se trata de los dispositivos inteligentes como televisiones, asistentes de voz, etc.
@@ -41,24 +48,33 @@ Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstenci�
 - **Hangouts**: Aplicación de mensajería de google. Asociada al id universal de google (GAIA ID)
 - **GAIA ID**: ID único que idenfitica a una cuenta de google. Se asocian a él el nombre del usuario, reviews, etc.
 
+<div id="3-índice-de-figuras"></div>
 ## 3. Índice de figuras
 
 (Figura 1) Conversación entre la víctima y un tercero.
 
+<div id="4-resumen-ejecutivo"></div>
 ## 4. Resumen ejecutivo
 
-El análisis de los teléfonos, router y dispositivos IOT indican que el testomonio del marido de la víctima es cierto, y revelan indicios de la autoría de los hechos. Mensajes de texto de la aplicación hangouts sugieren un enfrentamiento verbal entre la víctima y un tercero. Posteriormente, el día de los hechos, el dispositivo de voz "Echo" graba un altercado entre dos personas, una de ellas la víctima, sin confirmarse la identidad de la otra. Las declaraciones del marido acerca de la situación antes del incidente se confirma mediante capturas de pantalla y registros de la televisión inteligente, así como por los registros de voz del dispositivo "Echo" que concuerdan con el marco de tiempo definido.
+Este análisis forense se ha centrado en los teléfonos móviles intervenidos, la Raspberry Pi usada como Smart TV, los registros de Amazon Echo, el diagnóstico del router Google OnHub, capturas de red y artefactos asociados al entorno Smart Home de la vivienda, con el objetivo de validar o desmentir las afirmaciones que se le presentaron al equipo, así como cualquier otro indicio que se haya podido identificar como potencialmente relevante para el caso.
+
+En el teléfono de la víctima se localizó una base de datos de Hangouts con comunicaciones previas entre la víctima, Hallym Betty, y un tercero identificado como John Macron. En la Raspberry Pi se hallaron indicios compatibles con actividad de reproducción multimedia durante la franja temporal investigada, incluyendo una captura relacionada con la película "El único" (*The One*, 2001) y registros de Kodi.
+
+Los registros de Amazon Echo documentan una secuencia de eventos entre las 15:01 y las 15:20 UTC+9, incluyendo una orden de reproducción de música en Pandora, activaciones del asistente y fragmentos de audio en los que se aprecia una interacción verbal con presencia de voz femenina y voz masculina. El diagnóstico de Google OnHub aporta información complementaria sobre dispositivos presentes o vistos en la red doméstica durante momentos próximos a los hechos.
+
+Las capturas de red analizadas no contienen tráfico relevante dentro de la ventana temporal principal. Asimismo, aunque las evidencias digitales permiten correlacionar actividad de dispositivos y comunicaciones, no permiten por sí solas atribuir de forma concluyente identidad, presencia física o autoría de los hechos a una persona concreta.
 
 
+<div id="5-introducción"></div>
 ## 5. Introducción
 
+<div id="51-antecedentes"></div>
 ### 5.1 Antecedentes
 El presente análisis forense digital trae causa del homicidio de una mujer en su domicilio, ocurrido el 17 de julio de 2017 y comunicado a los servicios de emergencia por el conserje del edificio tras ser alertado por el marido de la víctima. Según la información inicial de la investigación, la policía recibió la llamada a las 15:31, llegó al lugar a las 15:40 y los servicios medicos confirmaron que la víctima se encontraba sin signos vitales en el salón de la vivienda, presentando lesiones compatibles con múltiples puñaladas.
 
 En el momento de la intervención policial se encontraban en la escena el conserje y el marido de la víctima, quien manifestó que ambos habían regresado al domicilio alrededor de las 15:00 en zona horaria UTC+9 y que él permaneció en el dormitorio viendo una película con auriculares puestos, debido a que su mujer tenía puesta música, y fue por este motivo que afirmó no haber escuchado lo que pasaba en el salón. El marido permitió el acceso a los dispositivos presentes en la vivienda.
 
-Dado que la vivienda disponía de varios dispositivos IOT, se ha realizado un análisis forense orientado a dispositivos móviles e IoT.
-
+<div id="52-objetivos"></div>
 ### 5.2 Objetivos
 - Documentar y reconstruir cronológicamente los hechos ocurridos en la vivienda el 17 de julio de 2017, tomando como referencia la zona horaria UTC+9.
 
@@ -72,11 +88,13 @@ Dado que la vivienda disponía de varios dispositivos IOT, se ha realizado un an
 
 - Evaluar, a partir de todo ello, la posibilidad de las hipótesis principales, en particular si el autor de los hechos fue el marido de la víctima o un tercero desconocido.
 
+<div id="53-alcance"></div>
 ### 5.3 Alcance
 El análisis comprende las fuentes de evidencia digital aseguradas y facilitadas por la policía científica en el marco del caso, incluyendo el smartphone de la víctima, el smartphone del marido, la televisión inteligente, el informe de diagnóstico del router Google OnHub, los datos de Amazon Echo y el volcado de tráfico de red del entorno Smart Home.
 
 Este análisis se limita a las evidencias entregadas oficialmente y a los artefactos que puedan derivarse de ellas, sin extenderse a fuentes externas no incluidas en la adquisición ni a especulación carente de soporte técnico demostrable.
 
+<div id="6-fuentes-de-información"></div>
 ## 6. Fuentes de información.
 
 Se realizaron extracciones de las siguientes fuentes:
@@ -95,10 +113,12 @@ Se realizaron extracciones de las siguientes fuentes:
 
 - Hashes de la adquisición.
 
-Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2](#102-anexo-2-sumas-de-verificación)
+Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 10.2](#102-hallazgos)
 
+<div id="7-análisis"></div>
 ## 7. Análisis
 
+<div id="71-herramientas-utilizadas"></div>
 ### 7.1 Herramientas utilizadas
 
 | Herramienta | Version | Uso |
@@ -110,11 +130,16 @@ Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2]
 | Visual Studio Code | 15.6.2 | Lectura de archivos de texto plano |
 
 
+<div id="72-procesos"></div>
 ### 7.2 Procesos
 
-Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 2](#102-anexo-2-sumas-de-verificación)
+Se muestran las sumas de verificación y los comandos utilizados en el [Anexo 10.2](#102-hallazgos)
 
-#### 7.2.1 Análisis del teléfono de la víctima.
+<div id="721-análisis-del-teléfono-de-la-víctima"></div>
+#### 7.2.1 Análisis del teléfono de la víctima
+
+<div id="7211-identificación-del-dispositivo"></div>
+##### 7.2.1.1 Identificación del dispositivo
 
 Se encontró, por medio de la herramienta de autopsy, la base de datos de "settings" del dispositivo, en la que se ve el nombre del dispositivo "Betty (SHV-E250L)" y la dirección bluetooth, 1C:AF:05:9E:19:74.
 
@@ -128,6 +153,9 @@ Y aquí podemos ver la dirección bluetooth:
 ![alt text](<img/2026-05-14 18_45_43-NVIDIA GeForce Overlay.png>)
 
 (Figura 12) Dirección bluetooth del dispositivo.
+
+<div id="7212-conversación-de-hangouts-con-john-macron"></div>
+##### 7.2.1.2 Conversación de Hangouts con John Macron
 
 "babel1.db" de la aplicación de mensajería "Hangouts" que contenía una conversación entre la víctima y un tercero. En ella, la víctima parece querer poner fin a la comunicación con esa ppersona.
 
@@ -147,13 +175,20 @@ Confirmamos el nombre de la víctima como Hallym Betty.
 
 (Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID.
 
+<div id="7213-registro-de-la-pulsera-xiaomi"></div>
+##### 7.2.1.3 Registro de la pulsera Xiaomi
+
 Se revisó el dispositivo en busca de cualquier relación con la pulsera deportiva hallada en la escena. Siguiendo ese hilo, obtuvimos un registro de la aplicación de pulseras de actividad de xiaomi en com.xiaomi.health. 
 
 ![alt text](<img/2026-05-14 12_15_16-mili_log.txt_ Bloc de notas.png>)
 
 (Figura 4) Registro de actividad de la pulsera "mili_log.txt". No muestra información relevante en la ventana temporal de los hechos.
 
+<div id="722-análisis-del-teléfono-del-marido-de-la-víctima"></div>
 #### 7.2.2 Análisis del teléfono del marido de la víctima
+
+<div id="7221-identificación-del-dispositivo-del-marido"></div>
+##### 7.2.2.1 Identificación del dispositivo del marido
 
 Se revisó el dispositivo utilizando la herramienta Autopsy, y se encontraron tanto el nombre del dispositivo "Simon (SHV-E250S)" como la dirección bluetooth "50:F5.20:A5:7D:CC":
 
@@ -167,11 +202,18 @@ Y la dirección bluetooth:
 
 (Figura 14) Dirección bluetooth del dispositivo del marido de la víctima
 
+<div id="7222-revisión-de-artefactos-relevantes"></div>
+##### 7.2.2.2 Revisión de artefactos relevantes
+
 
 
 pero no se pudo encontrar nada relevante para la investigación.
 
+<div id="723-análisis-de-la-raspberry-pi-usada-como-smart-tv"></div>
 #### 7.2.3 Análisis de la Raspberry Pi usada como Smart TV
+
+<div id="7231-captura-de-pantalla-de-la-película"></div>
+##### 7.2.3.1 Captura de pantalla de la película
 
 Al analizar la evidencia con la herramienta autopsy, se encontró una captura de pantalla tomada a la hora en la que se declara que el marido se encontraba viendo una película.
 
@@ -180,6 +222,9 @@ Al analizar la evidencia con la herramienta autopsy, se encontró una captura de
 (Figura 5) Captura de pantalla "cf092f21.jpg" encontrada en la televisión inteligente
 
 La captura se ha confirmado como perteneciente a la película "El único" (The One) de 2001.
+
+<div id="7232-zona-horaria-y-actividad-de-kodi"></div>
+##### 7.2.3.2 Zona horaria y actividad de Kodi
 
 Adicionalmente, se encontró un archivo "timezone" que indicaba la zona horaria registrada para la televisión, +9:
 
@@ -192,6 +237,9 @@ El registro `kodi.log` muestra actividad del reproductor Kodi alrededor de las 1
 ![alt text](img/kodi-log.png)
 
 (Figura 7) Registro `kodi.log` localizado en la Raspberry Pi usada como Smart TV.
+
+<div id="7233-revisión-de-registros-bluetooth"></div>
+##### 7.2.3.3 Revisión de registros Bluetooth
 
 Se buscó también en los registros de bluetooth del dispositivo en busca de conexiones con auriculares, para contrastar las declaraciones del marido de la víctima.
 
@@ -219,13 +267,20 @@ Se ha intentado relacionar este dispositivo con auriculares, pero no se ha tenid
 
 (Figura 18) Búsqueda en google sobre el dispositivo
 
+<div id="724-análisis-de-amazon-echo"></div>
 #### 7.2.4 Análisis de Amazon Echo
+
+<div id="7241-orden-de-reproducción-de-música"></div>
+##### 7.2.4.1 Orden de reproducción de música
 
 Se analizaron las conversaciones registradas por el asistende de voz "Echo". Lo primero que se confirmó fue la orden de poner música a través de la estación de radio "Pandora" a las 15:06:06.327 en UTC+9. Se proveen como anexos el registro json y el registro de audio en formato wav.
 
 ![alt text](<img/2026-05-14 12_44_49-Alexa - Explorador de archivos.png>)
 
 (Figura 8) Registro de alexa donde se muestra la orden de poner la estación de radio "Pandora".
+
+<div id="7242-altercado-registrado-a-las-1512"></div>
+##### 7.2.4.2 Altercado registrado a las 15:12
 
 
 Además se encontró una conversación, en los registros 7 y 8, a las 15:12. Se escuchan claramente una voz femenina y una voz masculina. La voz femenina sólo repite el comando "alexa stop". La transcripción de la voz masculina es la siguiente:
@@ -240,6 +295,9 @@ Además se encontró una conversación, en los registros 7 y 8, a las 15:12. Se 
 
 Cabe mencionar que esto ocurre después del intercambio de mensajes en el que la víctima expresaba su deseo de cortar su relación con "John Macron".
 
+<div id="7243-último-registro-de-voz-a-las-1520"></div>
+##### 7.2.4.3 Último registro de voz a las 15:20
+
 Posteriormente, se hay un último registro a las 15:20 en el que se oye una segunda voz masculina cuyo comando no se entiende. El usuario parece agitado. La hora coincide aproximadamente con la hora a la que se declara que el marido encontró a la víctima en el salón del domicilio.
 
 ![alt text](<img/2026-05-14 13_25_09-Alexa - Explorador de archivos.png>)
@@ -248,11 +306,19 @@ Posteriormente, se hay un último registro a las 15:20 en el que se oye una segu
 
 Véase [Transcripción de registros de echo](./anexos.md#41-vestigio-1-transcripcion-de-audios-de-echo)
 
+<div id="725-análisis-de-capturas-de-red"></div>
 #### 7.2.5 Análisis de capturas de red
+
+<div id="7251-comprobación-de-capturas-pcap"></div>
+##### 7.2.5.1 Comprobación de capturas PCAP
 
 Se analizaron las capturas `Trafico_SmartHome_PorIP.pcap` y `Tráfico_SmartHome_PorCOAP.pcap` para comprobar si existía tráfico relevante en la ventana temporal de los hechos, situada aproximadamente entre las 14:50 y las 16:00 del 17/07/2017 en UTC+9. No se encontraron paquetes dentro de dicha franja, por lo que estas capturas no aportan información relevante para reconstruir los eventos principales del caso.
 
+<div id="726-análisis-de-registros-de-googleonhub"></div>
 #### 7.2.6 Análisis de registros de GoogleOnHub
+
+<div id="7261-dispositivos-observados-en-el-diagnóstico"></div>
+##### 7.2.6.1 Dispositivos observados en el diagnóstico
 
 Se analizó el informe de diagnóstico del router Google OnHub para comprobar el estado de la red doméstica y de los dispositivos asociados durante la ventana de los hechos. El registro usa marcas temporales en UTC, convertidas en este informe a UTC+9.
 
@@ -266,8 +332,18 @@ Se analizó el informe de diagnóstico del router Google OnHub para comprobar el
 
 
 
+<div id="8-limitaciones"></div>
+# 8. Limitaciones
+
+
+<div id="9-conclusiones"></div>
+# 9. Conclusiones
+
+
+<div id="10-anexos"></div>
 # 10. Anexos.
 
+<div id="101-sobre-el-perito"></div>
 ## 10.1 Sobre el Perito
 
 | Campo | Datos |
@@ -275,12 +351,13 @@ Se analizó el informe de diagnóstico del router Google OnHub para comprobar el
 | Nombre y apellidos | Grupo3 Forensics |
 | Titulación | Perritos forenses |
 | Número de colegiado / acreditación | 4901948498 |
-| Contacto | jimenezruizdavid2@gmail.com |
+| Contacto | jescpra2305@g.educaand.es |
 
 El perito declara haber actuado con plena independencia técnica y que las conclusiones
 recogidas en este informe reflejan su opinión profesional fundamentada exclusivamente
 en el análisis de las evidencias digitales disponibles.
 
+<div id="102-hallazgos"></div>
 ## 10.2 Hallazgos
 
 Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `hallazgos`. Se listan como material de soporte para que cada artefacto citado en el análisis pueda localizarse y verificarse directamente.
@@ -293,7 +370,10 @@ Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `ha
 | `cf092f21.jpg` | Captura de imagen recuperada de la Smart TV/Raspberry Pi, empleada para corroborar la actividad audiovisual declarada en la franja temporal investigada. | [Abrir hallazgo](./hallazgos/cf092f21.jpg) |
 | `mili_log.txt` | Registro de la aplicación de actividad Xiaomi/mi band, revisado para buscar eventos relacionados con la pulsera deportiva en el intervalo de interés. | [Abrir hallazgo](./hallazgos/mili_log.txt) |
 | `otros_Hashes.csv` | Relación de sumas de verificación de las evidencias principales, usada para comprobar la integridad de los ficheros adquiridos. | [Abrir hallazgo](./hallazgos/otros_Hashes.csv) |
+| `settings-victima.db` | Base de datos de ajustes del teléfono de la víctima; contiene el nombre del dispositivo `Betty (SHV-E250L)` y su dirección Bluetooth. | [Abrir hallazgo](./hallazgos/settings-victima.db) |
+| `settings_marido.db` | Base de datos de ajustes del teléfono del marido; contiene el nombre del dispositivo `Simon (SHV-E250S)` y su dirección Bluetooth. | [Abrir hallazgo](./hallazgos/settings_marido.db) |
 | `timezone` | Archivo de configuración de zona horaria recuperado del sistema, relevante para interpretar correctamente las marcas temporales. | [Abrir hallazgo](./hallazgos/timezone) |
 
-
+<div id="103-verificacion"></div>
+## 10.3 Sumas de verificación
 

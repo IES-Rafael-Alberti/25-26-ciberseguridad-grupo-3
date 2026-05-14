@@ -1,0 +1,6 @@
+{
+  "markdown.extension.toc.updateOnSave": false,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  }
+}
