@@ -19,7 +19,7 @@
      - 7.2.2 [Análisis de conversaciones WhatsApp](#722-análisis-de-conversaciones-whatsapp)
      - 7.2.3 [Análisis de actividad en Telegram](#723-análisis-de-actividad-en-telegram)
      - 7.2.4 [Análisis del historial de búsquedas de Atalus](#724-análisis-del-historial-de-búsquedas-de-atalus)
-     - 7.2.5 [Análisis de grabaciones cámara IP](#725-análisis-de-grabaciones-cámara-ip)
+     - 7.2.5 [Análisis de capturas de red](#725-análisis-de-capturas-de-red)
      - 7.2.6 [Análisis de accesos a Instagram de Lassandra](#726-análisis-de-accesos-a-instagram-de-lassandra)
      - 7.2.7 [Análisis del correo electrónico de la víctima](#727-análisis-del-correo-electrónico-de-la-víctima)
 8. [Limitaciones](#8-limitaciones)
@@ -163,7 +163,11 @@ Adicionalmente, se encontró un archivo "timezone" que indicaba la zona horaria 
  
 (Figura 6) Archivo de zona horaria de la televisión.
 
---------------- AÑADIR REGISTROS DE KODI -------------------
+El registro `kodi.log` muestra actividad del reproductor Kodi alrededor de las 15:19 UTC+9, compatible con la reproducción o cierre de un vídeo en la Smart TV durante la franja temporal investigada.
+
+![alt text](img/kodi-log.png)
+
+(Figura 7) Registro `kodi.log` localizado en la Raspberry Pi usada como Smart TV.
 
 #### 7.2.4 Análisis de Amazon Echo
 
@@ -171,7 +175,7 @@ Se analizaron las conversaciones registradas por el asistende de voz "Echo". Lo 
 
 ![alt text](<img/2026-05-14 12_44_49-Alexa - Explorador de archivos.png>)
 
-(Figura 7) Registro de alexa donde se muestra la orden de poner la estación de radio "Pandora".
+(Figura 8) Registro de alexa donde se muestra la orden de poner la estación de radio "Pandora".
 
 
 Además se encontró una conversación, en los registros 7 y 8, a las 15:12. Se escuchan claramente una voz femenina y una voz masculina. La voz femenina sólo repite el comando "alexa stop". La transcripción de la voz masculina es la siguiente:
@@ -182,18 +186,23 @@ Además se encontró una conversación, en los registros 7 y 8, a las 15:12. Se 
 
 ![alt text](<img/2026-05-14 12_57_24-Alexa - Explorador de archivos.png>)
 
-(Figura 8) Transcripción de comando de voz detectado e interpretado incorrectamente por alexa
+(Figura 9) Transcripción de comando de voz detectado e interpretado incorrectamente por alexa
 
 Cabe mencionar que esto ocurre después del intercambio de mensajes en el que la víctima expresaba su deseo de cortar su relación con "John Macron".
 
-Posteriormente, se hay un último registro a las 15:20 en el que se oye una segunda voz masculina cuyo comando no se entiende. El usuario parece agitado.
+Posteriormente, se hay un último registro a las 15:20 en el que se oye una segunda voz masculina cuyo comando no se entiende. El usuario parece agitado. La hora coincide aproximadamente con la hora a la que se declara que el marido encontró a la víctima en el salón del domicilio.
 
 ![alt text](<img/2026-05-14 13_25_09-Alexa - Explorador de archivos.png>)
 
-(Figura 9) Transcripción del último registro
+(Figura 10) Transcripción del último registro
 
 Véase [Transcripción de registros de echo](./anexos.md#41-vestigio-1-transcripcion-de-audios-de-echo)
 
+#### 7.2.5 Análisis de capturas de red
+
+Se analizaron las capturas `Trafico_SmartHome_PorIP.pcap` y `Tráfico_SmartHome_PorCOAP.pcap` para comprobar si existía tráfico relevante en la ventana temporal de los hechos, situada aproximadamente entre las 14:50 y las 16:00 del 17/07/2017 en UTC+9. No se encontraron paquetes dentro de dicha franja, por lo que estas capturas no aportan información relevante para reconstruir los eventos principales del caso.
+
+#### 7.2.6 Análisis de registros de GoogleOnHub
 
 
 
