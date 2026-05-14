@@ -254,7 +254,15 @@ Se analizaron las capturas `Trafico_SmartHome_PorIP.pcap` y `Tráfico_SmartHome_
 
 #### 7.2.6 Análisis de registros de GoogleOnHub
 
+Se analizó el informe de diagnóstico del router Google OnHub para comprobar el estado de la red doméstica y de los dispositivos asociados durante la ventana de los hechos. El registro usa marcas temporales en UTC, convertidas en este informe a UTC+9.
 
+| Dispositivo / indicio | Estado observado | Hora relevante UTC+9 | Conclusión |
+| --- | --- | --- | --- |
+| osmc / Raspberry Pi | No conectado en el inventario, con presencia previa en red | Última vez visto: 15:07:17 | Compatible con la Smart TV analizada. Se había conectado antes de la ventana crítica y aparece en la red durante el periodo relevante. |
+| Android enmascarado (`109266...`) | No conectado en el inventario | Última vez visto: 15:15:20 | Indica presencia previa de un dispositivo Android durante la franja de los hechos. No permite atribuir identidad. |
+| Android enmascarado (`50f520...`) | No conectado en el inventario | Última vez visto: 15:19:45 | Coincide con el tramo de los hechos, pero sólo acredita actividad o presencia de red del dispositivo. |
+| Dispositivo `st-****************` | Conectado, IP `192.168.86.27` | Sin hora exacta de conexión/desconexión en el informe | Compatible con un dispositivo Smart Home/SmartThings activo en la red. |
+| Dispositivos `*************XDU`, `ademanafe` y equipo sin nombre | Conectados, IPs `192.168.86.22`, `192.168.86.29` y `192.168.86.21` | Sin hora exacta de conexión/desconexión en el informe | Permanecían asociados a la red según el diagnóstico, pero no se puede vincular su uso a una persona ni a una acción concreta. |
 
 
 
