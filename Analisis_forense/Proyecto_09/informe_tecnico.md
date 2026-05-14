@@ -133,7 +133,19 @@ Confirmamos el nombre de la víctima como Hallym Betty.
 
 ![alt text](<img/2026-05-13 14_27_19-DBeaver 26.0.4 - participants.png>)
 
-(Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID
+(Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID.
+
+
+Se revisó el dispositivo en busca de cualquier relación con la pulsera deportiva hallada en la escena. Siguiendo ese hilo, obtuvimos un registro de la aplicación de pulseras de actividad de xiaomi en com.xiaomi.health. 
+
+![alt text](<img/2026-05-14 12_15_16-mili_log.txt_ Bloc de notas.png>)
+
+(Figura 4) Registro de actividad de la pulsera. No muestra información relevante en la ventana temporal de los hechos.
+
+#### 7.2.2 Análisis del teléfono del marido de la víctima
+
+Se revisó el dispositivo utilizando la herramienta Autopsy, pero no se pudo encontrar nada relevante para la investigación.
+
 
 
 
