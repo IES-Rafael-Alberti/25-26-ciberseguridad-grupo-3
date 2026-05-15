@@ -366,6 +366,21 @@ La base de datos de Hangouts acredita la existencia de comunicaciones previas en
 
 # 9. Conclusiones
 
+Del análisis realizado se concluye que el teléfono de la víctima corresponde al dispositivo identificado como "Betty (SHV-E250L)", asociado a la dirección Bluetooth `1C:AF:05:9E:19:74`. En dicho dispositivo se localizó la base de datos `babel1.db` de Hangouts, que contiene una conversación entre la víctima, Hallym Betty, y un tercero identificado como John Macron. El contenido de dicha conversación resulta relevante porque muestra un contexto previo de conflicto o finalización de una relación personal sin definir.
+
+El teléfono del marido fue identificado como "Simon (SHV-E250S)", asociado a la dirección Bluetooth `50:F5.20:A5:7D:CC`. En la revisión descrita no se localizaron artefactos con relevancia directa para la reconstrucción de los hechos.
+
+La Raspberry Pi usada como Smart TV contiene una captura de la película "El único" (*The One*, 2001), además de registros de Kodi próximos a la franja temporal investigada. Estos indicios son compatibles con la declaración del marido respecto a la reproducción de una película, aunque no permiten confirmar de manera independiente su ubicación exacta. No se ha podido confirmar el uso de auriculares.
+
+Los registros de Amazon Echo muestran una secuencia temporal relevante: activación o encendido de la televisión alrededor de las 15:01, reproducción de Pandora a las 15:06, un altercado registrado aproximadamente a las 15:12 y nuevos eventos de voz alrededor de las 15:20. La grabación del altercado contiene una voz femenina y una voz masculina, con la voz femenina dando órdenes dirigidas a Alexa y la voz masculina expresando algún tipo de reproche o discusión. Esta secuencia es uno de los indicios más relevantes del caso.
+
+Las capturas de red `Trafico_SmartHome_PorIP.pcap` y `Tráfico_SmartHome_PorCOAP.pcap` no aportan información relevante para la ventana principal de los hechos, al no contener paquetes dentro de la franja analizada.
+
+El diagnóstico de Google OnHub confirma la presencia o actividad de varios dispositivos en la red doméstica durante momentos próximos a los hechos, incluyendo la Raspberry Pi y dispositivos Android enmascarados. Estos datos ayudan a contextualizar la actividad del entorno Smart Home, pero no permiten atribuir acciones concretas a personas determinadas.
+
+En conjunto, las evidencias son compatibles con una secuencia en la que la víctima se encontraba en el domicilio con música reproduciéndose, se produce una discusión captada parcialmente por Amazon Echo y posteriormente se registran eventos próximos al momento en el que el marido declara haber encontrado a la víctima. La declaración del marido queda apoyada parcialmente por la actividad de la Smart TV y los registros de Echo, aunque no todos sus extremos quedan confirmados técnicamente, pues no hemos podido identificar conexiones bluetooth de auriculares a la televisión en el momento en el que se encontraba viendo la película.
+
+Se han identificado indicios relevantes que apuntan a la posible intervención de un tercero, especialmente por la conversación previa de Hangouts y por la voz masculina registrada durante el altercado. Dicha hipótesis requiere corroboración mediante diligencias adicionales.
 
 <div id="10-anexos"></div>
 
@@ -409,6 +424,8 @@ Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `ha
 ## 10.3 Sumas de verificación
 
 <div id="104-anexos-complementarios"></div>
+
+
 
 ## 10.4 Anexos complementarios
 
