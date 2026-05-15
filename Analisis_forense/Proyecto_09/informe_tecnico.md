@@ -356,6 +356,12 @@ Los registros de Amazon Echo permiten identificar comandos, activaciones y fragm
 
 La actividad de la Raspberry Pi y de Kodi resulta compatible con el uso de la Smart TV durante la franja investigada, pero no acredita por sí misma quién estaba viendo la película ni si dicha persona llevaba auriculares. En la revisión de registros Bluetooth no se localizaron conexiones confirmadas de auriculares, únicamente detecciones o referencias a dispositivos que no han podido ser atribuidos con certeza.
 
+Las capturas de red analizadas no contienen tráfico relevante dentro de la ventana temporal situada aproximadamente entre las 14:50 y las 16:00 del 17/07/2017 UTC+9. Por tanto, no permiten confirmar ni descartar actividad de red concreta durante los momentos principales del incidente.
+
+El diagnóstico de Google OnHub aporta información sobre presencia o última actividad de dispositivos en la red doméstica, pero varios identificadores aparecen enmascarados o sin datos suficientes para atribuirlos con seguridad a una persona. La aparición de un dispositivo como visto o conectado no equivale necesariamente a uso manual del mismo en ese instante.
+
+La base de datos de Hangouts acredita la existencia de comunicaciones previas entre la víctima y John Macron, así como un contexto de tensión o ruptura de comunicación, pero no demuestra por sí sola la presencia física de dicho tercero en el domicilio ni su participación directa en los hechos.
+
 <div id="9-conclusiones"></div>
 
 # 9. Conclusiones
