@@ -113,8 +113,6 @@ cuentas de Google, la base de datos de Telegram de la víctima, el export de su 
 de Instagram, la imagen forense del ordenador del aula y las grabaciones de la cámara
 IP Imou del centro.
 
- 
-
 # 6. Fuentes de Información
 
 ## 6.1 Sumas de verificación

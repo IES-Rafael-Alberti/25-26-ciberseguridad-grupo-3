@@ -425,7 +425,43 @@ Los siguientes anexos corresponden a los hallazgos conservados en la carpeta `ha
 
 <div id="104-anexos-complementarios"></div>
 
+| Adquisicion | Tamano (Bytes) | HASH SHA-256 | HASH MD5 | Enlace |
+| --- | --- | --- | --- |---|
+| Alexa.zip | 3.005.548 | 6C09813EEA5475DC0011C547E7FB774CFBD7216CAFDEEB9A8308306046C14EDF | 93639C62F68C5155611BBD7E8EB3F477 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| Tráfico_SmartHome_PorIP.pcap | 576.832 | A4664F1719D26382EDD6D352CC8715FEA3EE73BBB00245D71943FBACBBEECA3E | 8FB0EDB521C9AD191ADF55054203A6F4 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| InformeDiagnosticoOnHub | 339.578 | 4767513D714698AFCD7506DD2304528A8DB8243E2DFF1BE6E1EDE591D0D19F83 | 4A07BD78D8F4BA227841C971EEB7D1B3 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| TV_Inteligente.zip | 730.383.971 | 5423EA3F60D4AD0874346D3BA31C8783E5F2CE4B15B261BA0085E07F11E650E6 | D9D2B3B3048A836289CEC02C6353B6E9 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| Tráfico_SmartHome_PorCOAP.pcap | 338.416 | F5AD42A50CA0D16261C1CA4742D78FD99C9E7FC6AB67FDB3A53909FF7F786CE0 | 67AB09760148A66402AA7D9B0ABAA322 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| smartphone__victima.zip | 2.830.499.934 | C3E334C996B811C51067E9E0657CB621523576F15EB2C19EC52C32BF36E3E5FF | 8DAF9D23E39675452F99C5099A72B317 | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
+| smartphone_marido_victima.zip | 3.054.360.930 | 5A46ACDF7FB5A70734A2E0E39A8C9B5CC9B7EE799FE800A0A7512AF08E15C025 | 1472BE511173E7E0F4919958B1C96FFE | [Abrir Comprobación](./hallazgos/otros_Hashes.csv) |
 
+- Alexa.Zip
+
+![img](img/hash_alexa_zip.png)
+
+- Tráfico_SmartHome_PorIP.pcap
+
+![img](img/hash_Trafico_Smarthome_porIP.png)
+
+- InformeDiagnosticoOnHub
+
+![img](img/hash_InformeDiagnosticoOnHub.png)
+
+- TV_Inteligente.zip
+
+![img](img/hash_TV_inteligente_zip.png)
+
+- Tráfico_SmartHome_PorCOAP.pcap
+
+![img](img/hash_Trafico_Smarthome_porCOAP.png)
+
+- smartphone__victima.zip
+
+![img](img/HASHES_CHICA_SMARTPHONE.png)
+
+- smartphone_marido_victima.zip
+
+![img](img/HASHES_CHICO_SMARTPHONE.png)
 
 ## 10.4 Anexos complementarios
 
