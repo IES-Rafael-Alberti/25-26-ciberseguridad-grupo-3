@@ -348,6 +348,13 @@ Se analizó el informe de diagnóstico del router Google OnHub para comprobar el
 
 # 8. Limitaciones
 
+El presente informe se limita a las evidencias digitales facilitadas para el análisis: teléfonos móviles, Raspberry Pi usada como Smart TV, registros de Amazon Echo, diagnóstico de Google OnHub, capturas de red y artefactos conservados en la carpeta de hallazgos. No se han incorporado fuentes externas ni información no contenida en las evidencias entregadas.
+
+Las marcas temporales se han interpretado tomando como referencia la zona horaria UTC+9, indicada por el contexto del caso y por los artefactos analizados. No obstante, algunos registros proceden de sistemas que almacenan eventos en UTC o que no expresan de forma explícita la zona horaria en cada entrada, por lo que la correlación temporal debe entenderse como una reconstrucción técnica basada en la conversión documentada.
+
+Los registros de Amazon Echo permiten identificar comandos, activaciones y fragmentos de audio, pero no constituyen por sí solos una prueba biométrica concluyente de identidad de las voces. La presencia de una voz masculina distinta de la víctima permite inferir la intervención de otra persona en la estancia o en el entorno del dispositivo, pero no permite atribuir de forma definitiva dicha voz a un individuo concreto sin análisis vocal especializado y material de comparación.
+
+La actividad de la Raspberry Pi y de Kodi resulta compatible con el uso de la Smart TV durante la franja investigada, pero no acredita por sí misma quién estaba viendo la película ni si dicha persona llevaba auriculares. En la revisión de registros Bluetooth no se localizaron conexiones confirmadas de auriculares, únicamente detecciones o referencias a dispositivos que no han podido ser atribuidos con certeza.
 
 <div id="9-conclusiones"></div>
 
