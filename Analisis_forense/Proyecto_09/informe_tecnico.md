@@ -57,6 +57,42 @@ Asimismo, declara no encontrarse incurso/a en ninguna de las causas de abstenci�
 
 ## 3. Índice de figuras
 
+(Figura 1) Conversación entre la víctima y un tercero.
+
+(Figura 2) Nombre del usuario con el que la víctima mantuvo la conversación encontrada y último mensaje.
+
+(Figura 3) Nombre de la víctima y nombre del segundo usuario, junto a sus GAIA ID.
+
+(Figura 4) Registro de actividad de la pulsera "mili_log.txt". No muestra información relevante en la ventana temporal de los hechos.
+
+(Figura 5) Captura de pantalla "cf092f21.jpg" encontrada en la televisión inteligente.
+
+(Figura 6) Archivo de zona horaria de la televisión.
+
+(Figura 7) Registro `kodi.log` localizado en la Raspberry Pi usada como Smart TV.
+
+(Figura 8) Registro de alexa donde se muestra la orden de poner la estación de radio "Pandora".
+
+(Figura 9) Transcripción de comando de voz detectado e interpretado incorrectamente por alexa.
+
+(Figura 10) Transcripción del último registro.
+
+(Figura 11) Nombre del dispositivo con identificador.
+
+(Figura 12) Dirección bluetooth del dispositivo.
+
+(Figura 13) Nombre del dispositivo del marido de la víctima.
+
+(Figura 14) Dirección bluetooth del dispositivo del marido de la víctima.
+
+(Figura 15) Dirección bluetooth de la televisión.
+
+(Figura 16) Registro de detección del dispositivo echo.
+
+(Figura 17) Registro de detección de dispositivo "mi1a".
+
+(Figura 18) Búsqueda en google sobre el dispositivo.
+
 <div id="4-resumen-ejecutivo"></div>
 
 ## 4. Resumen ejecutivo
