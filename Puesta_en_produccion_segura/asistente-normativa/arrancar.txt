@@ -1,0 +1,20 @@
+
+INICIAL:
+
+1. abrir docker
+
+2. Sustituir:
+
+POSTGRES_PASSWORD=...
+N8N_ENCRYPTION_KEY=...
+N8N_USER_MANAGEMENT_JWT_SECRET=...
+
+Para generar los dos últimos:
+
+[Convert]::ToHexString((1..32 | ForEach-Object { Get-Random -Maximum 256 }))
+
+2. docker compose --profile gpu-nvidia up -d --build
+
+ARRANCAR:
+
+1. abrir docker

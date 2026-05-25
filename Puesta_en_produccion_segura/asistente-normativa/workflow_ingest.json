@@ -1,0 +1,201 @@
+{
+  "id": "workflow_ingest_normativa",
+  "name": "Ingest Normativa",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0e02b2bf-b2f4-49e5-b844-06bd66ae5a54",
+      "name": "Trigger manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-760, -80]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ingest-normativa",
+        "responseMode": "lastNode",
+        "options": {
+          "binaryData": true
+        }
+      },
+      "id": "9cbb58c9-a78f-42ca-88df-42d3b7a2d6d5",
+      "name": "Webhook PDF",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-760, 140],
+      "webhookId": "a07b0e90-87d7-4a0a-8cd6-8b4d5b5d9170"
+    },
+    {
+      "parameters": {
+        "include": "all",
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b4d044b8-8357-4c71-a379-18dc2d7d7297",
+              "name": "normativa",
+              "type": "string",
+              "value": "={{ $json.body?.normativa || $json.normativa || 'ISO27001' }}"
+            },
+            {
+              "id": "e6d67c29-bf02-447a-9087-ed50aac3e11e",
+              "name": "fuente",
+              "type": "string",
+              "value": "={{ $binary?.data?.fileName || $json.body?.fuente || $json.fuente || 'documento.pdf' }}"
+            }
+          ]
+        }
+      },
+      "id": "9e8f8eda-065d-4d1d-a1b1-605334d31bc9",
+      "name": "Preparar metadata",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-460, 40]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "options": {},
+        "qdrantCollection": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $env.QDRANT_COLLECTION || 'normativa_ciberseguridad' }}"
+        }
+      },
+      "id": "8f16d28a-6b76-4b2d-973c-3b3ab0166fcf",
+      "name": "Qdrant upsert normativa",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "typeVersion": 1.3,
+      "position": [-100, 40],
+      "credentials": {
+        "qdrantApi": {
+          "id": "",
+          "name": "Local Qdrant service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "={{ $env.OLLAMA_EMBED_MODEL || 'nomic-embed-text:latest' }}"
+      },
+      "id": "a3e13849-4f6c-4873-a9dc-bd1f508a2107",
+      "name": "Embeddings Ollama",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOllama",
+      "typeVersion": 1,
+      "position": [-220, 260],
+      "credentials": {
+        "ollamaApi": {
+          "id": "",
+          "name": "Local Ollama service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "binaryMode": "specificField",
+        "binaryDataKey": "data",
+        "loader": "pdfLoader",
+        "textSplittingMode": "custom",
+        "options": {
+          "splitPages": true,
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "normativa",
+                "value": "={{ $('Preparar metadata').item.json.normativa }}"
+              },
+              {
+                "name": "fuente",
+                "value": "={{ $('Preparar metadata').item.json.fuente }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "4d20c174-077f-4ed4-8bbd-a3fa1f99929a",
+      "name": "Document Loader PDF",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [20, 260]
+    },
+    {
+      "parameters": {
+        "chunkSize": 800,
+        "chunkOverlap": 100,
+        "options": {}
+      },
+      "id": "6d152a7e-9658-4398-8f95-38af813f1127",
+      "name": "Text Splitter 800 100",
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [40, 460]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4d7d336c-ce3f-4cf6-8c60-d1c6882dcd5a",
+              "name": "status",
+              "type": "string",
+              "value": "ok"
+            },
+            {
+              "id": "a6626200-5c9e-4b12-9e35-d9ec744132d1",
+              "name": "mensaje",
+              "type": "string",
+              "value": "=PDF indexado en Qdrant para {{ $('Preparar metadata').item.json.normativa }}"
+            },
+            {
+              "id": "652fd307-5ff5-4f18-a93f-e4e5bfdcd00e",
+              "name": "fuente",
+              "type": "string",
+              "value": "={{ $('Preparar metadata').item.json.fuente }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1b573061-1333-43a0-9b57-820d0d80d1c8",
+      "name": "Respuesta ingesta",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [260, 40]
+    }
+  ],
+  "connections": {
+    "Trigger manual": {
+      "main": [[{"node": "Preparar metadata", "type": "main", "index": 0}]]
+    },
+    "Webhook PDF": {
+      "main": [[{"node": "Preparar metadata", "type": "main", "index": 0}]]
+    },
+    "Preparar metadata": {
+      "main": [[{"node": "Qdrant upsert normativa", "type": "main", "index": 0}]]
+    },
+    "Qdrant upsert normativa": {
+      "main": [[{"node": "Respuesta ingesta", "type": "main", "index": 0}]]
+    },
+    "Embeddings Ollama": {
+      "ai_embedding": [[{"node": "Qdrant upsert normativa", "type": "ai_embedding", "index": 0}]]
+    },
+    "Document Loader PDF": {
+      "ai_document": [[{"node": "Qdrant upsert normativa", "type": "ai_document", "index": 0}]]
+    },
+    "Text Splitter 800 100": {
+      "ai_textSplitter": [[{"node": "Document Loader PDF", "type": "ai_textSplitter", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

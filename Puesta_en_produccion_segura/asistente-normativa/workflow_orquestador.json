@@ -1,0 +1,360 @@
+{
+  "id": "workflow_orquestador_normativa",
+  "name": "Orquestador Normativa",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "initialMessages": "Hola. Preguntame sobre ISO 27001, ENS, RGPD o NIS2.",
+          "title": "Asistente Normativa Ciberseguridad",
+          "subtitle": "RAG local con n8n, Ollama y Qdrant"
+        }
+      },
+      "id": "98289181-df2f-4a99-b8e7-0e95f109bdc7",
+      "name": "On Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [-760, 20],
+      "webhookId": "5dfdb6de-4f48-4638-83b5-c6c1934a7f2b"
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.chatInput }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "ISO27001",
+              "description": "Preguntas sobre ISO/IEC 27001, SGSI, controles de Anexo A, riesgos, auditoria o certificacion ISO 27001."
+            },
+            {
+              "category": "ENS",
+              "description": "Preguntas sobre el Esquema Nacional de Seguridad espanol, categorias, medidas, CCN-STIC, adecuacion o declaracion/certificacion ENS."
+            },
+            {
+              "category": "RGPD",
+              "description": "Preguntas sobre Reglamento General de Proteccion de Datos, tratamiento, bases juridicas, derechos, EIPD, DPO o brechas de datos."
+            },
+            {
+              "category": "NIS2",
+              "description": "Preguntas sobre la Directiva NIS2, entidades esenciales/importantes, gestion de riesgos, notificacion o gobernanza."
+            },
+            {
+              "category": "GENERAL",
+              "description": "Consultas generales, ambiguas o comparativas que no pertenecen claramente a una unica normativa."
+            }
+          ]
+        },
+        "options": {
+          "fallback": "GENERAL",
+          "systemPromptTemplate": "Clasifica el texto del usuario en exactamente una de estas categorias: {categories}. Devuelve solo la categoria seleccionada en JSON, sin explicaciones."
+        }
+      },
+      "id": "ca6cab8f-08cb-47f6-8890-4541a4bc80fd",
+      "name": "Text Classifier Normativa",
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [-440, 20]
+    },
+    {
+      "parameters": {
+        "model": "={{ $env.OLLAMA_CHAT_MODEL || 'qwen3:8b' }}",
+        "options": {
+          "temperature": 0,
+          "numCtx": 4096
+        }
+      },
+      "id": "f24f4afb-0986-4301-a934-35410c2ee964",
+      "name": "Ollama Classifier Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [-480, 260],
+      "credentials": {
+        "ollamaApi": {
+          "id": "",
+          "name": "Local Ollama service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "workflow_agente_iso27001",
+          "cachedResultName": "Agente ISO27001"
+        },
+        "workflowInputs": {
+          "value": {
+            "pregunta": "={{ $('On Chat Message').item.json.chatInput }}",
+            "objetivo": "Responde con detalle citando articulos, controles o secciones concretas."
+          },
+          "schema": [
+            {
+              "id": "pregunta",
+              "type": "string",
+              "display": true,
+              "required": true,
+              "displayName": "pregunta"
+            },
+            {
+              "id": "objetivo",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "objetivo"
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "14518250-87ec-47ce-9754-d4b533a5ae5c",
+      "name": "Call Agente ISO27001",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [-80, -360]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "workflow_agente_ens",
+          "cachedResultName": "Agente ENS"
+        },
+        "workflowInputs": {
+          "value": {
+            "pregunta": "={{ $('On Chat Message').item.json.chatInput }}",
+            "objetivo": "Responde con detalle citando articulos, anexos o medidas concretas."
+          },
+          "schema": [
+            {
+              "id": "pregunta",
+              "type": "string",
+              "display": true,
+              "required": true,
+              "displayName": "pregunta"
+            },
+            {
+              "id": "objetivo",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "objetivo"
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "b90cf9ca-4050-49f5-9447-b2eccbdcb264",
+      "name": "Call Agente ENS",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [-80, -160]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "workflow_agente_rgpd",
+          "cachedResultName": "Agente RGPD"
+        },
+        "workflowInputs": {
+          "value": {
+            "pregunta": "={{ $('On Chat Message').item.json.chatInput }}",
+            "objetivo": "Responde con detalle citando articulos o considerandos concretos."
+          },
+          "schema": [
+            {
+              "id": "pregunta",
+              "type": "string",
+              "display": true,
+              "required": true,
+              "displayName": "pregunta"
+            },
+            {
+              "id": "objetivo",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "objetivo"
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "bb237e39-fc92-42a7-a33d-e16181eea69c",
+      "name": "Call Agente RGPD",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [-80, 40]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "workflow_agente_nis2",
+          "cachedResultName": "Agente NIS2"
+        },
+        "workflowInputs": {
+          "value": {
+            "pregunta": "={{ $('On Chat Message').item.json.chatInput }}",
+            "objetivo": "Responde con detalle citando articulos, anexos o requisitos concretos."
+          },
+          "schema": [
+            {
+              "id": "pregunta",
+              "type": "string",
+              "display": true,
+              "required": true,
+              "displayName": "pregunta"
+            },
+            {
+              "id": "objetivo",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "objetivo"
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "0cb6a8c4-b67c-473d-8ead-dad33d19113f",
+      "name": "Call Agente NIS2",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [-80, 240]
+    },
+    {
+      "parameters": {
+        "text": "={{ $('On Chat Message').item.json.chatInput }}",
+        "promptType": "define",
+        "options": {
+          "systemMessage": "Eres el orquestador general de un asistente local sobre normativa de ciberseguridad. Responde solo a consultas generales o comparativas. Si la pregunta requiere una normativa concreta, indica cual deberia consultarse. No inventes articulos. Usa memoria conversacional para mantener continuidad."
+        }
+      },
+      "id": "dd375d12-0d02-4f14-ac27-02fb31e6d9c9",
+      "name": "GENERAL Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [-80, 460]
+    },
+    {
+      "parameters": {
+        "model": "={{ $env.OLLAMA_CHAT_MODEL || 'qwen3:8b' }}",
+        "options": {
+          "temperature": 0.2,
+          "numCtx": 8192
+        }
+      },
+      "id": "f7b8e4d3-af4e-421a-a68d-159edb7c6f7f",
+      "name": "Ollama General Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [-180, 700],
+      "credentials": {
+        "ollamaApi": {
+          "id": "",
+          "name": "Local Ollama service"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('On Chat Message').item.json.sessionId || 'default' }}",
+        "tableName": "n8n_normativa_chat_history",
+        "contextWindowLength": 10
+      },
+      "id": "1a09c0c7-2872-40dc-a52a-166919cf4319",
+      "name": "Postgres Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [20, 700],
+      "credentials": {
+        "postgres": {
+          "id": "",
+          "name": "Local Postgres memory"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "date -Iseconds",
+        "toolDescription": "Devuelve la fecha y hora actual del contenedor en formato ISO."
+      },
+      "id": "31329036-bc2d-4a5f-a91e-e6939301b4fe",
+      "name": "fecha_actual",
+      "type": "n8n-nodes-base.executeCommandTool",
+      "typeVersion": 1,
+      "position": [220, 700]
+    },
+    {
+      "parameters": {
+        "color": 7,
+        "width": 520,
+        "height": 220,
+        "content": "## Sub-workflows\n\nEste orquestador llama a estos IDs:\n\n- workflow_agente_iso27001\n- workflow_agente_ens\n- workflow_agente_rgpd\n- workflow_agente_nis2\n\nEl export incluye ISO27001 como plantilla. Duplica ese workflow para ENS, RGPD y NIS2 y cambia el filtro metadata.normativa."
+      },
+      "id": "72cfa1fc-8285-4321-adb3-8accf93ba6f7",
+      "name": "Nota sub-workflows",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [260, -420]
+    }
+  ],
+  "connections": {
+    "On Chat Message": {
+      "main": [[{"node": "Text Classifier Normativa", "type": "main", "index": 0}]]
+    },
+    "Ollama Classifier Model": {
+      "ai_languageModel": [[{"node": "Text Classifier Normativa", "type": "ai_languageModel", "index": 0}]]
+    },
+    "Text Classifier Normativa": {
+      "main": [
+        [{"node": "Call Agente ISO27001", "type": "main", "index": 0}],
+        [{"node": "Call Agente ENS", "type": "main", "index": 0}],
+        [{"node": "Call Agente RGPD", "type": "main", "index": 0}],
+        [{"node": "Call Agente NIS2", "type": "main", "index": 0}],
+        [{"node": "GENERAL Agent", "type": "main", "index": 0}]
+      ]
+    },
+    "Ollama General Model": {
+      "ai_languageModel": [[{"node": "GENERAL Agent", "type": "ai_languageModel", "index": 0}]]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [[{"node": "GENERAL Agent", "type": "ai_memory", "index": 0}]]
+    },
+    "fecha_actual": {
+      "ai_tool": [[{"node": "GENERAL Agent", "type": "ai_tool", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}
