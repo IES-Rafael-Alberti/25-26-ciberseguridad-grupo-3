@@ -133,6 +133,24 @@ Qdrant: http://localhost:6333/dashboard
 Ollama: http://localhost:11434
 ```
 
+## Capturas de arranque
+
+Pantalla inicial de n8n al entrar en `http://localhost:5678`:
+
+![Pantalla inicial de n8n](docs/images/n8n-inicio.png)
+
+Dashboard de Qdrant en `http://localhost:6333/dashboard`:
+
+![Dashboard de Qdrant](docs/images/qdrant-dashboard.png)
+
+Workflows importados en n8n:
+
+![Workflow Ingest Normativa en n8n](docs/images/n8n-workflow-ingest.png)
+
+![Workflow Orquestador Normativa en n8n](docs/images/n8n-workflow-orquestador.png)
+
+![Workflow Agente ISO27001 en n8n](docs/images/n8n-workflow-agente-iso27001.png)
+
 Parar sin borrar datos:
 
 ```powershell
